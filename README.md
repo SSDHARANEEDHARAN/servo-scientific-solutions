@@ -1,73 +1,110 @@
-# Welcome to your Lovable project
+Servo Scientific Solutions
 
-## Project info
+A modern, responsive web application built with React, TypeScript, Vite, Tailwind CSS, and shadcn-ui for seamless user experience and maintainable code.
 
-**URL**: https://lovable.dev/projects/8f81a286-e4f2-477c-b978-ca4f50607f4b
+Table of Contents
 
-## How can I edit this code?
+Project Overview
 
-There are several ways of editing your application.
+Features
 
-**Use Lovable**
+Technologies Used
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/8f81a286-e4f2-477c-b978-ca4f50607f4b) and start prompting.
+Getting Started
 
-Changes made via Lovable will be committed automatically to this repo.
+Project Structure
 
-**Use your preferred IDE**
+Deployment
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+Contributing
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+License
 
-Follow these steps:
+Project Overview
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+This project is designed to provide a robust, maintainable, and scalable web solution. It includes a responsive UI, reusable components, and modern web development best practices.
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+Live Preview (Optional): Add link if hosted
 
-# Step 3: Install the necessary dependencies.
-npm i
+Features
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+Fully responsive design
+
+Modular React components
+
+Type-safe code with TypeScript
+
+Fast development and HMR with Vite
+
+Tailwind CSS for rapid styling
+
+UI components with shadcn-ui
+
+Technologies Used
+
+Frontend: React, TypeScript, Vite
+
+UI & Styling: Tailwind CSS, shadcn-ui
+
+Package Management: npm
+
+Version Control: Git & GitHub
+
+Getting Started
+
+Follow these steps to run the project locally:
+
+1. Clone the repository
+git clone https://github.com/SSDHARANEEDHARAN/servo-scientific-solutions.git
+cd servo-scientific-solutions
+
+2. Install dependencies
+npm install
+
+3. Run the development server
 npm run dev
-```
 
-**Edit a file directly in GitHub**
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Open http://localhost:5173
+ in your browser to see the app.
 
-**Use GitHub Codespaces**
+Project Structure
+servo-scientific-solutions/
+├─ public/               # Static assets
+├─ src/
+│  ├─ components/        # Reusable React components
+│  ├─ pages/             # Page components
+│  ├─ styles/            # Tailwind & global styles
+│  ├─ App.tsx            # Root component
+│  └─ main.tsx           # Entry point
+├─ package.json           # Project metadata & scripts
+└─ tsconfig.json          # TypeScript configuration
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Deployment
+Build the project for production
+npm run build
 
-## What technologies are used for this project?
+Preview the production build locally
+npm run preview
 
-This project is built with:
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+Optional: Deploy using GitHub Pages, Vercel, Netlify, or any preferred hosting provider.
 
-## How can I deploy this project?
+Contributing
 
-Simply open [Lovable](https://lovable.dev/projects/8f81a286-e4f2-477c-b978-ca4f50607f4b) and click on Share -> Publish.
+Contributions are welcome!
 
-## Can I connect a custom domain to my Lovable project?
+Fork the repository
 
-Yes, you can!
+Create a feature branch (git checkout -b feature/YourFeature)
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+Commit your changes (git commit -m "Add your message")
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Push to the branch (git push origin feature/YourFeature)
+
+Open a Pull Request
+
+License
+
+This project is licensed under the MIT License. See the LICENSE
+ file for details.
