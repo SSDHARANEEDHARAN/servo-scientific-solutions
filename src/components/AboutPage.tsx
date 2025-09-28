@@ -284,79 +284,12 @@ const AboutPage: React.FC<AboutPageProps> = ({ onBack, onInquiryClick }) => {
           </div>
         </div>
 
-        {/* Enhanced Location & Map */}
+        {/* Location Map Only */}
         <div className="mb-24">
           <h2 className="text-4xl font-bold text-foreground text-center mb-16">
-            Visit Our State-of-the-Art Facility
+            Our Location
           </h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            <div className="space-y-8">
-              <Card className="bg-card border-border shadow-card card-hover">
-                <CardContent className="p-8">
-                  <h3 className="text-2xl font-semibold text-foreground mb-6 flex items-center">
-                    <MapPin className="h-6 w-6 text-primary mr-3" />
-                    Our Salem Headquarters
-                  </h3>
-                  <div className="space-y-6">
-                    <div className="flex items-start space-x-4">
-                      <MapPin className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
-                      <div>
-                        <p className="font-semibold text-foreground">Factory & Head Office</p>
-                        <p className="text-muted-foreground">123 Industrial Avenue</p>
-                        <p className="text-muted-foreground">Salem, Tamil Nadu 636001, India</p>
-                      </div>
-                    </div>
-                    <div className="flex items-center space-x-4">
-                      <Phone className="h-6 w-6 text-primary flex-shrink-0" />
-                      <div>
-                        <p className="text-muted-foreground">+91 427 123 4567</p>
-                        <p className="text-xs text-muted-foreground">24/7 Customer Support</p>
-                      </div>
-                    </div>
-                    <div className="flex items-center space-x-4">
-                      <Mail className="h-6 w-6 text-primary flex-shrink-0" />
-                      <div>
-                        <p className="text-muted-foreground">info@servoscientific.com</p>
-                        <p className="text-xs text-muted-foreground">Quick Response Guaranteed</p>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {!mapboxToken && (
-                <Card className="bg-card border-border shadow-card">
-                  <CardContent className="p-6">
-                    <label className="block text-sm font-medium text-foreground mb-3">
-                      Enter Mapbox Public Token to view interactive map:
-                    </label>
-                    <input
-                      type="text"
-                      value={mapboxToken}
-                      onChange={(e) => setMapboxToken(e.target.value)}
-                      placeholder="pk.eyJ1..."
-                      className="w-full px-4 py-3 border border-border rounded-lg bg-background text-foreground shadow-card focus:shadow-card-hover transition-shadow"
-                    />
-                    <p className="text-xs text-muted-foreground mt-2">
-                      Get your free token from{' '}
-                      <a href="https://mapbox.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
-                        mapbox.com
-                      </a>
-                    </p>
-                  </CardContent>
-                </Card>
-              )}
-
-              <Button 
-                onClick={onInquiryClick}
-                className="w-full bg-primary text-primary-foreground hover:bg-primary/90 shadow-professional hover:shadow-elegant transition-all duration-300 py-4 text-lg"
-                size="lg"
-              >
-                <Phone className="h-5 w-5 mr-2" />
-                Schedule a Facility Visit
-              </Button>
-            </div>
-
+          <div className="max-w-4xl mx-auto">
             <Card className="shadow-elegant card-hover overflow-hidden">
               <div className="h-96 rounded-lg overflow-hidden">
                 {mapboxToken ? (
@@ -365,8 +298,8 @@ const AboutPage: React.FC<AboutPageProps> = ({ onBack, onInquiryClick }) => {
                   <div className="w-full h-full bg-gradient-card flex items-center justify-center">
                     <div className="text-center">
                       <MapPin className="h-16 w-16 text-primary mx-auto mb-6 opacity-50" />
-                      <p className="text-muted-foreground text-lg">Enter Mapbox token to view interactive map</p>
-                      <p className="text-muted-foreground text-sm mt-2">Discover our Salem facility location</p>
+                      <p className="text-muted-foreground text-lg mb-4">Interactive Map</p>
+                      <p className="text-muted-foreground text-sm">Salem, Tamil Nadu, India</p>
                     </div>
                   </div>
                 )}
