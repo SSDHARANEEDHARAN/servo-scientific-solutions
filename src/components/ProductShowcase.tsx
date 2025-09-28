@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { ArrowRight, Thermometer, Factory, TestTube, Zap, Microscope, Activity } from 'lucide-react';
+import ProductDetail from './ProductDetail';
 
 interface ProductShowcaseProps {
   onInquiryClick: () => void;
@@ -52,7 +53,49 @@ const productCategories = [
   }
 ];
 
+const hotAirOvenProduct = {
+  name: "Hot Air Oven",
+  category: "Heating Instruments",
+  images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
+  specifications: {
+    "Temperature Range": "50°C to 300°C",
+    "Chamber Size": "450 x 450 x 450 mm",
+    "Temperature Accuracy": "±2°C",
+    "Power Rating": "3.5 kW",
+    "Timer Range": "0-999 minutes",
+    "Construction": "SS 304 Inner, MS Outer",
+    "Insulation": "Glass Wool",
+    "Controller": "Digital PID"
+  },
+  features: [
+    "Uniform temperature distribution",
+    "Digital temperature controller with timer",
+    "Over temperature protection",
+    "Powder coated exterior finish",
+    "Double wall construction for energy efficiency",
+    "Perforated shelves for better air circulation",
+    "Door lock safety system",
+    "Low maintenance and easy operation"
+  ],
+  description: "Our Hot Air Oven provides precise temperature control and uniform heat distribution for laboratory drying, sterilization, and heat treatment applications. Built with high-quality materials and advanced temperature control systems."
+};
+
 const ProductShowcase: React.FC<ProductShowcaseProps> = ({ onInquiryClick }) => {
+  const [selectedProduct, setSelectedProduct] = useState<typeof hotAirOvenProduct | null>(null);
+  const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
+
+  const handleProductClick = (productName: string) => {
+    if (productName === "Hot Air Oven") {
+      setSelectedProduct(hotAirOvenProduct);
+      setIsProductDetailOpen(true);
+    }
+  };
+
+  const handleCloseProductDetail = () => {
+    setIsProductDetailOpen(false);
+    setSelectedProduct(null);
+  };
+
   return (
     <section className="py-20 bg-surface-blue dark:bg-slate-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -85,17 +128,21 @@ const ProductShowcase: React.FC<ProductShowcaseProps> = ({ onInquiryClick }) => 
                     {category.description}
                   </p>
                   
-                  <div className="mb-6">
-                    <h4 className="font-medium text-technical-gray dark:text-slate-300 mb-2">Popular Products:</h4>
-                    <ul className="text-sm text-technical-gray dark:text-slate-400 space-y-1">
-                      {category.products.map((product) => (
-                        <li key={product} className="flex items-center">
-                          <div className="w-1.5 h-1.5 bg-professional-blue rounded-full mr-2"></div>
-                          {product}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                   <div className="mb-6">
+                     <h4 className="font-medium text-technical-gray dark:text-slate-300 mb-2">Popular Products:</h4>
+                     <ul className="text-sm text-technical-gray dark:text-slate-400 space-y-1">
+                       {category.products.map((product) => (
+                         <li 
+                           key={product} 
+                           className="flex items-center cursor-pointer hover:text-professional-blue dark:hover:text-blue-300 transition-colors"
+                           onClick={() => handleProductClick(product)}
+                         >
+                           <div className="w-1.5 h-1.5 bg-professional-blue rounded-full mr-2"></div>
+                           {product}
+                         </li>
+                       ))}
+                     </ul>
+                   </div>
                   
                   <div className="flex space-x-2">
                     <Button 
@@ -141,6 +188,16 @@ const ProductShowcase: React.FC<ProductShowcaseProps> = ({ onInquiryClick }) => 
             </div>
           </div>
         </div>
+
+        {/* Product Detail Modal */}
+        {selectedProduct && (
+          <ProductDetail
+            isOpen={isProductDetailOpen}
+            onClose={handleCloseProductDetail}
+            onInquiry={onInquiryClick}
+            product={selectedProduct}
+          />
+        )}
       </div>
     </section>
   );
