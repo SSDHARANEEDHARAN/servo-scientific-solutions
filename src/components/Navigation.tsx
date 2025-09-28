@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronDown, Menu, X, Phone, Mail, Download, Share2 } from 'lucide-react';
+import { ChevronDown, Menu, X, Phone, Mail, Download, Share2, Moon, Sun, Instagram, Twitter, Youtube } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -72,6 +72,12 @@ interface NavigationProps {
 
 const Navigation: React.FC<NavigationProps> = ({ onInquiryClick }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+    document.documentElement.classList.toggle('dark');
+  };
 
   return (
     <>
@@ -126,6 +132,15 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick }) => {
                 Service & Support
               </a>
               
+              <Button 
+                variant="ghost" 
+                size="sm"
+                onClick={toggleDarkMode}
+                className="text-technical-gray hover:text-professional-blue"
+              >
+                {isDarkMode ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+              </Button>
+              
               <Button variant="professional" size="sm">
                 Sign In
               </Button>
@@ -170,9 +185,19 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick }) => {
               <a href="/service-support" className="block text-technical-gray hover:text-professional-blue">
                 Service & Support
               </a>
-              <Button variant="professional" size="sm" className="w-full">
-                Sign In
-              </Button>
+              <div className="flex items-center justify-between">
+                <Button variant="professional" size="sm" className="flex-1 mr-2">
+                  Sign In
+                </Button>
+                <Button 
+                  variant="ghost" 
+                  size="sm"
+                  onClick={toggleDarkMode}
+                  className="text-technical-gray hover:text-professional-blue"
+                >
+                  {isDarkMode ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+                </Button>
+              </div>
             </div>
           </div>
         )}
@@ -300,15 +325,15 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick }) => {
                 <p className="text-sm font-medium mb-4 text-white">Connect With Us</p>
                 <div className="grid grid-cols-3 gap-3">
                   <a href="#" className="h-14 bg-white/10 hover:bg-white/20 flex flex-col items-center justify-center transition-colors border border-white/20">
-                    <span className="text-xs font-bold">IG</span>
+                    <Instagram className="h-5 w-5 mb-1" />
                     <span className="text-[10px] text-white/70">Instagram</span>
                   </a>
                   <a href="#" className="h-14 bg-white/10 hover:bg-white/20 flex flex-col items-center justify-center transition-colors border border-white/20">
-                    <span className="text-xs font-bold">TW</span>
+                    <Twitter className="h-5 w-5 mb-1" />
                     <span className="text-[10px] text-white/70">Twitter</span>
                   </a>
                   <a href="#" className="h-14 bg-white/10 hover:bg-white/20 flex flex-col items-center justify-center transition-colors border border-white/20">
-                    <span className="text-xs font-bold">YT</span>
+                    <Youtube className="h-5 w-5 mb-1" />
                     <span className="text-[10px] text-white/70">YouTube</span>
                   </a>
                 </div>
