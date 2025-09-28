@@ -96,19 +96,39 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
       <nav className="bg-gray-50 dark:bg-professional-blue-dark border-b border-border sticky top-0 z-50 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            {/* Logo */}
+            {/* Logo with Dropdown */}
             <div className="flex items-center">
-              <div className="text-2xl font-bold text-primary">
-                Servo Scientific Suppliers
-              </div>
+              <DropdownMenu>
+                <DropdownMenuTrigger className="flex items-center text-2xl font-bold text-primary hover:text-primary/80 transition-colors group">
+                  Servo Scientific Suppliers
+                  <ChevronDown className="ml-2 h-4 w-4 transition-transform group-data-[state=open]:rotate-180" />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent 
+                  className="w-56 p-2 bg-card border-border shadow-elegant z-50"
+                  align="start"
+                >
+                  <DropdownMenuItem 
+                    onClick={onAboutClick}
+                    className="cursor-pointer flex items-center py-3 px-4 text-foreground hover:bg-accent hover:text-accent-foreground rounded-md transition-colors"
+                  >
+                    About Us
+                  </DropdownMenuItem>
+                  <DropdownMenuItem 
+                    onClick={onInquiryClick}
+                    className="cursor-pointer flex items-center py-3 px-4 text-foreground hover:bg-accent hover:text-accent-foreground rounded-md transition-colors"
+                  >
+                    Inquiries
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
 
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-8">
               <nav className="flex items-center space-x-6">
-                <a href="#" className="text-foreground hover:text-primary transition-colors font-medium">
-                  Home
-                </a>
+                    <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="text-foreground hover:text-primary transition-colors font-medium">
+                      Home
+                    </button>
                 
                 {/* Products Mega Menu */}
                 <DropdownMenu>
@@ -147,9 +167,6 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
                   </DropdownMenuContent>
                 </DropdownMenu>
 
-                <button onClick={onAboutClick} className="text-foreground hover:text-primary transition-colors font-medium">
-                  About
-                </button>
                 <a href="#" className="text-foreground hover:text-primary transition-colors font-medium">
                   Contact
                 </a>
@@ -185,9 +202,22 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
                 </SheetTrigger>
                 <SheetContent side="right" className="bg-card text-card-foreground">
                   <div className="flex flex-col space-y-6 mt-6">
-                    <a href="#" className="text-foreground hover:text-primary transition-colors font-medium">
-                      Home
-                    </a>
+                    {/* Mobile Company Menu */}
+                    <div className="space-y-3 pb-4 border-b border-border">
+                      <div className="font-semibold text-primary text-lg">Servo Scientific Suppliers</div>
+                      <button 
+                        onClick={onAboutClick}
+                        className="block w-full text-left text-foreground hover:text-primary transition-colors font-medium py-2"
+                      >
+                        About Us
+                      </button>
+                      <button 
+                        onClick={onInquiryClick}
+                        className="block w-full text-left text-foreground hover:text-primary transition-colors font-medium py-2"
+                      >
+                        Inquiries
+                      </button>
+                    </div>
                     
                     <div className="space-y-3">
                       <div className="font-semibold text-primary">Products</div>
@@ -207,9 +237,6 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
                       ))}
                     </div>
                     
-                    <button onClick={onAboutClick} className="text-foreground hover:text-primary transition-colors font-medium">
-                      About
-                    </button>
                     <a href="#" className="text-foreground hover:text-primary transition-colors font-medium">
                       Contact
                     </a>
