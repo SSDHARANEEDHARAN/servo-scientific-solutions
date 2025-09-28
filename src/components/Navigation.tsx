@@ -8,7 +8,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
-import { productCategories } from '@/data';
+import { productCategories, productDatabase } from '@/data';
 
 interface NavigationProps {
   onInquiryClick: () => void;
@@ -32,8 +32,9 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
     }
   }, []);
 
-  const handleProductClick = (product: any) => {
-    if (onProductSelect) {
+  const handleProductClick = (productName: string) => {
+    const product = productDatabase[productName as keyof typeof productDatabase];
+    if (product && onProductSelect) {
       onProductSelect(product);
     }
   };
@@ -132,7 +133,7 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
                             {products.map((productName) => (
                               <button
                                 key={productName}
-                                onClick={() => handleProductClick({ name: productName })}
+                                onClick={() => handleProductClick(productName)}
                                 className="block w-full text-left text-sm text-muted-foreground hover:text-foreground transition-colors py-1"
                               >
                                 {productName}
@@ -195,7 +196,7 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
                           {products.map((productName) => (
                             <button
                               key={productName}
-                              onClick={() => handleProductClick({ name: productName })}
+                              onClick={() => handleProductClick(productName)}
                               className="block text-sm text-muted-foreground hover:text-foreground transition-colors ml-4"
                             >
                               {productName}
