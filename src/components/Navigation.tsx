@@ -7,6 +7,88 @@ import {
   DropdownMenuTrigger,
   DropdownMenuSeparator,
 } from '@/components/ui/dropdown-menu';
+import ProductDetail from './ProductDetail';
+
+const productDatabase = {
+  "Hot Air Oven": {
+    name: "Hot Air Oven",
+    category: "Heating Instruments",
+    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
+    specifications: {
+      "Temperature Range": "50°C to 300°C",
+      "Chamber Size": "450 x 450 x 450 mm",
+      "Temperature Accuracy": "±2°C",
+      "Power Rating": "3.5 kW",
+      "Timer Range": "0-999 minutes",
+      "Construction": "SS 304 Inner, MS Outer",
+      "Insulation": "Glass Wool",
+      "Controller": "Digital PID"
+    },
+    features: [
+      "Uniform temperature distribution",
+      "Digital temperature controller with timer",
+      "Over temperature protection",
+      "Powder coated exterior finish",
+      "Double wall construction for energy efficiency",
+      "Perforated shelves for better air circulation",
+      "Door lock safety system",
+      "Low maintenance and easy operation"
+    ],
+    description: "Our Hot Air Oven provides precise temperature control and uniform heat distribution for laboratory drying, sterilization, and heat treatment applications. Built with high-quality materials and advanced temperature control systems."
+  },
+  "Water Bath": {
+    name: "Water Bath",
+    category: "Heating Instruments",
+    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
+    specifications: {
+      "Temperature Range": "Ambient +5°C to 100°C",
+      "Chamber Size": "300 x 200 x 150 mm",
+      "Temperature Accuracy": "±0.5°C",
+      "Power Rating": "2 kW",
+      "Capacity": "9 Liters",
+      "Construction": "SS 304 Inner Chamber",
+      "Controller": "Digital Temperature Display",
+      "Safety": "Over Temperature Cut-off"
+    },
+    features: [
+      "Precise temperature control",
+      "Digital display with timer",
+      "Uniform heating throughout",
+      "Corrosion resistant construction",
+      "Energy efficient design",
+      "Safety thermal cut-off",
+      "Easy to clean and maintain",
+      "Compact desktop design"
+    ],
+    description: "Laboratory water bath designed for consistent temperature heating applications in research, clinical, and industrial laboratories."
+  },
+  "Hot Plate": {
+    name: "Hot Plate",
+    category: "Heating Instruments",
+    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
+    specifications: {
+      "Temperature Range": "50°C to 350°C",
+      "Plate Size": "200 x 200 mm",
+      "Power Rating": "1.5 kW",
+      "Material": "Aluminum Alloy Plate",
+      "Controller": "Digital PID",
+      "Display": "LED Digital",
+      "Safety": "Over Heat Protection",
+      "Accuracy": "±2°C"
+    },
+    features: [
+      "Fast heating and cooling",
+      "Digital temperature control",
+      "Uniform heat distribution",
+      "Chemical resistant surface",
+      "Compact and portable",
+      "Over temperature protection",
+      "Easy operation",
+      "Energy efficient"
+    ],
+    description: "Precision hot plate for laboratory heating applications with excellent temperature uniformity and control."
+  }
+};
 
 const productCategories = {
   "Heating Instruments": [
@@ -73,6 +155,21 @@ interface NavigationProps {
 const Navigation: React.FC<NavigationProps> = ({ onInquiryClick }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState<(typeof productDatabase)[keyof typeof productDatabase] | null>(null);
+  const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
+
+  const handleProductClick = (productName: string) => {
+    const product = productDatabase[productName as keyof typeof productDatabase];
+    if (product) {
+      setSelectedProduct(product);
+      setIsProductDetailOpen(true);
+    }
+  };
+
+  const handleCloseProductDetail = () => {
+    setIsProductDetailOpen(false);
+    setSelectedProduct(null);
+  };
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
@@ -103,22 +200,22 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick }) => {
                 <DropdownMenuTrigger className="flex items-center text-technical-gray dark:text-slate-300 hover:text-professional-blue dark:hover:text-blue-300 transition-colors">
                   Products <ChevronDown className="ml-1 h-4 w-4" />
                 </DropdownMenuTrigger>
-                <DropdownMenuContent className="w-[800px] p-6 bg-white dark:bg-slate-800 shadow-professional">
+                <DropdownMenuContent className="w-[800px] p-6 bg-white dark:bg-slate-800 shadow-professional border border-slate-200 dark:border-slate-700 z-50">
                   <div className="grid grid-cols-2 gap-8">
                     {Object.entries(productCategories).map(([category, items]) => (
                       <div key={category} className="space-y-3">
-                        <h3 className="font-semibold text-professional-blue border-b border-professional-blue-light pb-2">
+                        <h3 className="font-semibold text-professional-blue dark:text-blue-300 border-b border-professional-blue-light pb-2">
                           {category}
                         </h3>
                         <ul className="space-y-2">
                           {items.map((item) => (
                             <li key={item}>
-                              <a 
-                                href={`/product/${item.toLowerCase().replace(/\s+/g, '-')}`}
-                                className="text-sm text-technical-gray hover:text-professional-blue transition-colors block"
+                              <button 
+                                onClick={() => handleProductClick(item)}
+                                className="text-sm text-technical-gray dark:text-slate-300 hover:text-professional-blue dark:hover:text-blue-300 transition-colors block w-full text-left hover:bg-surface-blue dark:hover:bg-slate-700 p-2 rounded"
                               >
                                 {item}
-                              </a>
+                              </button>
                             </li>
                           ))}
                         </ul>
@@ -166,18 +263,18 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick }) => {
                 Home
               </a>
               <div className="space-y-2">
-                <div className="font-semibold text-professional-blue">Products</div>
+                <div className="font-semibold text-professional-blue dark:text-blue-300">Products</div>
                 {Object.entries(productCategories).map(([category, items]) => (
                   <div key={category} className="ml-4 space-y-1">
-                    <div className="font-medium text-technical-gray">{category}</div>
+                    <div className="font-medium text-technical-gray dark:text-slate-300">{category}</div>
                     {items.map((item) => (
-                      <a 
+                      <button 
                         key={item}
-                        href={`/product/${item.toLowerCase().replace(/\s+/g, '-')}`}
-                        className="block ml-4 text-sm text-technical-gray hover:text-professional-blue"
+                        onClick={() => handleProductClick(item)}
+                        className="block ml-4 text-sm text-technical-gray dark:text-slate-300 hover:text-professional-blue dark:hover:text-blue-300 w-full text-left p-1 rounded hover:bg-surface-blue dark:hover:bg-slate-700"
                       >
                         {item}
-                      </a>
+                      </button>
                     ))}
                   </div>
                 ))}
@@ -355,6 +452,16 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick }) => {
           </div>
         </div>
       </div>
+
+      {/* Product Detail Modal */}
+      {selectedProduct && (
+        <ProductDetail
+          isOpen={isProductDetailOpen}
+          onClose={handleCloseProductDetail}
+          onInquiry={onInquiryClick}
+          product={selectedProduct}
+        />
+      )}
 
     </>
   );
