@@ -17,9 +17,10 @@ import {
 
 interface FooterProps {
   onInquiryClick: () => void;
+  onCategorySelect?: (categoryName: string) => void;
 }
 
-const Footer: React.FC<FooterProps> = ({ onInquiryClick }) => {
+const Footer: React.FC<FooterProps> = ({ onInquiryClick, onCategorySelect }) => {
   return (
     <footer className="bg-gray-50 dark:bg-professional-blue-dark text-foreground">
       {/* Main Footer Content */}
@@ -65,12 +66,12 @@ const Footer: React.FC<FooterProps> = ({ onInquiryClick }) => {
           <div>
             <h4 className="text-lg font-semibold mb-6 text-foreground">Product Categories</h4>
             <ul className="space-y-3 text-sm">
-              <li><a href="/heating-instruments" className="text-muted-foreground hover:text-primary transition-colors">Heating Instruments</a></li>
-              <li><a href="/industrial-furnace" className="text-muted-foreground hover:text-primary transition-colors">Industrial Furnace</a></li>
-              <li><a href="/environmental-chamber" className="text-muted-foreground hover:text-primary transition-colors">Environmental Chamber</a></li>
-              <li><a href="/heaters" className="text-muted-foreground hover:text-primary transition-colors">Heaters</a></li>
-              <li><a href="/microbiology" className="text-muted-foreground hover:text-primary transition-colors">Microbiology Instruments</a></li>
-              <li><a href="/thermocouple" className="text-muted-foreground hover:text-primary transition-colors">Thermocouple</a></li>
+              <li><button onClick={() => onCategorySelect?.("Heating Instruments")} className="text-muted-foreground hover:text-primary transition-colors text-left">Heating Instruments</button></li>
+              <li><button onClick={() => onCategorySelect?.("Industrial Furnace")} className="text-muted-foreground hover:text-primary transition-colors text-left">Industrial Furnace</button></li>
+              <li><button onClick={() => onCategorySelect?.("Environmental Chamber")} className="text-muted-foreground hover:text-primary transition-colors text-left">Environmental Chamber</button></li>
+              <li><button onClick={() => onCategorySelect?.("Heater")} className="text-muted-foreground hover:text-primary transition-colors text-left">Heaters</button></li>
+              <li><button onClick={() => onCategorySelect?.("Microbiology Instruments")} className="text-muted-foreground hover:text-primary transition-colors text-left">Microbiology Instruments</button></li>
+              <li><button onClick={() => onCategorySelect?.("Thermocouple")} className="text-muted-foreground hover:text-primary transition-colors text-left">Thermocouple</button></li>
             </ul>
           </div>
 

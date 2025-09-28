@@ -3,14 +3,18 @@ import Navigation from '@/components/Navigation';
 import HeroSection from '@/components/HeroSection';
 import ProductShowcase from '@/components/ProductShowcase';
 import ProductDetailPage from '@/components/ProductDetailPage';
+import ProductCategoryPage from '@/components/ProductCategoryPage';
 import BrandsSection from '@/components/BrandsSection';
 import InquiryForm from '@/components/InquiryForm';
 import Footer from '@/components/Footer';
+import { productCategories, productDatabase } from '@/data';
 
 const Index = () => {
   const [isInquiryOpen, setIsInquiryOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<any>(null);
   const [showProductDetail, setShowProductDetail] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [showCategoryPage, setShowCategoryPage] = useState(false);
 
   const handleInquiryClick = () => {
     setIsInquiryOpen(true);
@@ -32,6 +36,24 @@ const Index = () => {
     setSelectedProduct(null);
   };
 
+  const handleCategorySelect = (categoryName: string) => {
+    setSelectedCategory(categoryName);
+    setShowCategoryPage(true);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleBackToHome = () => {
+    setShowCategoryPage(false);
+    setSelectedCategory(null);
+    setShowProductDetail(false);
+    setSelectedProduct(null);
+  };
+
+  const getCategoryProducts = (categoryName: string) => {
+    const productNames = productCategories[categoryName as keyof typeof productCategories];
+    return productNames?.map(name => productDatabase[name as keyof typeof productDatabase]).filter(Boolean) || [];
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Navigation 
@@ -39,7 +61,14 @@ const Index = () => {
         onProductSelect={handleProductSelect}
       />
       
-      {showProductDetail && selectedProduct ? (
+      {showCategoryPage && selectedCategory ? (
+        <ProductCategoryPage
+          categoryName={selectedCategory}
+          products={getCategoryProducts(selectedCategory)}
+          onBack={handleBackToHome}
+          onInquiryClick={handleInquiryClick}
+        />
+      ) : showProductDetail && selectedProduct ? (
         <ProductDetailPage
           product={selectedProduct}
           onBack={handleBackToProducts}
@@ -53,10 +82,12 @@ const Index = () => {
             onProductSelect={handleProductSelect}
           />
           <BrandsSection />
+          <Footer 
+            onInquiryClick={handleInquiryClick} 
+            onCategorySelect={handleCategorySelect}
+          />
         </>
       )}
-      
-      <Footer onInquiryClick={handleInquiryClick} />
       <InquiryForm isOpen={isInquiryOpen} onClose={handleInquiryClose} />
     </div>
   );
