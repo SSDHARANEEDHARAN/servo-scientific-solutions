@@ -126,10 +126,10 @@ const AboutPage: React.FC<AboutPageProps> = ({ onBack, onInquiryClick }) => {
                 <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-hero flex items-center justify-center">
                   <Users className="h-16 w-16 text-primary-foreground" />
                 </div>
-                <h3 className="text-2xl font-bold text-foreground mb-2">Dr. Rajesh Kumar</h3>
+                <h3 className="text-2xl font-bold text-foreground mb-2">Karthickeyan</h3>
                 <p className="text-primary font-medium mb-4">Founder & Chairman</p>
                 <p className="text-muted-foreground text-sm leading-relaxed">
-                  A visionary engineer with over 50 years of experience in scientific equipment design. Dr. Kumar founded the company with a mission to make high-quality laboratory equipment accessible to Indian researchers and institutions.
+                  A visionary engineer with over 50 years of experience in scientific equipment design. Karthickeyan founded the company with a mission to make high-quality laboratory equipment accessible to Indian researchers and institutions.
                 </p>
                 <div className="mt-6 flex justify-center space-x-2">
                   <Award className="h-5 w-5 text-primary" />
@@ -144,10 +144,10 @@ const AboutPage: React.FC<AboutPageProps> = ({ onBack, onInquiryClick }) => {
                 <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-hero flex items-center justify-center">
                   <Globe className="h-16 w-16 text-primary-foreground" />
                 </div>
-                <h3 className="text-2xl font-bold text-foreground mb-2">Ms. Priya Sharma</h3>
+                <h3 className="text-2xl font-bold text-foreground mb-2">Karthikeyan</h3>
                 <p className="text-primary font-medium mb-4">Managing Director</p>
                 <p className="text-muted-foreground text-sm leading-relaxed">
-                  Leading the company into the digital age with innovative solutions and global expansion strategies. Ms. Sharma brings 25 years of international business experience and has been instrumental in our ISO certifications.
+                  Leading the company into the digital age with innovative solutions and global expansion strategies. Karthikeyan brings 25 years of international business experience and has been instrumental in our ISO certifications.
                 </p>
                 <div className="mt-6 flex justify-center space-x-2">
                   <Award className="h-5 w-5 text-primary" />
