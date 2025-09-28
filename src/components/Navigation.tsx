@@ -225,56 +225,6 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick }) => {
         {/* Left Side Panel */}
         <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-96 h-[600px] bg-professional-blue text-white shadow-professional opacity-0 translate-x-[-100%] group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none group-hover:pointer-events-auto">
           <div className="p-8 h-full flex flex-col">
-            <h3 className="text-xl font-semibold mb-6 text-white">Quick Navigation</h3>
-            
-            {/* Company Logo/Image Area */}
-            <div className="mb-6 text-center">
-              <div className="w-20 h-20 mx-auto bg-white/10 border-2 border-white/20 flex items-center justify-center mb-3">
-                <span className="text-2xl font-bold text-white">SS</span>
-              </div>
-              <p className="text-sm text-white/80">Servo Scientific</p>
-            </div>
-            
-            <div className="space-y-4 flex-1">
-              <a href="/" className="block text-white/90 hover:text-white transition-colors py-4 px-4 border border-white/20 hover:bg-white/10">
-                <div className="font-medium">Home</div>
-                <div className="text-xs text-white/70">Main landing page</div>
-              </a>
-              <a href="/about" className="block text-white/90 hover:text-white transition-colors py-4 px-4 border border-white/20 hover:bg-white/10">
-                <div className="font-medium">About Us</div>
-                <div className="text-xs text-white/70">Company information</div>
-              </a>
-              <button 
-                onClick={onInquiryClick}
-                className="block text-white/90 hover:text-white transition-colors py-4 px-4 border border-white/20 hover:bg-white/10 w-full text-left"
-              >
-                <div className="font-medium">Make Inquiry</div>
-                <div className="text-xs text-white/70">Contact our team</div>
-              </button>
-              <a href="/service-support" className="block text-white/90 hover:text-white transition-colors py-4 px-4 border border-white/20 hover:bg-white/10">
-                <div className="font-medium">Service & Support</div>
-                <div className="text-xs text-white/70">Technical assistance</div>
-              </a>
-              <a href="/products" className="block text-white/90 hover:text-white transition-colors py-4 px-4 border border-white/20 hover:bg-white/10">
-                <div className="font-medium">All Products</div>
-                <div className="text-xs text-white/70">Browse our catalog</div>
-              </a>
-            </div>
-            <div className="mt-auto pt-6 border-t border-white/20 text-center">
-              <p className="text-sm font-medium text-white">Professional Equipment</p>
-              <p className="text-xs text-white/70 mt-1">Trusted since 1970</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Right Side Quick Access */}
-      <div className="fixed right-0 top-1/2 transform -translate-y-1/2 z-40 group">
-        <div className="w-3 h-24 bg-professional-blue opacity-80 hover:opacity-100 transition-all duration-300 cursor-pointer group-hover:w-4">
-        </div>
-        {/* Right Side Panel */}
-        <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-96 h-[600px] bg-professional-blue text-white shadow-professional opacity-0 translate-x-[100%] group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none group-hover:pointer-events-auto">
-          <div className="p-8 h-full flex flex-col">
             <h3 className="text-xl font-semibold mb-6 text-white">Quick Access</h3>
             
             {/* Featured Product/Service Image Area */}
@@ -352,6 +302,52 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick }) => {
                 <Mail className="h-4 w-4 mr-2" />
                 <span className="text-xs">info@servoscientific.com</span>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Right Side Quick Access */}
+      <div className="fixed right-0 top-1/2 transform -translate-y-1/2 z-40 group">
+        <div className="w-3 h-24 bg-professional-blue opacity-80 hover:opacity-100 transition-all duration-300 cursor-pointer group-hover:w-4">
+        </div>
+        {/* Right Side Panel */}
+        <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-96 h-[600px] bg-professional-blue text-white shadow-professional opacity-0 translate-x-[100%] group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none group-hover:pointer-events-auto">
+          <div className="p-8 h-full flex flex-col">
+            <h3 className="text-xl font-semibold mb-6 text-white">Quick Navigation</h3>
+            
+            {/* Company Logo/Image Area */}
+            <div className="mb-6 text-center">
+              <div className="w-20 h-20 mx-auto bg-white/10 border-2 border-white/20 flex items-center justify-center mb-3">
+                <span className="text-2xl font-bold text-white">SS</span>
+              </div>
+              <p className="text-sm text-white/80">Servo Scientific</p>
+            </div>
+            
+            <div className="space-y-4 flex-1">
+              <a href="/" className="block text-white/90 hover:text-white transition-colors py-4 px-4 border border-white/20 hover:bg-white/10">
+                <div className="font-medium">Home</div>
+                <div className="text-xs text-white/70">Main landing page</div>
+              </a>
+              <a href="/about" className="block text-white/90 hover:text-white transition-colors py-4 px-4 border border-white/20 hover:bg-white/10">
+                <div className="font-medium">About Us</div>
+                <div className="text-xs text-white/70">Company information</div>
+              </a>
+              <button 
+                onClick={onInquiryClick}
+                className="block text-white/90 hover:text-white transition-colors py-4 px-4 border border-white/20 hover:bg-white/10 w-full text-left"
+              >
+                <div className="font-medium">Make Inquiry</div>
+                <div className="text-xs text-white/70">Contact our team</div>
+              </button>
+              <a href="/service-support" className="block text-white/90 hover:text-white transition-colors py-4 px-4 border border-white/20 hover:bg-white/10">
+                <div className="font-medium">Service & Support</div>
+                <div className="text-xs text-white/70">Technical assistance</div>
+              </a>
+            </div>
+            <div className="mt-auto pt-6 border-t border-white/20 text-center">
+              <p className="text-sm font-medium text-white">Professional Equipment</p>
+              <p className="text-xs text-white/70 mt-1">Trusted since 1970</p>
             </div>
           </div>
         </div>
