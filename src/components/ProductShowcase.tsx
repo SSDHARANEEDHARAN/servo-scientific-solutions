@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { ArrowRight, Thermometer, Factory, TestTube, Zap, Microscope, Activity } from 'lucide-react';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
+import { ArrowRight, Thermometer, Factory, TestTube, Zap, Microscope, Activity, ChevronDown } from 'lucide-react';
 import ProductDetail from './ProductDetail';
 
 interface ProductShowcaseProps {
@@ -589,23 +590,39 @@ const ProductShowcase: React.FC<ProductShowcaseProps> = ({ onInquiryClick }) => 
                      </ul>
                    </div>
                   
-                  <div className="flex space-x-2">
-                    <Button 
-                      variant="professional" 
-                      size="sm" 
-                      className="flex-1"
-                    >
-                      View Products
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
-                    
-                    <Button 
-                      variant="inquiry" 
-                      size="sm"
-                      onClick={onInquiryClick}
-                    >
-                      Enquiry
-                    </Button>
+                   <div className="flex space-x-2">
+                     <DropdownMenu>
+                       <DropdownMenuTrigger asChild>
+                         <Button 
+                           variant="professional" 
+                           size="sm" 
+                           className="flex-1"
+                         >
+                           View Products
+                           <ChevronDown className="ml-2 h-4 w-4" />
+                         </Button>
+                       </DropdownMenuTrigger>
+                       <DropdownMenuContent align="start" className="w-56 bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700">
+                         {category.products.map((product) => (
+                           <DropdownMenuItem 
+                             key={product}
+                             onClick={() => handleProductClick(product)}
+                             className="cursor-pointer hover:bg-surface-blue dark:hover:bg-slate-700 text-technical-gray dark:text-slate-300 hover:text-professional-blue dark:hover:text-blue-300"
+                           >
+                             <div className="w-2 h-2 bg-professional-blue rounded-full mr-3"></div>
+                             {product}
+                           </DropdownMenuItem>
+                         ))}
+                       </DropdownMenuContent>
+                     </DropdownMenu>
+                     
+                     <Button 
+                       variant="inquiry" 
+                       size="sm"
+                       onClick={onInquiryClick}
+                     >
+                       Enquiry
+                     </Button>
                   </div>
                 </CardContent>
               </Card>
