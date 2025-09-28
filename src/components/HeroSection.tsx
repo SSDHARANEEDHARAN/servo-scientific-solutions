@@ -8,7 +8,7 @@ interface HeroSectionProps {
 
 const HeroSection: React.FC<HeroSectionProps> = ({ onInquiryClick }) => {
   return (
-    <section className="relative bg-gradient-hero py-20 overflow-hidden">
+    <section className="relative bg-gradient-hero dark:bg-gradient-to-br dark:from-slate-900 dark:to-slate-800 py-20 overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-to)_1px,_transparent_1px)] [background-size:20px_20px]"></div>
@@ -16,13 +16,13 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onInquiryClick }) => {
       
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 animate-fade-in">
+          <h1 className="text-4xl md:text-6xl font-bold text-white dark:text-white mb-6 animate-fade-in">
             Welcome to 
-            <span className="block text-professional-blue-light">Servo Scientific</span>
+            <span className="block text-professional-blue-light dark:text-blue-300">Servo Scientific</span>
           </h1>
           
-          <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto animate-fade-in">
-            Leading manufacturer of scientific and industrial equipment, serving 
+          <p className="text-xl md:text-2xl text-white/90 dark:text-slate-300 mb-8 max-w-3xl mx-auto animate-fade-in">
+            Leading manufacturer of scientific and industrial equipment, serving
             global customers with precision instruments for over 50 years.
           </p>
           
@@ -47,7 +47,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onInquiryClick }) => {
           </div>
           
           {/* Statistics */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-white">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-white dark:text-slate-200">
             <div className="text-center animate-fade-in">
               <div className="flex justify-center mb-2">
                 <Award className="h-8 w-8 text-professional-blue-light" />

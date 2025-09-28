@@ -54,14 +54,14 @@ const productCategories = [
 
 const ProductShowcase: React.FC<ProductShowcaseProps> = ({ onInquiryClick }) => {
   return (
-    <section className="py-20 bg-surface-blue">
+    <section className="py-20 bg-surface-blue dark:bg-slate-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-technical-gray mb-4">
+          <h2 className="text-4xl font-bold text-technical-gray dark:text-white mb-4">
             Our Product Categories
           </h2>
-          <p className="text-xl text-technical-gray max-w-3xl mx-auto">
-            Discover our comprehensive range of scientific and industrial equipment, 
+          <p className="text-xl text-technical-gray dark:text-slate-300 max-w-3xl mx-auto">
+            Discover our comprehensive range of scientific and industrial equipment,
             engineered for precision and reliability across diverse applications.
           </p>
         </div>
@@ -70,24 +70,24 @@ const ProductShowcase: React.FC<ProductShowcaseProps> = ({ onInquiryClick }) => 
           {productCategories.map((category) => {
             const IconComponent = category.icon;
             return (
-              <Card key={category.title} className="group hover:shadow-professional transition-all duration-300 bg-gradient-card border-0">
+              <Card key={category.title} className="group hover:shadow-professional transition-all duration-300 bg-gradient-card dark:bg-slate-800 border-0 dark:border dark:border-slate-700">
                 <CardContent className="p-6">
                   <div className="flex items-center mb-4">
                     <div className="w-12 h-12 bg-professional-blue-light rounded-lg flex items-center justify-center mr-4">
                       <IconComponent className="h-6 w-6 text-professional-blue" />
                     </div>
-                    <h3 className="text-xl font-semibold text-technical-gray group-hover:text-professional-blue transition-colors">
+                    <h3 className="text-xl font-semibold text-technical-gray dark:text-white group-hover:text-professional-blue dark:group-hover:text-blue-300 transition-colors">
                       {category.title}
                     </h3>
                   </div>
                   
-                  <p className="text-technical-gray mb-4 text-sm leading-relaxed">
+                  <p className="text-technical-gray dark:text-slate-300 mb-4 text-sm leading-relaxed">
                     {category.description}
                   </p>
                   
                   <div className="mb-6">
-                    <h4 className="font-medium text-technical-gray mb-2">Popular Products:</h4>
-                    <ul className="text-sm text-technical-gray space-y-1">
+                    <h4 className="font-medium text-technical-gray dark:text-slate-300 mb-2">Popular Products:</h4>
+                    <ul className="text-sm text-technical-gray dark:text-slate-400 space-y-1">
                       {category.products.map((product) => (
                         <li key={product} className="flex items-center">
                           <div className="w-1.5 h-1.5 bg-professional-blue rounded-full mr-2"></div>
@@ -123,11 +123,11 @@ const ProductShowcase: React.FC<ProductShowcaseProps> = ({ onInquiryClick }) => 
 
         {/* Call to Action */}
         <div className="text-center mt-16">
-          <div className="bg-white rounded-2xl shadow-card p-8 max-w-4xl mx-auto">
-            <h3 className="text-2xl font-bold text-technical-gray mb-4">
+          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-card p-8 max-w-4xl mx-auto">
+            <h3 className="text-2xl font-bold text-technical-gray dark:text-white mb-4">
               Need Custom Solutions?
             </h3>
-            <p className="text-technical-gray mb-6">
+            <p className="text-technical-gray dark:text-slate-300 mb-6">
               Our engineering team can design and manufacture custom equipment 
               tailored to your specific requirements.
             </p>

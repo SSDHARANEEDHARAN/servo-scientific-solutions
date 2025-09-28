@@ -82,28 +82,28 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick }) => {
   return (
     <>
       {/* Main Navigation */}
-      <nav className="bg-white shadow-professional sticky top-0 z-50">
+      <nav className="bg-white dark:bg-slate-900 shadow-professional sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
             <div className="flex items-center">
-              <div className="text-2xl font-bold text-professional-blue">
+              <div className="text-2xl font-bold text-professional-blue dark:text-blue-300">
                 Servo Scientific
               </div>
             </div>
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
-              <a href="/" className="text-technical-gray hover:text-professional-blue transition-colors">
+              <a href="/" className="text-technical-gray dark:text-slate-300 hover:text-professional-blue dark:hover:text-blue-300 transition-colors">
                 Home
               </a>
               
               {/* Products Mega Menu */}
               <DropdownMenu>
-                <DropdownMenuTrigger className="flex items-center text-technical-gray hover:text-professional-blue transition-colors">
+                <DropdownMenuTrigger className="flex items-center text-technical-gray dark:text-slate-300 hover:text-professional-blue dark:hover:text-blue-300 transition-colors">
                   Products <ChevronDown className="ml-1 h-4 w-4" />
                 </DropdownMenuTrigger>
-                <DropdownMenuContent className="w-[800px] p-6 bg-white shadow-professional">
+                <DropdownMenuContent className="w-[800px] p-6 bg-white dark:bg-slate-800 shadow-professional">
                   <div className="grid grid-cols-2 gap-8">
                     {Object.entries(productCategories).map(([category, items]) => (
                       <div key={category} className="space-y-3">
@@ -128,7 +128,7 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick }) => {
                 </DropdownMenuContent>
               </DropdownMenu>
 
-              <a href="/service-support" className="text-technical-gray hover:text-professional-blue transition-colors">
+              <a href="/service-support" className="text-technical-gray dark:text-slate-300 hover:text-professional-blue dark:hover:text-blue-300 transition-colors">
                 Service & Support
               </a>
               
@@ -160,7 +160,7 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick }) => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden bg-white border-t border-technical-gray-light">
+          <div className="md:hidden bg-white dark:bg-slate-800 border-t border-technical-gray-light dark:border-slate-600">
             <div className="px-4 py-6 space-y-4">
               <a href="/" className="block text-technical-gray hover:text-professional-blue">
                 Home
@@ -204,16 +204,16 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick }) => {
       </nav>
 
       {/* Bottom Navigation Links */}
-      <div className="bg-surface-blue py-2">
+      <div className="bg-surface-blue dark:bg-slate-800 py-2">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center text-sm">
             <div className="flex space-x-6">
-              <a href="/about" className="text-technical-gray hover:text-professional-blue transition-colors">
+              <a href="/about" className="text-technical-gray dark:text-slate-400 hover:text-professional-blue dark:hover:text-blue-300 transition-colors">
                 About Us
               </a>
               <button 
                 onClick={onInquiryClick}
-                className="text-technical-gray hover:text-professional-blue transition-colors"
+                className="text-technical-gray dark:text-slate-400 hover:text-professional-blue dark:hover:text-blue-300 transition-colors"
               >
                 Inquiries
               </button>

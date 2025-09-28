@@ -21,18 +21,18 @@ interface FooterProps {
 
 const Footer: React.FC<FooterProps> = ({ onInquiryClick }) => {
   return (
-    <footer className="bg-technical-gray text-white">
+    <footer className="bg-technical-gray dark:bg-slate-900 text-white dark:text-slate-200">
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Information */}
           <div className="space-y-6">
             <div>
-              <h3 className="text-2xl font-bold text-professional-blue-light mb-4">
+              <h3 className="text-2xl font-bold text-professional-blue-light dark:text-blue-300 mb-4">
                 Servo Scientific
               </h3>
-              <p className="text-gray-300 text-sm leading-relaxed">
-                Leading manufacturer of scientific and industrial equipment for over 50 years. 
+              <p className="text-gray-300 dark:text-slate-400 text-sm leading-relaxed">
+                Leading manufacturer of scientific and industrial equipment for over 50 years.
                 Committed to innovation, quality, and customer satisfaction.
               </p>
             </div>
@@ -50,10 +50,10 @@ const Footer: React.FC<FooterProps> = ({ onInquiryClick }) => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-semibold mb-6 text-professional-blue-light">Quick Links</h4>
+            <h4 className="text-lg font-semibold mb-6 text-professional-blue-light dark:text-blue-300">Quick Links</h4>
             <ul className="space-y-3 text-sm">
-              <li><a href="/about" className="text-gray-300 hover:text-professional-blue-light transition-colors">About Us</a></li>
-              <li><a href="/products" className="text-gray-300 hover:text-professional-blue-light transition-colors">All Products</a></li>
+              <li><a href="/about" className="text-gray-300 dark:text-slate-400 hover:text-professional-blue-light dark:hover:text-blue-300 transition-colors">About Us</a></li>
+              <li><a href="/products" className="text-gray-300 dark:text-slate-400 hover:text-professional-blue-light dark:hover:text-blue-300 transition-colors">All Products</a></li>
               <li><a href="/services" className="text-gray-300 hover:text-professional-blue-light transition-colors">Services & Support</a></li>
               <li><a href="/quality" className="text-gray-300 hover:text-professional-blue-light transition-colors">Quality Assurance</a></li>
               <li><a href="/careers" className="text-gray-300 hover:text-professional-blue-light transition-colors">Careers</a></li>
@@ -63,7 +63,7 @@ const Footer: React.FC<FooterProps> = ({ onInquiryClick }) => {
 
           {/* Product Categories */}
           <div>
-            <h4 className="text-lg font-semibold mb-6 text-professional-blue-light">Product Categories</h4>
+            <h4 className="text-lg font-semibold mb-6 text-professional-blue-light dark:text-blue-300">Product Categories</h4>
             <ul className="space-y-3 text-sm">
               <li><a href="/heating-instruments" className="text-gray-300 hover:text-professional-blue-light transition-colors">Heating Instruments</a></li>
               <li><a href="/industrial-furnace" className="text-gray-300 hover:text-professional-blue-light transition-colors">Industrial Furnace</a></li>
@@ -76,14 +76,14 @@ const Footer: React.FC<FooterProps> = ({ onInquiryClick }) => {
 
           {/* Contact Information */}
           <div>
-            <h4 className="text-lg font-semibold mb-6 text-professional-blue-light">Contact Information</h4>
+            <h4 className="text-lg font-semibold mb-6 text-professional-blue-light dark:text-blue-300">Contact Information</h4>
             <div className="space-y-4 text-sm">
               <div className="flex items-start space-x-3">
                 <MapPin className="h-5 w-5 text-professional-blue-light mt-0.5 flex-shrink-0" />
                 <div>
-                  <p className="text-gray-300">123 Industrial Avenue</p>
-                  <p className="text-gray-300">Science Park, Tech City 12345</p>
-                  <p className="text-gray-300">United States</p>
+                  <p className="text-gray-300 dark:text-slate-400">123 Industrial Avenue</p>
+                  <p className="text-gray-300 dark:text-slate-400">Science Park, Tech City 12345</p>
+                  <p className="text-gray-300 dark:text-slate-400">United States</p>
                 </div>
               </div>
               
@@ -120,7 +120,7 @@ const Footer: React.FC<FooterProps> = ({ onInquiryClick }) => {
         </div>
 
         {/* Call to Action Section */}
-        <div className="mt-12 pt-8 border-t border-gray-600">
+        <div className="mt-12 pt-8 border-t border-gray-600 dark:border-slate-700">
           <div className="bg-gradient-hero rounded-2xl p-8 text-center">
             <h3 className="text-2xl font-bold text-white mb-4">
               Ready to Get Started?
