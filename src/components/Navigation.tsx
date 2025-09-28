@@ -72,7 +72,6 @@ interface NavigationProps {
 
 const Navigation: React.FC<NavigationProps> = ({ onInquiryClick }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isSideNavOpen, setIsSideNavOpen] = useState(false);
 
   return (
     <>
@@ -194,89 +193,95 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick }) => {
                 Inquiries
               </button>
             </div>
-            <button 
-              onClick={() => setIsSideNavOpen(true)}
-              className="text-professional-blue hover:text-professional-blue-dark transition-colors"
-            >
-              Quick Access
-            </button>
+      {/* Quick Access Hover Triggers */}
+      <div className="fixed left-0 top-1/2 transform -translate-y-1/2 z-40 group">
+        <div className="w-2 h-16 bg-professional-blue rounded-r-lg opacity-80 hover:opacity-100 transition-all duration-300 cursor-pointer group-hover:w-3">
+        </div>
+        {/* Left Side Panel */}
+        <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-80 bg-professional-blue text-white shadow-professional rounded-r-2xl opacity-0 translate-x-[-100%] group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none group-hover:pointer-events-auto">
+          <div className="p-6">
+            <h3 className="text-lg font-semibold mb-4 text-white">Quick Navigation</h3>
+            <div className="space-y-3">
+              <a href="/" className="block text-white/90 hover:text-white transition-colors py-2 border-b border-white/20">
+                Home
+              </a>
+              <a href="/about" className="block text-white/90 hover:text-white transition-colors py-2 border-b border-white/20">
+                About Us
+              </a>
+              <button 
+                onClick={onInquiryClick}
+                className="block text-white/90 hover:text-white transition-colors py-2 border-b border-white/20 w-full text-left"
+              >
+                Make Inquiry
+              </button>
+              <a href="/service-support" className="block text-white/90 hover:text-white transition-colors py-2">
+                Service & Support
+              </a>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Side Navigation */}
-      {isSideNavOpen && (
-        <div className="fixed inset-0 z-50 bg-black bg-opacity-50" onClick={() => setIsSideNavOpen(false)}>
-          <div 
-            className="fixed right-0 top-0 h-full w-80 bg-white shadow-professional transform transition-transform"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="p-6">
-              <div className="flex justify-between items-center mb-6">
-                <h3 className="text-lg font-semibold text-professional-blue">Quick Access</h3>
-                <button 
-                  onClick={() => setIsSideNavOpen(false)}
-                  className="text-technical-gray hover:text-professional-blue"
-                >
-                  <X className="h-6 w-6" />
-                </button>
+      {/* Right Side Quick Access */}
+      <div className="fixed right-0 top-1/2 transform -translate-y-1/2 z-40 group">
+        <div className="w-2 h-16 bg-professional-blue rounded-l-lg opacity-80 hover:opacity-100 transition-all duration-300 cursor-pointer group-hover:w-3">
+        </div>
+        {/* Right Side Panel */}
+        <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-80 bg-professional-blue text-white shadow-professional rounded-l-2xl opacity-0 translate-x-[100%] group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none group-hover:pointer-events-auto">
+          <div className="p-6">
+            <h3 className="text-lg font-semibold mb-4 text-white">Quick Access</h3>
+            
+            <div className="space-y-4">
+              <Button 
+                variant="outline" 
+                className="w-full justify-start bg-white/10 border-white/30 text-white hover:bg-white hover:text-professional-blue"
+              >
+                <Download className="mr-2 h-4 w-4" />
+                Download Catalog
+              </Button>
+              
+              <Button 
+                variant="outline" 
+                className="w-full justify-start bg-white/10 border-white/30 text-white hover:bg-white hover:text-professional-blue"
+                onClick={onInquiryClick}
+              >
+                <Mail className="mr-2 h-4 w-4" />
+                Make Inquiry
+              </Button>
+              
+              <div className="pt-4 border-t border-white/20">
+                <p className="text-sm font-medium mb-3 text-white">Share On Social</p>
+                <div className="flex space-x-3">
+                  <a href="#" className="w-8 h-8 bg-white/10 hover:bg-white/20 rounded-lg flex items-center justify-center transition-colors">
+                    <span className="text-xs font-bold">IG</span>
+                  </a>
+                  <a href="#" className="w-8 h-8 bg-white/10 hover:bg-white/20 rounded-lg flex items-center justify-center transition-colors">
+                    <span className="text-xs font-bold">TW</span>
+                  </a>
+                  <a href="#" className="w-8 h-8 bg-white/10 hover:bg-white/20 rounded-lg flex items-center justify-center transition-colors">
+                    <span className="text-xs font-bold">YT</span>
+                  </a>
+                </div>
               </div>
               
-              <div className="space-y-4">
-                <Button variant="outline" className="w-full justify-start">
-                  <Download className="mr-2 h-4 w-4" />
-                  Download Catalog
-                </Button>
-                
-                <Button 
-                  variant="outline" 
-                  className="w-full justify-start"
-                  onClick={onInquiryClick}
-                >
-                  <Mail className="mr-2 h-4 w-4" />
-                  Make Inquiry
-                </Button>
-                
-                <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
-                    <Button variant="outline" className="w-full justify-start">
-                      <Share2 className="mr-2 h-4 w-4" />
-                      Share
-                    </Button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent>
-                    <div className="p-4 space-y-2">
-                      <a href="#" className="block text-sm text-technical-gray hover:text-professional-blue">
-                        Instagram
-                      </a>
-                      <a href="#" className="block text-sm text-technical-gray hover:text-professional-blue">
-                        Twitter
-                      </a>
-                      <a href="#" className="block text-sm text-technical-gray hover:text-professional-blue">
-                        YouTube
-                      </a>
-                    </div>
-                  </DropdownMenuContent>
-                </DropdownMenu>
-                
-                <DropdownMenuSeparator />
-                
-                <div className="text-sm text-technical-gray">
-                  <p className="font-medium mb-2">Contact Information</p>
-                  <div className="flex items-center mb-1">
-                    <Phone className="h-4 w-4 mr-2" />
-                    <span>+1 (555) 123-4567</span>
-                  </div>
-                  <div className="flex items-center">
-                    <Mail className="h-4 w-4 mr-2" />
-                    <span>info@servoscientific.com</span>
-                  </div>
+              <div className="pt-4 border-t border-white/20 text-sm text-white/90">
+                <div className="flex items-center mb-2">
+                  <Phone className="h-4 w-4 mr-2" />
+                  <span>+1 (555) 123-4567</span>
+                </div>
+                <div className="flex items-center">
+                  <Mail className="h-4 w-4 mr-2" />
+                  <span>info@servoscientific.com</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      )}
+      </div>
+          </div>
+        </div>
+      </div>
+
     </>
   );
 };
