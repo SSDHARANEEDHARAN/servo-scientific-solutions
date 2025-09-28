@@ -7,6 +7,7 @@ import ProductDetail from './ProductDetail';
 
 interface ProductShowcaseProps {
   onInquiryClick: () => void;
+  onProductSelect?: (product: any) => void;
 }
 
 const productCategories = [
@@ -525,15 +526,19 @@ const productDatabase = {
   }
 };
 
-const ProductShowcase: React.FC<ProductShowcaseProps> = ({ onInquiryClick }) => {
+const ProductShowcase: React.FC<ProductShowcaseProps> = ({ onInquiryClick, onProductSelect }) => {
   const [selectedProduct, setSelectedProduct] = useState<(typeof productDatabase)[keyof typeof productDatabase] | null>(null);
   const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
 
   const handleProductClick = (productName: string) => {
     const product = productDatabase[productName as keyof typeof productDatabase];
     if (product) {
-      setSelectedProduct(product);
-      setIsProductDetailOpen(true);
+      if (onProductSelect) {
+        onProductSelect(product);
+      } else {
+        setSelectedProduct(product);
+        setIsProductDetailOpen(true);
+      }
     }
   };
 

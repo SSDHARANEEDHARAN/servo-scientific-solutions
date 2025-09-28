@@ -7,7 +7,7 @@ import {
   DropdownMenuTrigger,
   DropdownMenuSeparator,
 } from '@/components/ui/dropdown-menu';
-import ProductDetail from './ProductDetail';
+import ProductDetailPage from './ProductDetailPage';
 
 const productDatabase = {
   "Hot Air Oven": {
@@ -150,25 +150,18 @@ const productCategories = {
 
 interface NavigationProps {
   onInquiryClick: () => void;
+  onProductSelect?: (product: any) => void;
 }
 
-const Navigation: React.FC<NavigationProps> = ({ onInquiryClick }) => {
+const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState<(typeof productDatabase)[keyof typeof productDatabase] | null>(null);
-  const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
 
   const handleProductClick = (productName: string) => {
     const product = productDatabase[productName as keyof typeof productDatabase];
-    if (product) {
-      setSelectedProduct(product);
-      setIsProductDetailOpen(true);
+    if (product && onProductSelect) {
+      onProductSelect(product);
     }
-  };
-
-  const handleCloseProductDetail = () => {
-    setIsProductDetailOpen(false);
-    setSelectedProduct(null);
   };
 
   const toggleDarkMode = () => {
@@ -453,15 +446,6 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick }) => {
         </div>
       </div>
 
-      {/* Product Detail Modal */}
-      {selectedProduct && (
-        <ProductDetail
-          isOpen={isProductDetailOpen}
-          onClose={handleCloseProductDetail}
-          onInquiry={onInquiryClick}
-          product={selectedProduct}
-        />
-      )}
 
     </>
   );
