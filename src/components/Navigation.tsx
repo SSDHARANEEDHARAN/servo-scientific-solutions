@@ -92,7 +92,7 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
   return (
     <>
       {/* Main Navigation */}
-      <nav className="bg-background border-b border-border sticky top-0 z-50 backdrop-blur-sm">
+      <nav className="bg-gray-50 dark:bg-professional-blue-dark border-b border-border sticky top-0 z-50 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
