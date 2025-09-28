@@ -83,8 +83,8 @@ const Footer: React.FC<FooterProps> = ({ onInquiryClick, onCategorySelect }) => 
                 <MapPin className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
                 <div>
                   <p className="text-muted-foreground">123 Industrial Avenue</p>
-                  <p className="text-muted-foreground">Science Park, Tech City 12345</p>
-                  <p className="text-muted-foreground">United States</p>
+                  <p className="text-muted-foreground">Salem, Tamil Nadu 636001</p>
+                  <p className="text-muted-foreground">India</p>
                 </div>
               </div>
               

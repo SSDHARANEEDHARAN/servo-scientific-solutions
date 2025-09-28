@@ -13,9 +13,10 @@ import { productCategories, productDatabase } from '@/data';
 interface NavigationProps {
   onInquiryClick: () => void;
   onProductSelect?: (product: any) => void;
+  onAboutClick?: () => void;
 }
 
-const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect }) => {
+const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect, onAboutClick }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isSupportOpen, setIsSupportOpen] = useState(false);
@@ -146,9 +147,9 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
                   </DropdownMenuContent>
                 </DropdownMenu>
 
-                <a href="#" className="text-foreground hover:text-primary transition-colors font-medium">
+                <button onClick={onAboutClick} className="text-foreground hover:text-primary transition-colors font-medium">
                   About
-                </a>
+                </button>
                 <a href="#" className="text-foreground hover:text-primary transition-colors font-medium">
                   Contact
                 </a>
@@ -206,9 +207,9 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
                       ))}
                     </div>
                     
-                    <a href="#" className="text-foreground hover:text-primary transition-colors font-medium">
+                    <button onClick={onAboutClick} className="text-foreground hover:text-primary transition-colors font-medium">
                       About
-                    </a>
+                    </button>
                     <a href="#" className="text-foreground hover:text-primary transition-colors font-medium">
                       Contact
                     </a>

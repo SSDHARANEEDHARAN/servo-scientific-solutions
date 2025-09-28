@@ -4,6 +4,7 @@ import HeroSection from '@/components/HeroSection';
 import ProductShowcase from '@/components/ProductShowcase';
 import ProductDetailPage from '@/components/ProductDetailPage';
 import ProductCategoryPage from '@/components/ProductCategoryPage';
+import AboutPage from '@/components/AboutPage';
 import BrandsSection from '@/components/BrandsSection';
 import InquiryForm from '@/components/InquiryForm';
 import Footer from '@/components/Footer';
@@ -15,6 +16,7 @@ const Index = () => {
   const [showProductDetail, setShowProductDetail] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [showCategoryPage, setShowCategoryPage] = useState(false);
+  const [showAboutPage, setShowAboutPage] = useState(false);
 
   const handleInquiryClick = () => {
     setIsInquiryOpen(true);
@@ -47,6 +49,14 @@ const Index = () => {
     setSelectedCategory(null);
     setShowProductDetail(false);
     setSelectedProduct(null);
+    setShowAboutPage(false);
+  };
+
+  const handleAboutClick = () => {
+    setShowAboutPage(true);
+    setShowCategoryPage(false);
+    setShowProductDetail(false);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const getCategoryProducts = (categoryName: string) => {
@@ -59,9 +69,15 @@ const Index = () => {
       <Navigation 
         onInquiryClick={handleInquiryClick} 
         onProductSelect={handleProductSelect}
+        onAboutClick={handleAboutClick}
       />
       
-      {showCategoryPage && selectedCategory ? (
+      {showAboutPage ? (
+        <AboutPage
+          onBack={handleBackToHome}
+          onInquiryClick={handleInquiryClick}
+        />
+      ) : showCategoryPage && selectedCategory ? (
         <ProductCategoryPage
           categoryName={selectedCategory}
           products={getCategoryProducts(selectedCategory)}
