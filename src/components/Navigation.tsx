@@ -195,28 +195,35 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick }) => {
             </div>
       {/* Quick Access Hover Triggers */}
       <div className="fixed left-0 top-1/2 transform -translate-y-1/2 z-40 group">
-        <div className="w-2 h-16 bg-professional-blue rounded-r-lg opacity-80 hover:opacity-100 transition-all duration-300 cursor-pointer group-hover:w-3">
+        <div className="w-3 h-24 bg-professional-blue opacity-80 hover:opacity-100 transition-all duration-300 cursor-pointer group-hover:w-4">
         </div>
         {/* Left Side Panel */}
-        <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-80 bg-professional-blue text-white shadow-professional rounded-r-2xl opacity-0 translate-x-[-100%] group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none group-hover:pointer-events-auto">
-          <div className="p-6">
-            <h3 className="text-lg font-semibold mb-4 text-white">Quick Navigation</h3>
-            <div className="space-y-3">
-              <a href="/" className="block text-white/90 hover:text-white transition-colors py-2 border-b border-white/20">
+        <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-96 h-96 bg-professional-blue text-white shadow-professional opacity-0 translate-x-[-100%] group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none group-hover:pointer-events-auto">
+          <div className="p-8 h-full flex flex-col">
+            <h3 className="text-xl font-semibold mb-6 text-white">Quick Navigation</h3>
+            <div className="space-y-4 flex-1">
+              <a href="/" className="block text-white/90 hover:text-white transition-colors py-3 px-4 border border-white/20 hover:bg-white/10">
                 Home
               </a>
-              <a href="/about" className="block text-white/90 hover:text-white transition-colors py-2 border-b border-white/20">
+              <a href="/about" className="block text-white/90 hover:text-white transition-colors py-3 px-4 border border-white/20 hover:bg-white/10">
                 About Us
               </a>
               <button 
                 onClick={onInquiryClick}
-                className="block text-white/90 hover:text-white transition-colors py-2 border-b border-white/20 w-full text-left"
+                className="block text-white/90 hover:text-white transition-colors py-3 px-4 border border-white/20 hover:bg-white/10 w-full text-left"
               >
                 Make Inquiry
               </button>
-              <a href="/service-support" className="block text-white/90 hover:text-white transition-colors py-2">
+              <a href="/service-support" className="block text-white/90 hover:text-white transition-colors py-3 px-4 border border-white/20 hover:bg-white/10">
                 Service & Support
               </a>
+              <a href="/products" className="block text-white/90 hover:text-white transition-colors py-3 px-4 border border-white/20 hover:bg-white/10">
+                All Products
+              </a>
+            </div>
+            <div className="mt-auto pt-4 border-t border-white/20 text-sm text-white/90">
+              <p className="font-medium">Servo Scientific</p>
+              <p>Professional Equipment</p>
             </div>
           </div>
         </div>
@@ -224,55 +231,63 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick }) => {
 
       {/* Right Side Quick Access */}
       <div className="fixed right-0 top-1/2 transform -translate-y-1/2 z-40 group">
-        <div className="w-2 h-16 bg-professional-blue rounded-l-lg opacity-80 hover:opacity-100 transition-all duration-300 cursor-pointer group-hover:w-3">
+        <div className="w-3 h-24 bg-professional-blue opacity-80 hover:opacity-100 transition-all duration-300 cursor-pointer group-hover:w-4">
         </div>
         {/* Right Side Panel */}
-        <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-80 bg-professional-blue text-white shadow-professional rounded-l-2xl opacity-0 translate-x-[100%] group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none group-hover:pointer-events-auto">
-          <div className="p-6">
-            <h3 className="text-lg font-semibold mb-4 text-white">Quick Access</h3>
+        <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-96 h-96 bg-professional-blue text-white shadow-professional opacity-0 translate-x-[100%] group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none group-hover:pointer-events-auto">
+          <div className="p-8 h-full flex flex-col">
+            <h3 className="text-xl font-semibold mb-6 text-white">Quick Access</h3>
             
-            <div className="space-y-4">
+            <div className="space-y-4 flex-1">
               <Button 
                 variant="outline" 
-                className="w-full justify-start bg-white/10 border-white/30 text-white hover:bg-white hover:text-professional-blue"
+                className="w-full justify-start py-3 px-4 bg-white/10 border-white/30 text-white hover:bg-white hover:text-professional-blue"
               >
-                <Download className="mr-2 h-4 w-4" />
+                <Download className="mr-3 h-5 w-5" />
                 Download Catalog
               </Button>
               
               <Button 
                 variant="outline" 
-                className="w-full justify-start bg-white/10 border-white/30 text-white hover:bg-white hover:text-professional-blue"
+                className="w-full justify-start py-3 px-4 bg-white/10 border-white/30 text-white hover:bg-white hover:text-professional-blue"
                 onClick={onInquiryClick}
               >
-                <Mail className="mr-2 h-4 w-4" />
+                <Mail className="mr-3 h-5 w-5" />
                 Make Inquiry
+              </Button>
+
+              <Button 
+                variant="outline" 
+                className="w-full justify-start py-3 px-4 bg-white/10 border-white/30 text-white hover:bg-white hover:text-professional-blue"
+              >
+                <Phone className="mr-3 h-5 w-5" />
+                Call Now
               </Button>
               
               <div className="pt-4 border-t border-white/20">
                 <p className="text-sm font-medium mb-3 text-white">Share On Social</p>
-                <div className="flex space-x-3">
-                  <a href="#" className="w-8 h-8 bg-white/10 hover:bg-white/20 rounded-lg flex items-center justify-center transition-colors">
+                <div className="grid grid-cols-3 gap-2">
+                  <a href="#" className="h-12 bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors border border-white/20">
                     <span className="text-xs font-bold">IG</span>
                   </a>
-                  <a href="#" className="w-8 h-8 bg-white/10 hover:bg-white/20 rounded-lg flex items-center justify-center transition-colors">
+                  <a href="#" className="h-12 bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors border border-white/20">
                     <span className="text-xs font-bold">TW</span>
                   </a>
-                  <a href="#" className="w-8 h-8 bg-white/10 hover:bg-white/20 rounded-lg flex items-center justify-center transition-colors">
+                  <a href="#" className="h-12 bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors border border-white/20">
                     <span className="text-xs font-bold">YT</span>
                   </a>
                 </div>
               </div>
-              
-              <div className="pt-4 border-t border-white/20 text-sm text-white/90">
-                <div className="flex items-center mb-2">
-                  <Phone className="h-4 w-4 mr-2" />
-                  <span>+1 (555) 123-4567</span>
-                </div>
-                <div className="flex items-center">
-                  <Mail className="h-4 w-4 mr-2" />
-                  <span>info@servoscientific.com</span>
-                </div>
+            </div>
+            
+            <div className="mt-auto pt-4 border-t border-white/20 text-sm text-white/90">
+              <div className="flex items-center mb-2">
+                <Phone className="h-4 w-4 mr-2" />
+                <span>+1 (555) 123-4567</span>
+              </div>
+              <div className="flex items-center">
+                <Mail className="h-4 w-4 mr-2" />
+                <span>info@servoscientific.com</span>
               </div>
             </div>
           </div>
