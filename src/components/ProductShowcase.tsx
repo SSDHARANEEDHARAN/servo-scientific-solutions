@@ -564,13 +564,13 @@ const ProductShowcase: React.FC<ProductShowcaseProps> = ({ onInquiryClick, onPro
           {productCategories.map((category) => {
             const IconComponent = category.icon;
             return (
-              <Card key={category.title} className="group hover:shadow-professional transition-all duration-300 bg-gradient-card dark:bg-slate-800 border-0 dark:border dark:border-slate-700">
+              <Card key={category.title} className="group shadow-card hover:shadow-elegant card-hover bg-gradient-card border-border">
                 <CardContent className="p-6">
                   <div className="flex items-center mb-4">
-                    <div className="w-12 h-12 bg-professional-blue-light rounded-lg flex items-center justify-center mr-4">
-                      <IconComponent className="h-6 w-6 text-professional-blue" />
+                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4 group-hover:bg-primary/20 transition-colors shadow-card">
+                      <IconComponent className="h-6 w-6 text-primary" />
                     </div>
-                    <h3 className="text-xl font-semibold text-technical-gray dark:text-white group-hover:text-professional-blue dark:group-hover:text-blue-300 transition-colors">
+                    <h3 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
                       {category.title}
                     </h3>
                   </div>

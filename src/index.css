@@ -48,9 +48,12 @@ All colors MUST be HSL.
     --gradient-hero: linear-gradient(135deg, hsl(210 82% 45%), hsl(210 50% 88%));
     --gradient-card: linear-gradient(180deg, hsl(0 0% 100%), hsl(210 40% 98%));
 
-    /* Shadows */
-    --shadow-professional: 0 4px 20px -2px hsl(210 82% 45% / 0.15);
-    --shadow-card: 0 2px 8px -2px hsl(220 15% 25% / 0.1);
+    /* Shadows - enhanced for better visual depth */
+    --shadow-professional: 0 10px 40px -10px hsl(210 82% 45% / 0.25);
+    --shadow-card: 0 4px 20px -4px hsl(220 15% 25% / 0.15);
+    --shadow-card-hover: 0 8px 30px -6px hsl(220 15% 25% / 0.25);
+    --shadow-elegant: 0 20px 60px -10px hsl(210 82% 45% / 0.3);
+    --shadow-glow: 0 0 40px hsl(210 82% 45% / 0.4);
 
     --radius: 0.5rem;
 
@@ -112,9 +115,12 @@ All colors MUST be HSL.
     --gradient-hero: linear-gradient(135deg, hsl(210 82% 40%), hsl(210 82% 60%));
     --gradient-card: linear-gradient(180deg, hsl(220 15% 10%), hsl(220 15% 12%));
 
-    /* Dark mode shadows */
-    --shadow-professional: 0 4px 20px -2px hsl(0 0% 0% / 0.3);
-    --shadow-card: 0 2px 8px -2px hsl(0 0% 0% / 0.2);
+    /* Dark mode shadows - enhanced */
+    --shadow-professional: 0 10px 40px -10px hsl(0 0% 0% / 0.5);
+    --shadow-card: 0 4px 20px -4px hsl(0 0% 0% / 0.3);
+    --shadow-card-hover: 0 8px 30px -6px hsl(0 0% 0% / 0.4);
+    --shadow-elegant: 0 20px 60px -10px hsl(0 0% 0% / 0.6);
+    --shadow-glow: 0 0 40px hsl(210 82% 55% / 0.5);
 
     --radius: 0.5rem;
 
@@ -145,5 +151,24 @@ All colors MUST be HSL.
   
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
+  }
+
+  /* Animation utilities */
+  .counter-animation {
+    animation: fade-in 0.5s ease-out;
+  }
+
+  .card-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  .glow-effect {
+    box-shadow: var(--shadow-glow);
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
 }
