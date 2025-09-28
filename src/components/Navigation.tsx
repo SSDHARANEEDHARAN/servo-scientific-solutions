@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { ChevronDown, Menu, X, Phone, Mail, Download, Share2, Moon, Sun, Instagram, Twitter, Youtube } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuTrigger,
-  DropdownMenuSeparator,
-} from '@/components/ui/dropdown-menu';
-import ProductDetailPage from './ProductDetailPage';
-import { productDatabase, productCategories } from '@/data/index';
+import { Menu, X, ChevronDown, Sun, Moon, Phone, Download, Home, HelpCircle } from 'lucide-react';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { Label } from '@/components/ui/label';
+import { useToast } from '@/hooks/use-toast';
+import { productCategories } from '@/data';
 
 interface NavigationProps {
   onInquiryClick: () => void;
@@ -18,319 +18,329 @@ interface NavigationProps {
 const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isSupportOpen, setIsSupportOpen] = useState(false);
+  const { toast } = useToast();
 
-  const handleProductClick = (productName: string) => {
-    const product = productDatabase[productName as keyof typeof productDatabase];
-    if (product && onProductSelect) {
+  useEffect(() => {
+    // Check for saved theme preference or default to light mode
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+      setIsDarkMode(true);
+      document.documentElement.classList.add('dark');
+    }
+  }, []);
+
+  const handleProductClick = (product: any) => {
+    if (onProductSelect) {
       onProductSelect(product);
     }
   };
 
   const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
-    document.documentElement.classList.toggle('dark');
+    const newDarkMode = !isDarkMode;
+    setIsDarkMode(newDarkMode);
+    
+    if (newDarkMode) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
+  };
+
+  const handleDownloadClick = () => {
+    toast({
+      title: "Feature Coming Soon",
+      description: "Download feature will be available soon!",
+    });
+  };
+
+  const handleSupportSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const formData = new FormData(e.target as HTMLFormElement);
+    const data = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      message: formData.get('message')
+    };
+    
+    toast({
+      title: "Support Request Submitted",
+      description: "We'll get back to you soon!",
+    });
+    
+    setIsSupportOpen(false);
+    (e.target as HTMLFormElement).reset();
+  };
+
+  const handleHomeClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleLinkedInClick = () => {
+    window.open('https://linkedin.com', '_blank');
+  };
+
+  const handleCallClick = () => {
+    window.location.href = 'tel:+1234567890';
   };
 
   return (
     <>
       {/* Main Navigation */}
-      <nav className="bg-white dark:bg-slate-900 shadow-professional sticky top-0 z-50">
+      <nav className="bg-background border-b border-border sticky top-0 z-50 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
             <div className="flex items-center">
-              <div className="text-2xl font-bold text-professional-blue dark:text-blue-300">
+              <div className="text-2xl font-bold text-primary">
                 Servo Scientific
               </div>
             </div>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-8">
-              <a href="/" className="text-technical-gray dark:text-slate-300 hover:text-professional-blue dark:hover:text-blue-300 transition-colors">
-                Home
-              </a>
-              
-              {/* Products Mega Menu */}
-              <DropdownMenu>
-                <DropdownMenuTrigger className="flex items-center text-technical-gray dark:text-slate-300 hover:text-professional-blue dark:hover:text-blue-300 transition-colors group">
-                  Products <ChevronDown className="ml-1 h-4 w-4 transition-transform group-data-[state=open]:rotate-180" />
-                </DropdownMenuTrigger>
-                <DropdownMenuContent 
-                  className="w-[900px] p-8 bg-white dark:bg-slate-800 shadow-2xl border border-slate-200 dark:border-slate-700 z-50 backdrop-blur-sm"
-                  onMouseLeave={(e) => {
-                    // Auto-close dropdown when mouse leaves
-                    const trigger = e.currentTarget.previousElementSibling as HTMLElement;
-                    if (trigger) trigger.click();
-                  }}
-                >
-                  <div className="grid grid-cols-3 gap-8">
-                    {Object.entries(productCategories).map(([category, items]) => (
-                      <div key={category} className="space-y-4">
-                        <h3 className="font-bold text-lg text-professional-blue dark:text-blue-300 border-b-2 border-professional-blue-light pb-3">
-                          {category}
-                        </h3>
-                        <ul className="space-y-2">
-                          {items.map((item) => (
-                            <li key={item}>
-                              <button 
-                                onClick={() => handleProductClick(item)}
-                                className="text-sm text-technical-gray dark:text-slate-300 hover:text-professional-blue dark:hover:text-blue-300 transition-all duration-200 block w-full text-left hover:bg-gradient-to-r hover:from-professional-blue/10 hover:to-transparent p-3 rounded-lg hover:shadow-sm hover:translate-x-1"
+            <div className="hidden lg:flex items-center space-x-8">
+              <nav className="flex items-center space-x-6">
+                <a href="#" className="text-foreground hover:text-primary transition-colors font-medium">
+                  Home
+                </a>
+                
+                {/* Products Mega Menu */}
+                <DropdownMenu>
+                  <DropdownMenuTrigger className="flex items-center text-foreground hover:text-primary transition-colors font-medium group">
+                    Products
+                    <ChevronDown className="ml-1 h-4 w-4 transition-transform group-data-[state=open]:rotate-180" />
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent 
+                    className="w-[800px] p-6 bg-card border-border"
+                    onMouseLeave={() => {
+                      // Auto-close on mouse leave
+                      const trigger = document.querySelector('[data-radix-dropdown-trigger]') as HTMLElement;
+                      if (trigger) trigger.click();
+                    }}
+                  >
+                    <div className="grid grid-cols-3 gap-6">
+                      {Object.entries(productCategories).map(([categoryName, products]) => (
+                        <div key={categoryName} className="space-y-3">
+                          <h3 className="font-semibold text-sm text-primary uppercase tracking-wide">
+                            {categoryName}
+                          </h3>
+                          <div className="space-y-2">
+                            {products.map((productName) => (
+                              <button
+                                key={productName}
+                                onClick={() => handleProductClick({ name: productName })}
+                                className="block w-full text-left text-sm text-muted-foreground hover:text-foreground transition-colors py-1"
                               >
-                                {item}
+                                {productName}
                               </button>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="mt-8 pt-6 border-t border-slate-200 dark:border-slate-600">
-                    <div className="flex items-center justify-between">
-                      <p className="text-sm text-technical-gray dark:text-slate-400">
-                        Need help finding the right product?
-                      </p>
-                      <Button 
-                        variant="outline" 
-                        size="sm"
-                        onClick={onInquiryClick}
-                        className="border-professional-blue text-professional-blue hover:bg-professional-blue hover:text-white"
-                      >
-                        Contact Expert
-                      </Button>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
                     </div>
-                  </div>
-                </DropdownMenuContent>
-              </DropdownMenu>
+                  </DropdownMenuContent>
+                </DropdownMenu>
 
-              <a href="/service-support" className="text-technical-gray dark:text-slate-300 hover:text-professional-blue dark:hover:text-blue-300 transition-colors">
-                Service & Support
-              </a>
-              
-              <Button 
-                variant="ghost" 
-                size="sm"
-                onClick={toggleDarkMode}
-                className="text-technical-gray hover:text-professional-blue"
-              >
-                {isDarkMode ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-              </Button>
-              
-              <Button variant="professional" size="sm">
-                Sign In
-              </Button>
-            </div>
+                <a href="#" className="text-foreground hover:text-primary transition-colors font-medium">
+                  About
+                </a>
+                <a href="#" className="text-foreground hover:text-primary transition-colors font-medium">
+                  Contact
+                </a>
+              </nav>
 
-            {/* Mobile menu button */}
-            <div className="md:hidden">
-              <button 
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="text-technical-gray hover:text-professional-blue"
-              >
-                {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden bg-white dark:bg-slate-800 border-t border-technical-gray-light dark:border-slate-600">
-            <div className="px-4 py-6 space-y-4">
-              <a href="/" className="block text-technical-gray hover:text-professional-blue">
-                Home
-              </a>
-              <div className="space-y-2">
-                <div className="font-semibold text-professional-blue dark:text-blue-300">Products</div>
-                {Object.entries(productCategories).map(([category, items]) => (
-                  <div key={category} className="ml-4 space-y-1">
-                    <div className="font-medium text-technical-gray dark:text-slate-300">{category}</div>
-                    {items.map((item) => (
-                      <button 
-                        key={item}
-                        onClick={() => handleProductClick(item)}
-                        className="block ml-4 text-sm text-technical-gray dark:text-slate-300 hover:text-professional-blue dark:hover:text-blue-300 w-full text-left p-1 rounded hover:bg-surface-blue dark:hover:bg-slate-700"
-                      >
-                        {item}
-                      </button>
-                    ))}
-                  </div>
-                ))}
-              </div>
-              <a href="/service-support" className="block text-technical-gray hover:text-professional-blue">
-                Service & Support
-              </a>
-              <div className="flex items-center justify-between">
-                <Button variant="professional" size="sm" className="flex-1 mr-2">
-                  Sign In
-                </Button>
-                <Button 
-                  variant="ghost" 
-                  size="sm"
+              <div className="flex items-center space-x-4">
+                <Button
+                  variant="ghost"
+                  size="icon"
                   onClick={toggleDarkMode}
-                  className="text-technical-gray hover:text-professional-blue"
+                  className="h-9 w-9 text-foreground hover:text-primary hover:bg-accent"
                 >
                   {isDarkMode ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
                 </Button>
+                
+                <Button 
+                  variant="professional" 
+                  onClick={onInquiryClick}
+                  className="hidden xl:inline-flex text-primary-foreground bg-primary hover:bg-primary/90"
+                >
+                  Get Quote
+                </Button>
               </div>
             </div>
+
+            {/* Mobile menu button */}
+            <div className="lg:hidden">
+              <Sheet>
+                <SheetTrigger asChild>
+                  <Button variant="ghost" size="icon" className="text-foreground">
+                    <Menu className="h-6 w-6" />
+                  </Button>
+                </SheetTrigger>
+                <SheetContent side="right" className="bg-card text-card-foreground">
+                  <div className="flex flex-col space-y-6 mt-6">
+                    <a href="#" className="text-foreground hover:text-primary transition-colors font-medium">
+                      Home
+                    </a>
+                    
+                    <div className="space-y-3">
+                      <div className="font-semibold text-primary">Products</div>
+                      {Object.entries(productCategories).map(([categoryName, products]) => (
+                        <div key={categoryName} className="ml-4 space-y-2">
+                          <div className="font-medium text-foreground text-sm">{categoryName}</div>
+                          {products.map((productName) => (
+                            <button
+                              key={productName}
+                              onClick={() => handleProductClick({ name: productName })}
+                              className="block text-sm text-muted-foreground hover:text-foreground transition-colors ml-4"
+                            >
+                              {productName}
+                            </button>
+                          ))}
+                        </div>
+                      ))}
+                    </div>
+                    
+                    <a href="#" className="text-foreground hover:text-primary transition-colors font-medium">
+                      About
+                    </a>
+                    <a href="#" className="text-foreground hover:text-primary transition-colors font-medium">
+                      Contact
+                    </a>
+                    
+                    <div className="flex items-center space-x-4 pt-4 border-t border-border">
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={toggleDarkMode}
+                        className="text-foreground hover:text-primary hover:bg-accent"
+                      >
+                        {isDarkMode ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+                      </Button>
+                      
+                      <Button 
+                        variant="professional" 
+                        onClick={onInquiryClick}
+                        className="text-primary-foreground bg-primary hover:bg-primary/90"
+                      >
+                        Get Quote
+                      </Button>
+                    </div>
+                  </div>
+                </SheetContent>
+              </Sheet>
+            </div>
           </div>
-        )}
+        </div>
       </nav>
 
-      {/* Bottom Navigation Links */}
-      <div className="bg-surface-blue dark:bg-slate-800 py-2">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center text-sm">
-            <div className="flex space-x-6">
-              <a href="/about" className="text-technical-gray dark:text-slate-400 hover:text-professional-blue dark:hover:text-blue-300 transition-colors">
-                About Us
-              </a>
-              <button 
-                onClick={onInquiryClick}
-                className="text-technical-gray dark:text-slate-400 hover:text-professional-blue dark:hover:text-blue-300 transition-colors"
-              >
-                Inquiries
-              </button>
-            </div>
-      {/* Quick Access Hover Triggers */}
-      <div className="fixed left-0 top-1/2 transform -translate-y-1/2 z-40 group">
-        <div className="w-3 h-24 bg-professional-blue opacity-80 hover:opacity-100 transition-all duration-300 cursor-pointer group-hover:w-4">
-        </div>
-        {/* Left Side Panel */}
-        <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-96 h-[600px] bg-professional-blue text-white shadow-professional opacity-0 translate-x-[-100%] group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none group-hover:pointer-events-auto">
-          <div className="p-8 h-full flex flex-col">
-            <h3 className="text-xl font-semibold mb-6 text-white">Quick Access</h3>
-            
-            {/* Featured Product/Service Image Area */}
-            <div className="mb-6 text-center">
-              <div className="w-24 h-24 mx-auto bg-white/10 border-2 border-white/20 flex items-center justify-center mb-3">
-                <Download className="h-8 w-8 text-white" />
-              </div>
-              <p className="text-sm text-white/80 font-medium">Download Resources</p>
-              <p className="text-xs text-white/60">Catalogs & Specifications</p>
-            </div>
-            
-            <div className="space-y-4 flex-1">
-              <Button 
-                variant="outline" 
-                className="w-full justify-start py-4 px-4 bg-white/10 border-white/30 text-white hover:bg-white hover:text-professional-blue"
-              >
-                <Download className="mr-3 h-5 w-5" />
-                <div className="text-left">
-                  <div className="font-medium">Download Catalog</div>
-                  <div className="text-xs opacity-80">Product specifications</div>
-                </div>
-              </Button>
-              
-              <Button 
-                variant="outline" 
-                className="w-full justify-start py-4 px-4 bg-white/10 border-white/30 text-white hover:bg-white hover:text-professional-blue"
-                onClick={onInquiryClick}
-              >
-                <Mail className="mr-3 h-5 w-5" />
-                <div className="text-left">
-                  <div className="font-medium">Make Inquiry</div>
-                  <div className="text-xs opacity-80">Get personalized quote</div>
-                </div>
-              </Button>
+      {/* Quick Access Panel */}
+      <div className="fixed left-0 top-1/2 -translate-y-1/2 z-40 group">
+        <div className="bg-primary text-primary-foreground p-3 rounded-r-lg shadow-professional transition-all duration-300 group-hover:w-56 w-14 overflow-hidden">
+          <div className="flex flex-col space-y-6">
+            {/* Home */}
+            <button 
+              onClick={handleHomeClick}
+              className="flex items-center space-x-3 hover:bg-primary-foreground/10 rounded p-2 transition-colors"
+            >
+              <Home className="h-5 w-5 flex-shrink-0" />
+              <span className="whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity text-sm font-medium">
+                Home
+              </span>
+            </button>
 
-              <Button 
-                variant="outline" 
-                className="w-full justify-start py-4 px-4 bg-white/10 border-white/30 text-white hover:bg-white hover:text-professional-blue"
-              >
-                <Phone className="mr-3 h-5 w-5" />
-                <div className="text-left">
-                  <div className="font-medium">Call Now</div>
-                  <div className="text-xs opacity-80">Speak with expert</div>
+            {/* Download */}
+            <button 
+              onClick={handleDownloadClick}
+              className="flex items-center space-x-3 hover:bg-primary-foreground/10 rounded p-2 transition-colors"
+            >
+              <Download className="h-5 w-5 flex-shrink-0" />
+              <span className="whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity text-sm font-medium">
+                Downloads
+              </span>
+            </button>
+
+            {/* Support */}
+            <Dialog open={isSupportOpen} onOpenChange={setIsSupportOpen}>
+              <DialogTrigger asChild>
+                <button className="flex items-center space-x-3 hover:bg-primary-foreground/10 rounded p-2 transition-colors">
+                  <HelpCircle className="h-5 w-5 flex-shrink-0" />
+                  <span className="whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity text-sm font-medium">
+                    Support
+                  </span>
+                </button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-md bg-card text-card-foreground">
+                <div className="p-6">
+                  <h3 className="text-lg font-semibold mb-4 text-foreground">Support Request</h3>
+                  <form onSubmit={handleSupportSubmit} className="space-y-4">
+                    <div>
+                      <Label htmlFor="name" className="text-foreground">Name</Label>
+                      <Input 
+                        id="name" 
+                        name="name" 
+                        required 
+                        className="bg-background text-foreground border-border"
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="email" className="text-foreground">Email</Label>
+                      <Input 
+                        id="email" 
+                        name="email" 
+                        type="email" 
+                        required 
+                        className="bg-background text-foreground border-border"
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="message" className="text-foreground">Message</Label>
+                      <Textarea 
+                        id="message" 
+                        name="message" 
+                        required 
+                        rows={4}
+                        className="bg-background text-foreground border-border"
+                      />
+                    </div>
+                    <Button type="submit" className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
+                      Submit Request
+                    </Button>
+                  </form>
                 </div>
-              </Button>
-              
-              <div className="pt-6 border-t border-white/20">
-                <p className="text-sm font-medium mb-4 text-white">Connect With Us</p>
-                <div className="grid grid-cols-3 gap-3">
-                  <a href="#" className="h-14 bg-white/10 hover:bg-white/20 flex flex-col items-center justify-center transition-colors border border-white/20">
-                    <Instagram className="h-5 w-5 mb-1" />
-                    <span className="text-[10px] text-white/70">Instagram</span>
-                  </a>
-                  <a href="#" className="h-14 bg-white/10 hover:bg-white/20 flex flex-col items-center justify-center transition-colors border border-white/20">
-                    <Twitter className="h-5 w-5 mb-1" />
-                    <span className="text-[10px] text-white/70">Twitter</span>
-                  </a>
-                  <a href="#" className="h-14 bg-white/10 hover:bg-white/20 flex flex-col items-center justify-center transition-colors border border-white/20">
-                    <Youtube className="h-5 w-5 mb-1" />
-                    <span className="text-[10px] text-white/70">YouTube</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-            
-            <div className="mt-auto pt-6 border-t border-white/20 text-sm text-white/90">
-              <div className="text-center mb-3">
-                <p className="font-medium text-white">24/7 Support Available</p>
-              </div>
-              <div className="flex items-center justify-center mb-2">
-                <Phone className="h-4 w-4 mr-2" />
-                <span>+1 (555) 123-4567</span>
-              </div>
-              <div className="flex items-center justify-center">
-                <Mail className="h-4 w-4 mr-2" />
-                <span className="text-xs">info@servoscientific.com</span>
-              </div>
-            </div>
+              </DialogContent>
+            </Dialog>
+
+            {/* LinkedIn */}
+            <button 
+              onClick={handleLinkedInClick}
+              className="flex items-center space-x-3 hover:bg-primary-foreground/10 rounded p-2 transition-colors"
+            >
+              <svg className="h-5 w-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+              <span className="whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity text-sm font-medium">
+                LinkedIn
+              </span>
+            </button>
+
+            {/* Call Back */}
+            <button 
+              onClick={handleCallClick}
+              className="flex items-center space-x-3 hover:bg-primary-foreground/10 rounded p-2 transition-colors"
+            >
+              <Phone className="h-5 w-5 flex-shrink-0" />
+              <span className="whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity text-sm font-medium">
+                Call Back
+              </span>
+            </button>
           </div>
         </div>
       </div>
-
-      {/* Right Side Quick Access */}
-      <div className="fixed right-0 top-1/2 transform -translate-y-1/2 z-40 group">
-        <div className="w-3 h-24 bg-professional-blue opacity-80 hover:opacity-100 transition-all duration-300 cursor-pointer group-hover:w-4">
-        </div>
-        {/* Right Side Panel */}
-        <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-96 h-[600px] bg-professional-blue text-white shadow-professional opacity-0 translate-x-[100%] group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none group-hover:pointer-events-auto">
-          <div className="p-8 h-full flex flex-col">
-            <h3 className="text-xl font-semibold mb-6 text-white">Quick Navigation</h3>
-            
-            {/* Company Logo/Image Area */}
-            <div className="mb-6 text-center">
-              <div className="w-20 h-20 mx-auto bg-white/10 border-2 border-white/20 flex items-center justify-center mb-3">
-                <span className="text-2xl font-bold text-white">SS</span>
-              </div>
-              <p className="text-sm text-white/80">Servo Scientific</p>
-            </div>
-            
-            <div className="space-y-4 flex-1">
-              <a href="/" className="block text-white/90 hover:text-white transition-colors py-4 px-4 border border-white/20 hover:bg-white/10">
-                <div className="font-medium">Home</div>
-                <div className="text-xs text-white/70">Main landing page</div>
-              </a>
-              <a href="/about" className="block text-white/90 hover:text-white transition-colors py-4 px-4 border border-white/20 hover:bg-white/10">
-                <div className="font-medium">About Us</div>
-                <div className="text-xs text-white/70">Company information</div>
-              </a>
-              <button 
-                onClick={onInquiryClick}
-                className="block text-white/90 hover:text-white transition-colors py-4 px-4 border border-white/20 hover:bg-white/10 w-full text-left"
-              >
-                <div className="font-medium">Make Inquiry</div>
-                <div className="text-xs text-white/70">Contact our team</div>
-              </button>
-              <a href="/service-support" className="block text-white/90 hover:text-white transition-colors py-4 px-4 border border-white/20 hover:bg-white/10">
-                <div className="font-medium">Service & Support</div>
-                <div className="text-xs text-white/70">Technical assistance</div>
-              </a>
-            </div>
-            <div className="mt-auto pt-6 border-t border-white/20 text-center">
-              <p className="text-sm font-medium text-white">Professional Equipment</p>
-              <p className="text-xs text-white/70 mt-1">Trusted since 1970</p>
-            </div>
-          </div>
-        </div>
-      </div>
-          </div>
-        </div>
-      </div>
-
-
     </>
   );
 };
