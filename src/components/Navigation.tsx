@@ -98,7 +98,7 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
             {/* Logo */}
             <div className="flex items-center">
               <div className="text-2xl font-bold text-primary">
-                Servo Scientific
+                Servo Scientific Suppliers
               </div>
             </div>
 

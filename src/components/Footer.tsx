@@ -28,8 +28,8 @@ const Footer: React.FC<FooterProps> = ({ onInquiryClick }) => {
           {/* Company Information */}
           <div className="space-y-6">
             <div>
-              <h3 className="text-2xl font-bold text-foreground mb-4">
-                Servo Scientific
+              <h3 className="text-2xl font-bold text-primary mb-4">
+                Servo Scientific Suppliers
               </h3>
               <p className="text-muted-foreground text-sm leading-relaxed">
                 Leading manufacturer of scientific and industrial equipment for over 50 years.
@@ -187,7 +187,7 @@ const Footer: React.FC<FooterProps> = ({ onInquiryClick }) => {
       <div className="border-t border-gray-600">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground">
-            <p>&copy; 2024 Servo Scientific. All rights reserved.</p>
+            <p>&copy; 2024 Servo Scientific Suppliers. All rights reserved.</p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <a href="/privacy" className="hover:text-primary transition-colors">Privacy Policy</a>
               <a href="/terms" className="hover:text-primary transition-colors">Terms of Service</a>
