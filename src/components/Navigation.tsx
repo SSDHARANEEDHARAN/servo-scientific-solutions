@@ -96,31 +96,28 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
       <nav className="bg-gray-50 dark:bg-professional-blue-dark border-b border-border sticky top-0 z-50 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            {/* Logo with Dropdown */}
-            <div className="flex items-center">
-              <DropdownMenu>
-                <DropdownMenuTrigger className="flex items-center text-2xl font-bold text-primary hover:text-primary/80 transition-colors group">
-                  Servo Scientific Suppliers
-                  <ChevronDown className="ml-2 h-4 w-4 transition-transform group-data-[state=open]:rotate-180" />
-                </DropdownMenuTrigger>
-                <DropdownMenuContent 
-                  className="w-56 p-2 bg-card border-border shadow-elegant z-50"
-                  align="start"
-                >
-                  <DropdownMenuItem 
+            {/* Logo with Static Menu */}
+            <div className="flex flex-col items-start">
+              <div className="text-2xl font-bold text-primary">
+                Servo Scientific Suppliers
+              </div>
+              <div className="bg-card border border-border rounded-md px-3 py-1 mt-1 shadow-soft">
+                <div className="flex items-center space-x-2 text-sm">
+                  <button 
                     onClick={onAboutClick}
-                    className="cursor-pointer flex items-center py-3 px-4 text-foreground hover:bg-accent hover:text-accent-foreground rounded-md transition-colors"
+                    className="text-foreground hover:text-primary transition-colors font-medium"
                   >
-                    About Us
-                  </DropdownMenuItem>
-                  <DropdownMenuItem 
+                    About
+                  </button>
+                  <span className="text-muted-foreground">|</span>
+                  <button 
                     onClick={onInquiryClick}
-                    className="cursor-pointer flex items-center py-3 px-4 text-foreground hover:bg-accent hover:text-accent-foreground rounded-md transition-colors"
+                    className="text-foreground hover:text-primary transition-colors font-medium"
                   >
                     Inquiries
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
+                  </button>
+                </div>
+              </div>
             </div>
 
             {/* Desktop Navigation */}
