@@ -96,27 +96,10 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
       <nav className="bg-gray-50 dark:bg-professional-blue-dark border-b border-border sticky top-0 z-50 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            {/* Logo with Static Menu */}
-            <div className="flex flex-col items-start">
+            {/* Logo */}
+            <div className="flex items-center">
               <div className="text-2xl font-bold text-primary">
-                Servo Scientific Suppliers
-              </div>
-              <div className="bg-card border border-border rounded-md px-3 py-1 mt-1 shadow-soft">
-                <div className="flex items-center space-x-2 text-sm">
-                  <button 
-                    onClick={onAboutClick}
-                    className="text-foreground hover:text-primary transition-colors font-medium"
-                  >
-                    About
-                  </button>
-                  <span className="text-muted-foreground">|</span>
-                  <button 
-                    onClick={onInquiryClick}
-                    className="text-foreground hover:text-primary transition-colors font-medium"
-                  >
-                    Inquiries
-                  </button>
-                </div>
+                Servo Scientific Suppliers  
               </div>
             </div>
 
@@ -263,6 +246,31 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
           </div>
         </div>
       </nav>
+
+      {/* Sub Navigation Menu */}
+      <div className="bg-background border-b border-border sticky top-16 z-40">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-center py-2">
+            <div className="bg-card border border-border rounded-md px-4 py-2 shadow-soft">
+              <div className="flex items-center space-x-3 text-sm">
+                <button 
+                  onClick={onAboutClick}
+                  className="text-foreground hover:text-primary transition-colors font-medium hover:bg-accent hover:text-accent-foreground px-2 py-1 rounded"
+                >
+                  About
+                </button>
+                <span className="text-muted-foreground">|</span>
+                <button 
+                  onClick={onInquiryClick}
+                  className="text-foreground hover:text-primary transition-colors font-medium hover:bg-accent hover:text-accent-foreground px-2 py-1 rounded"
+                >
+                  Inquiries
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* Quick Access Panel */}
       <div className="fixed left-0 top-1/2 -translate-y-1/2 z-40 group">
