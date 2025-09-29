@@ -53,12 +53,10 @@ const Footer: React.FC<FooterProps> = ({ onInquiryClick, onCategorySelect }) => 
           <div>
             <h4 className="text-lg font-semibold mb-6 text-foreground">Quick Links</h4>
             <ul className="space-y-3 text-sm">
-              <li><a href="/about" className="text-muted-foreground hover:text-primary transition-colors">About Us</a></li>
+              <li><button onClick={() => window.location.href = '/#about'} className="text-muted-foreground hover:text-primary transition-colors">About Us</button></li>
               <li><a href="/products" className="text-muted-foreground hover:text-primary transition-colors">All Products</a></li>
               <li><a href="/services" className="text-muted-foreground hover:text-primary transition-colors">Services & Support</a></li>
               <li><a href="/quality" className="text-muted-foreground hover:text-primary transition-colors">Quality Assurance</a></li>
-              <li><a href="/careers" className="text-muted-foreground hover:text-primary transition-colors">Careers</a></li>
-              <li><a href="/news" className="text-muted-foreground hover:text-primary transition-colors">News & Updates</a></li>
             </ul>
           </div>
 
