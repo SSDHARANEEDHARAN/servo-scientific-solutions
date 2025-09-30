@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Menu, X, ChevronDown, Sun, Moon, Phone, Download, Home, HelpCircle } from 'lucide-react';
+import { Menu, X, ChevronDown, Sun, Moon, Phone, Download, Home, HelpCircle, LogOut, User } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
-import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogTrigger, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
 import { productCategories, productDatabase } from '@/data';
+import { supabase } from '@/integrations/supabase/client';
+import type { User as SupabaseUser } from '@supabase/supabase-js';
 
 interface NavigationProps {
   onInquiryClick: () => void;
@@ -20,10 +22,18 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isSupportOpen, setIsSupportOpen] = useState(false);
+  const [showAuthModal, setShowAuthModal] = useState(false);
+  const [authMode, setAuthMode] = useState<'signin' | 'signup'>('signin');
+  const [user, setUser] = useState<SupabaseUser | null>(null);
+  const [authData, setAuthData] = useState({
+    email: '',
+    password: '',
+    confirmPassword: ''
+  });
   const { toast } = useToast();
 
   useEffect(() => {
-    // Check for saved theme preference or default to light mode
+    // Check for saved theme preference
     const savedTheme = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     
@@ -31,6 +41,18 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
       setIsDarkMode(true);
       document.documentElement.classList.add('dark');
     }
+
+    // Get initial session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user ?? null);
+    });
+
+    // Listen for auth changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      setUser(session?.user ?? null);
+    });
+
+    return () => subscription.unsubscribe();
   }, []);
 
   const handleProductClick = (productName: string) => {
@@ -53,29 +75,175 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
     }
   };
 
+  const requireAuth = (action: () => void) => {
+    if (!user) {
+      setShowAuthModal(true);
+      setAuthMode('signin');
+      toast({
+        title: "Sign in required",
+        description: "Please sign in to access this feature.",
+        variant: "destructive",
+      });
+      return;
+    }
+    action();
+  };
+
   const handleDownloadClick = () => {
-    toast({
-      title: "Feature Coming Soon",
-      description: "Download feature will be available soon!",
+    requireAuth(() => {
+      toast({
+        title: "Feature Coming Soon",
+        description: "Download feature will be available soon!",
+      });
     });
   };
 
-  const handleSupportSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const formData = new FormData(e.target as HTMLFormElement);
-    const data = {
-      name: formData.get('name'),
-      email: formData.get('email'),
-      message: formData.get('message')
-    };
-    
-    toast({
-      title: "Support Request Submitted",
-      description: "We'll get back to you soon!",
+  const handleInquiryClick = () => {
+    requireAuth(() => {
+      onInquiryClick();
     });
+  };
+
+  const handleSignIn = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      const { error } = await supabase.auth.signInWithPassword({
+        email: authData.email,
+        password: authData.password,
+      });
+      
+      if (error) throw error;
+      
+      toast({
+        title: "Signed in successfully!",
+        description: "Welcome back to Servo Scientific.",
+      });
+      setShowAuthModal(false);
+      setAuthData({ email: '', password: '', confirmPassword: '' });
+    } catch (error: any) {
+      toast({
+        title: "Sign in failed",
+        description: error.message,
+        variant: "destructive",
+      });
+    }
+  };
+
+  const handleSignUp = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (authData.password !== authData.confirmPassword) {
+      toast({
+        title: "Passwords don't match",
+        description: "Please make sure both passwords are the same.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    try {
+      const { error } = await supabase.auth.signUp({
+        email: authData.email,
+        password: authData.password,
+        options: {
+          emailRedirectTo: window.location.origin
+        }
+      });
+      
+      if (error) throw error;
+      
+      toast({
+        title: "Account created successfully!",
+        description: "You can now sign in with your credentials.",
+      });
+      setAuthMode('signin');
+      setAuthData({ email: authData.email, password: '', confirmPassword: '' });
+    } catch (error: any) {
+      toast({
+        title: "Sign up failed",
+        description: error.message,
+        variant: "destructive",
+      });
+    }
+  };
+
+  const handleGoogleSignIn = async () => {
+    try {
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
+        options: {
+          redirectTo: window.location.origin
+        }
+      });
+      
+      if (error) throw error;
+    } catch (error: any) {
+      toast({
+        title: "Google sign in failed",
+        description: error.message,
+        variant: "destructive",
+      });
+    }
+  };
+
+  const handleSignOut = async () => {
+    try {
+      const { error } = await supabase.auth.signOut();
+      if (error) throw error;
+      
+      toast({
+        title: "Signed out successfully",
+        description: "Thank you for visiting Servo Scientific.",
+      });
+    } catch (error: any) {
+      toast({
+        title: "Sign out failed",
+        description: error.message,
+        variant: "destructive",
+      });
+    }
+  };
+
+  const handleSupportSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
     
-    setIsSupportOpen(false);
-    (e.target as HTMLFormElement).reset();
+    if (!user) {
+      requireAuth(() => {});
+      return;
+    }
+
+    const formData = new FormData(e.target as HTMLFormElement);
+    
+    try {
+      const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/send-form-email`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          formType: 'contact',
+          name: formData.get('name'),
+          email: formData.get('email'),
+          message: formData.get('message')
+        }),
+      });
+
+      if (response.ok) {
+        toast({
+          title: "Support Request Submitted",
+          description: "We'll get back to you soon!",
+        });
+        setIsSupportOpen(false);
+        (e.target as HTMLFormElement).reset();
+      } else {
+        throw new Error('Failed to submit support request');
+      }
+    } catch (error) {
+      toast({
+        title: "Error submitting request",
+        description: "Please try again later.",
+        variant: "destructive",
+      });
+    }
   };
 
   const handleHomeClick = () => {
@@ -111,7 +279,7 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
                   </button>
                   <span className="text-muted-foreground">|</span>
                   <button 
-                    onClick={onInquiryClick}
+                    onClick={handleInquiryClick}
                     className="text-foreground hover:text-primary transition-colors font-medium"
                   >
                     Inquiries
@@ -123,10 +291,10 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-8">
               <nav className="flex items-center space-x-6">
-                    <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="text-foreground hover:text-primary transition-colors font-medium">
-                      Home
-                    </button>
-                
+                <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="text-foreground hover:text-primary transition-colors font-medium">
+                  Home
+                </button>
+            
                 {/* Products Mega Menu */}
                 <DropdownMenu>
                   <DropdownMenuTrigger className="flex items-center text-foreground hover:text-primary transition-colors font-medium group">
@@ -179,13 +347,30 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
                   {isDarkMode ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
                 </Button>
                 
-                <Button 
-                  variant="professional" 
-                  onClick={onInquiryClick}
-                  className="hidden xl:inline-flex text-primary-foreground bg-primary hover:bg-primary/90"
-                >
-                  Get Quote
-                </Button>
+                {user ? (
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button variant="ghost" className="flex items-center space-x-2">
+                        <User className="h-4 w-4" />
+                        <span>{user.email?.split('@')[0]}</span>
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent>
+                      <DropdownMenuItem onClick={handleSignOut}>
+                        <LogOut className="h-4 w-4 mr-2" />
+                        Sign Out
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                ) : (
+                  <Button 
+                    variant="professional" 
+                    onClick={() => setShowAuthModal(true)}
+                    className="text-primary-foreground bg-primary hover:bg-primary/90"
+                  >
+                    Sign In
+                  </Button>
+                )}
               </div>
             </div>
 
@@ -209,7 +394,7 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
                         About Us
                       </button>
                       <button 
-                        onClick={onInquiryClick}
+                        onClick={handleInquiryClick}
                         className="block w-full text-left text-foreground hover:text-primary transition-colors font-medium py-2"
                       >
                         Inquiries
@@ -248,13 +433,23 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
                         {isDarkMode ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
                       </Button>
                       
-                      <Button 
-                        variant="professional" 
-                        onClick={onInquiryClick}
-                        className="text-primary-foreground bg-primary hover:bg-primary/90"
-                      >
-                        Get Quote
-                      </Button>
+                      {user ? (
+                        <Button 
+                          variant="professional" 
+                          onClick={handleSignOut}
+                          className="text-primary-foreground bg-primary hover:bg-primary/90"
+                        >
+                          Sign Out
+                        </Button>
+                      ) : (
+                        <Button 
+                          variant="professional" 
+                          onClick={() => setShowAuthModal(true)}
+                          className="text-primary-foreground bg-primary hover:bg-primary/90"
+                        >
+                          Sign In
+                        </Button>
+                      )}
                     </div>
                   </div>
                 </SheetContent>
@@ -263,6 +458,81 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
           </div>
         </div>
       </nav>
+
+      {/* Authentication Modal */}
+      <Dialog open={showAuthModal} onOpenChange={setShowAuthModal}>
+        <DialogContent className="sm:max-w-md bg-card text-card-foreground">
+          <DialogHeader>
+            <DialogTitle className="text-foreground">
+              {authMode === 'signin' ? 'Sign In' : 'Sign Up'}
+            </DialogTitle>
+          </DialogHeader>
+          <div className="p-6">
+            <form onSubmit={authMode === 'signin' ? handleSignIn : handleSignUp} className="space-y-4">
+              <div>
+                <Label htmlFor="email" className="text-foreground">Email</Label>
+                <Input 
+                  id="email" 
+                  type="email"
+                  value={authData.email}
+                  onChange={(e) => setAuthData({...authData, email: e.target.value})}
+                  required 
+                  className="bg-background text-foreground border-border"
+                />
+              </div>
+              <div>
+                <Label htmlFor="password" className="text-foreground">Password</Label>
+                <Input 
+                  id="password" 
+                  type="password"
+                  value={authData.password}
+                  onChange={(e) => setAuthData({...authData, password: e.target.value})}
+                  required 
+                  className="bg-background text-foreground border-border"
+                />
+              </div>
+              {authMode === 'signup' && (
+                <div>
+                  <Label htmlFor="confirmPassword" className="text-foreground">Confirm Password</Label>
+                  <Input 
+                    id="confirmPassword" 
+                    type="password"
+                    value={authData.confirmPassword}
+                    onChange={(e) => setAuthData({...authData, confirmPassword: e.target.value})}
+                    required 
+                    className="bg-background text-foreground border-border"
+                  />
+                </div>
+              )}
+              <Button type="submit" className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
+                {authMode === 'signin' ? 'Sign In' : 'Sign Up'}
+              </Button>
+            </form>
+            
+            <div className="mt-4">
+              <Button 
+                onClick={handleGoogleSignIn}
+                variant="outline" 
+                className="w-full"
+              >
+                Continue with Google
+              </Button>
+            </div>
+            
+            <div className="mt-4 text-center">
+              <button 
+                onClick={() => {
+                  setAuthMode(authMode === 'signin' ? 'signup' : 'signin');
+                  setAuthData({ email: '', password: '', confirmPassword: '' });
+                }}
+                className="text-primary hover:underline text-sm"
+              >
+                {authMode === 'signin' ? "Don't have an account? Sign up" : "Already have an account? Sign in"}
+              </button>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
 
       {/* Quick Access Panel */}
       <div className="fixed left-0 top-1/2 -translate-y-1/2 z-40 group">
