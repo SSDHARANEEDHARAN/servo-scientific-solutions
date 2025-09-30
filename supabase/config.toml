@@ -1,1 +1,21 @@
 project_id = "vtpvmbnboisofbkzjyru"
+
+[api]
+enabled = true
+port = 54321
+schemas = ["public", "storage", "graphql_public"]
+extra_search_path = ["public", "extensions"]
+max_rows = 1000
+
+[auth]
+enabled = true
+port = 54324
+site_url = "https://lovable.dev"
+additional_redirect_urls = ["https://lovable.dev"]
+jwt_expiry = 3600
+enable_signup = true
+enable_email_confirmations = false
+enable_email_autoconfirm = true
+
+[functions.send-form-email]
+verify_jwt = false

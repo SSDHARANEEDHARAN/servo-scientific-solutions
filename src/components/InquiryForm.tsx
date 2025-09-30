@@ -147,35 +147,54 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ isOpen, onClose }) => {
     }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (validateStep(3)) {
-      // Create WhatsApp message with form data (properly encoded)
-      const message = `New Product Inquiry:
-      
-Product Category: ${encodeURIComponent(formData.productCategory)}
-Specific Machine: ${encodeURIComponent(formData.specificMachine)}
-Name: ${encodeURIComponent(formData.firstName + ' ' + formData.lastName)}
-Company: ${encodeURIComponent(formData.company || 'Not specified')}
-Email: ${encodeURIComponent(formData.email)}
-Phone: ${encodeURIComponent(formData.phone || 'Not provided')}
-Country: ${encodeURIComponent(formData.country)}
-Address: ${encodeURIComponent(formData.address)}
+      try {
+        // Send form data to backend
+        const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/send-form-email`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            formType: 'inquiry',
+            name: `${formData.firstName} ${formData.lastName}`,
+            email: formData.email,
+            phone: formData.phone,
+            company: formData.company,
+            productCategory: formData.productCategory,
+            machine: formData.specificMachine,
+            address: formData.address,
+            city: formData.country,
+            comments: formData.comments
+          }),
+        });
 
-Requirements: ${encodeURIComponent(formData.comments)}`;
-
-      toast({
-        title: "Inquiry submitted successfully!",
-        description: "We will contact you within 24 hours.",
-      });
-      
-      // Reset form and close
-      setFormData({
-        productCategory: '', specificMachine: '', firstName: '', lastName: '', 
-        company: '', address: '', country: '', phone: '', email: '', comments: ''
-      });
-      setCurrentStep(1);
-      setValidationErrors({});
-      onClose();
+        if (response.ok) {
+          toast({
+            title: "Inquiry submitted successfully!",
+            description: "We will contact you within 24 hours.",
+          });
+          
+          // Reset form and close
+          setFormData({
+            productCategory: '', specificMachine: '', firstName: '', lastName: '', 
+            company: '', address: '', country: '', phone: '', email: '', comments: ''
+          });
+          setCurrentStep(1);
+          setValidationErrors({});
+          onClose();
+        } else {
+          throw new Error('Failed to submit inquiry');
+        }
+      } catch (error) {
+        console.error('Error submitting inquiry:', error);
+        toast({
+          title: "Error submitting inquiry",
+          description: "Please try again later or contact us directly.",
+          variant: "destructive",
+        });
+      }
     }
   };
 

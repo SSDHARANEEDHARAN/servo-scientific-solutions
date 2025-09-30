@@ -1,0 +1,134 @@
+import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
+
+const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
+
+const corsHeaders = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Headers":
+    "authorization, x-client-info, apikey, content-type",
+};
+
+interface FormSubmission {
+  formType: string;
+  name: string;
+  email: string;
+  phone?: string;
+  message?: string;
+  company?: string;
+  productCategory?: string;
+  machine?: string;
+  address?: string;
+  city?: string;
+  state?: string;
+  pincode?: string;
+  comments?: string;
+  subject?: string;
+}
+
+const handler = async (req: Request): Promise<Response> => {
+  // Handle CORS preflight requests
+  if (req.method === "OPTIONS") {
+    return new Response(null, { headers: corsHeaders });
+  }
+
+  try {
+    const formData: FormSubmission = await req.json();
+
+    console.log("Received form submission:", formData);
+
+    // Create email content based on form type
+    let emailSubject = "";
+    let emailContent = "";
+
+    switch (formData.formType) {
+      case "inquiry":
+        emailSubject = `Product Inquiry - ${formData.productCategory || 'General'}`;
+        emailContent = `
+          <h2>New Product Inquiry</h2>
+          <p><strong>Name:</strong> ${formData.name}</p>
+          <p><strong>Email:</strong> ${formData.email}</p>
+          <p><strong>Phone:</strong> ${formData.phone || 'Not provided'}</p>
+          <p><strong>Company:</strong> ${formData.company || 'Not provided'}</p>
+          <p><strong>Product Category:</strong> ${formData.productCategory || 'Not specified'}</p>
+          <p><strong>Machine:</strong> ${formData.machine || 'Not specified'}</p>
+          <p><strong>Address:</strong> ${formData.address || 'Not provided'}</p>
+          <p><strong>City:</strong> ${formData.city || 'Not provided'}</p>
+          <p><strong>State:</strong> ${formData.state || 'Not provided'}</p>
+          <p><strong>Pincode:</strong> ${formData.pincode || 'Not provided'}</p>
+          <p><strong>Comments:</strong> ${formData.comments || 'No additional comments'}</p>
+        `;
+        break;
+      
+      case "contact":
+        emailSubject = `Contact Form - ${formData.subject || 'General Inquiry'}`;
+        emailContent = `
+          <h2>New Contact Form Submission</h2>
+          <p><strong>Name:</strong> ${formData.name}</p>
+          <p><strong>Email:</strong> ${formData.email}</p>
+          <p><strong>Phone:</strong> ${formData.phone || 'Not provided'}</p>
+          <p><strong>Subject:</strong> ${formData.subject || 'General Inquiry'}</p>
+          <p><strong>Message:</strong> ${formData.message || 'No message provided'}</p>
+        `;
+        break;
+      
+      case "service":
+        emailSubject = `Service Request - ${formData.name}`;
+        emailContent = `
+          <h2>New Service Request</h2>
+          <p><strong>Name:</strong> ${formData.name}</p>
+          <p><strong>Email:</strong> ${formData.email}</p>
+          <p><strong>Phone:</strong> ${formData.phone || 'Not provided'}</p>
+          <p><strong>Company:</strong> ${formData.company || 'Not provided'}</p>
+          <p><strong>Message:</strong> ${formData.message || 'No message provided'}</p>
+        `;
+        break;
+      
+      default:
+        emailSubject = `Form Submission - ${formData.name}`;
+        emailContent = `
+          <h2>New Form Submission</h2>
+          <p><strong>Name:</strong> ${formData.name}</p>
+          <p><strong>Email:</strong> ${formData.email}</p>
+          <p><strong>Message:</strong> ${formData.message || 'No message provided'}</p>
+        `;
+    }
+
+    // Send email using Resend API
+    const emailResponse = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${RESEND_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: "Servo Scientific <onboarding@resend.dev>",
+        to: ["tharaneetharanss@gmail.com"],
+        subject: emailSubject,
+        html: emailContent,
+      }),
+    });
+
+    const emailResult = await emailResponse.json();
+
+    console.log("Email sent successfully:", emailResult);
+
+    return new Response(JSON.stringify({ success: true, emailResult }), {
+      status: 200,
+      headers: {
+        "Content-Type": "application/json",
+        ...corsHeaders,
+      },
+    });
+  } catch (error: any) {
+    console.error("Error in send-form-email function:", error);
+    return new Response(
+      JSON.stringify({ error: error.message }),
+      {
+        status: 500,
+        headers: { "Content-Type": "application/json", ...corsHeaders },
+      }
+    );
+  }
+};
+
+serve(handler);

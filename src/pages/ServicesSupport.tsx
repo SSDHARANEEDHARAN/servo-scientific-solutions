@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { ArrowLeft, Wrench, Phone, Clock, Award, Shield, CheckCircle } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
 
 interface ServicesSupportProps {
   onBackToHome: () => void;
@@ -11,6 +12,7 @@ interface ServicesSupportProps {
 }
 
 const ServicesSupport: React.FC<ServicesSupportProps> = ({ onBackToHome, onInquiryClick }) => {
+  const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -27,10 +29,51 @@ const ServicesSupport: React.FC<ServicesSupportProps> = ({ onBackToHome, onInqui
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log('Service form submitted:', formData);
+    
+    try {
+      // Send form data to backend
+      const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/send-form-email`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          formType: 'service',
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          company: formData.company,
+          message: formData.message
+        }),
+      });
+
+      if (response.ok) {
+        toast({
+          title: "Service request submitted successfully!",
+          description: "Our support team will contact you within 2 hours.",
+        });
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          company: '',
+          serviceType: '',
+          message: ''
+        });
+      } else {
+        throw new Error('Failed to submit service request');
+      }
+    } catch (error) {
+      console.error('Error submitting service request:', error);
+      toast({
+        title: "Error submitting request",
+        description: "Please try again later or contact us directly.",
+        variant: "destructive",
+      });
+    }
   };
 
   const services = [
