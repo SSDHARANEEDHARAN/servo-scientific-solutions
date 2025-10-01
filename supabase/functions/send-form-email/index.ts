@@ -1,6 +1,10 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
+import { SMTPClient } from "https://deno.land/x/denomailer@1.6.0/mod.ts";
 
-const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
+const SMTP_HOST = Deno.env.get("SMTP_HOST") || "smtp.resend.com";
+const SMTP_PORT = parseInt(Deno.env.get("SMTP_PORT") || "587");
+const SMTP_USER = Deno.env.get("SMTP_USER") || "servoscientific@yahoo.com";
+const SMTP_PASSWORD = Deno.env.get("SMTP_PASSWORD") || "re_XN8ML2wR_7J5D6ygiEvEbaYW2oecj9acJ";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -93,26 +97,32 @@ const handler = async (req: Request): Promise<Response> => {
         `;
     }
 
-    // Send email using Resend API
-    const emailResponse = await fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${RESEND_API_KEY}`,
-        'Content-Type': 'application/json',
+    // Send email using SMTP
+    const client = new SMTPClient({
+      connection: {
+        hostname: SMTP_HOST,
+        port: SMTP_PORT,
+        tls: true,
+        auth: {
+          username: SMTP_USER,
+          password: SMTP_PASSWORD,
+        },
       },
-      body: JSON.stringify({
-        from: "Servo Scientific <onboarding@resend.dev>",
-        to: ["servoscientific@yahoo.com"],
-        subject: emailSubject,
-        html: emailContent,
-      }),
     });
 
-    const emailResult = await emailResponse.json();
+    await client.send({
+      from: SMTP_USER,
+      to: "servoscientific@yahoo.com",
+      subject: emailSubject,
+      content: emailContent,
+      html: emailContent,
+    });
 
-    console.log("Email sent successfully:", emailResult);
+    await client.close();
 
-    return new Response(JSON.stringify({ success: true, emailResult }), {
+    console.log("Email sent successfully via SMTP");
+
+    return new Response(JSON.stringify({ success: true }), {
       status: 200,
       headers: {
         "Content-Type": "application/json",
