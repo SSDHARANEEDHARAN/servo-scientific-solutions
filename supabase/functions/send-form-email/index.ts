@@ -111,7 +111,7 @@ const handler = async (req: Request): Promise<Response> => {
     });
 
     await client.send({
-      from: SMTP_USER,
+      from: "Servo Scientific <servoscientific@yahoo.com>",
       to: "servoscientific@yahoo.com",
       subject: emailSubject,
       content: emailContent,
