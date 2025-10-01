@@ -3,7 +3,7 @@ import { SMTPClient } from "https://deno.land/x/denomailer@1.6.0/mod.ts";
 
 const SMTP_HOST = Deno.env.get("SMTP_HOST") || "smtp.resend.com";
 const SMTP_PORT = parseInt(Deno.env.get("SMTP_PORT") || "587");
-const SMTP_USER = Deno.env.get("SMTP_USER") || "servoscientific@yahoo.com";
+const SMTP_USER = Deno.env.get("SMTP_USER") || "resend";
 const SMTP_PASSWORD = Deno.env.get("SMTP_PASSWORD") || "re_XN8ML2wR_7J5D6ygiEvEbaYW2oecj9acJ";
 
 const corsHeaders = {
@@ -111,7 +111,7 @@ const handler = async (req: Request): Promise<Response> => {
     });
 
     await client.send({
-      from: "Servo Scientific <servoscientific@yahoo.com>",
+      from: "Servo Scientific <onboarding@resend.dev>",
       to: "servoscientific@yahoo.com",
       subject: emailSubject,
       content: emailContent,
