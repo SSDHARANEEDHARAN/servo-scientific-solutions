@@ -102,7 +102,7 @@ const handler = async (req: Request): Promise<Response> => {
       },
       body: JSON.stringify({
         from: "Servo Scientific <onboarding@resend.dev>",
-        to: ["tharaneetharanss@gmail.com"],
+        to: ["servoscientific@yahoo.com"],
         subject: emailSubject,
         html: emailContent,
       }),
