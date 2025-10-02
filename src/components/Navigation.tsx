@@ -332,9 +332,12 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
                   </DropdownMenuContent>
                 </DropdownMenu>
 
-                <a href="#" className="text-foreground hover:text-primary transition-colors font-medium">
+                <button 
+                  onClick={() => setIsSupportOpen(true)}
+                  className="text-foreground hover:text-primary transition-colors font-medium"
+                >
                   Contact
-                </a>
+                </button>
               </nav>
 
               <div className="flex items-center space-x-4">
@@ -419,9 +422,12 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
                       ))}
                     </div>
                     
-                    <a href="#" className="text-foreground hover:text-primary transition-colors font-medium">
+                    <button 
+                      onClick={() => setIsSupportOpen(true)}
+                      className="text-foreground hover:text-primary transition-colors font-medium w-full text-left"
+                    >
                       Contact
-                    </a>
+                    </button>
                     
                     <div className="flex items-center space-x-4 pt-4 border-t border-border">
                       <Button
