@@ -11,6 +11,7 @@ import QualityAssurance from "./pages/QualityAssurance";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import CookiePolicy from "./pages/CookiePolicy";
+import Contact from "./pages/Contact";
 
 const queryClient = new QueryClient();
 
@@ -25,6 +26,7 @@ const App = () => (
           <Route path="/products" element={<AllProducts onBackToHome={() => window.location.href = '/'} onInquiryClick={() => {}} />} />
           <Route path="/services" element={<ServicesSupport onBackToHome={() => window.location.href = '/'} onInquiryClick={() => {}} />} />
           <Route path="/quality" element={<QualityAssurance onBackToHome={() => window.location.href = '/'} />} />
+          <Route path="/contact" element={<Contact onBackToHome={() => window.location.href = '/'} onInquiryClick={() => {}} />} />
           <Route path="/privacy" element={<PrivacyPolicy onBackToHome={() => window.location.href = '/'} />} />
           <Route path="/terms" element={<TermsOfService onBackToHome={() => window.location.href = '/'} />} />
           <Route path="/cookies" element={<CookiePolicy onBackToHome={() => window.location.href = '/'} />} />
