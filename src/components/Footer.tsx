@@ -127,7 +127,7 @@ const Footer: React.FC<FooterProps> = ({ onInquiryClick, onCategorySelect }) => 
             <p className="text-white/90 mb-6 max-w-2xl mx-auto">
               Contact our expert team today for personalized solutions and competitive pricing on all our scientific equipment.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex justify-center">
               <Button 
                 variant="inquiry" 
                 size="lg"
@@ -135,13 +135,6 @@ const Footer: React.FC<FooterProps> = ({ onInquiryClick, onCategorySelect }) => 
                 className="bg-white text-professional-blue hover:bg-gray-100"
               >
                 Get Free Quote
-              </Button>
-              <Button 
-                variant="outline" 
-                size="lg"
-                className="border-white text-white hover:bg-white hover:text-professional-blue"
-              >
-                Download Catalog
               </Button>
             </div>
           </div>
