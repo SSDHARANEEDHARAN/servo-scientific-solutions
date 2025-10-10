@@ -548,86 +548,120 @@ const ProductShowcase: React.FC<ProductShowcaseProps> = ({ onInquiryClick, onPro
   };
 
   return (
-    <section className="py-20 bg-surface-blue dark:bg-slate-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-technical-gray dark:text-white mb-4">
-            Our Product Categories
+    <section className="py-24 bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.1),transparent_50%)]"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(139,92,246,0.08),transparent_50%)]"></div>
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center mb-20 animate-fade-in">
+          <div className="inline-block mb-4">
+            <span className="px-4 py-2 bg-primary/10 dark:bg-primary/20 text-primary rounded-full text-sm font-semibold">
+              Our Products
+            </span>
+          </div>
+          <h2 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 dark:from-white dark:via-blue-200 dark:to-white bg-clip-text text-transparent mb-6">
+            Product Categories
           </h2>
-          <p className="text-xl text-technical-gray dark:text-slate-300 max-w-3xl mx-auto">
+          <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed">
             Discover our comprehensive range of scientific and industrial equipment,
             engineered for precision and reliability across diverse applications.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {productCategories.map((category) => {
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+          {productCategories.map((category, index) => {
             const IconComponent = category.icon;
             return (
-              <Card key={category.title} className="group shadow-card hover:shadow-elegant card-hover bg-gradient-card border-border">
-                <CardContent className="p-6">
-                  <div className="flex items-center mb-4">
-                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4 group-hover:bg-primary/20 transition-colors shadow-card">
-                      <IconComponent className="h-6 w-6 text-primary" />
+              <Card 
+                key={category.title} 
+                className="group relative overflow-hidden border-0 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 animate-fade-in"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                {/* Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                
+                {/* Card Content */}
+                <CardContent className="p-8 relative z-10">
+                  {/* Icon Header */}
+                  <div className="flex items-start mb-6">
+                    <div className="relative">
+                      <div className="absolute inset-0 bg-primary/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+                      <div className="relative w-16 h-16 bg-gradient-to-br from-primary to-primary/70 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                        <IconComponent className="h-8 w-8 text-white" />
+                      </div>
                     </div>
-                    <h3 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
-                      {category.title}
-                    </h3>
+                    <div className="ml-4 flex-1">
+                      <h3 className="text-2xl font-bold text-slate-900 dark:text-white group-hover:text-primary dark:group-hover:text-blue-300 transition-colors duration-300">
+                        {category.title}
+                      </h3>
+                    </div>
                   </div>
                   
-                  <p className="text-technical-gray dark:text-slate-300 mb-4 text-sm leading-relaxed">
+                  <p className="text-slate-600 dark:text-slate-300 mb-6 leading-relaxed min-h-[60px]">
                     {category.description}
                   </p>
                   
-                   <div className="mb-6">
-                     <h4 className="font-medium text-technical-gray dark:text-slate-300 mb-2">Popular Products:</h4>
-                     <ul className="text-sm text-technical-gray dark:text-slate-400 space-y-1">
-                       {category.products.map((product) => (
-                         <li 
-                           key={product} 
-                           className="flex items-center cursor-pointer hover:text-professional-blue dark:hover:text-blue-300 transition-colors"
-                           onClick={() => handleProductClick(product)}
-                         >
-                           <div className="w-1.5 h-1.5 bg-professional-blue rounded-full mr-2"></div>
-                           {product}
-                         </li>
-                       ))}
-                     </ul>
-                   </div>
+                  {/* Popular Products */}
+                  <div className="mb-8">
+                    <h4 className="font-semibold text-slate-700 dark:text-slate-200 mb-3 flex items-center">
+                      <span className="w-1 h-4 bg-primary rounded-full mr-2"></span>
+                      Popular Products
+                    </h4>
+                    <ul className="space-y-2">
+                      {category.products.slice(0, 3).map((product) => (
+                        <li 
+                          key={product} 
+                          className="flex items-center cursor-pointer group/item py-1.5 px-3 -mx-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-all duration-200"
+                          onClick={() => handleProductClick(product)}
+                        >
+                          <div className="w-2 h-2 bg-primary/60 rounded-full mr-3 group-hover/item:scale-150 group-hover/item:bg-primary transition-all duration-200"></div>
+                          <span className="text-sm text-slate-600 dark:text-slate-300 group-hover/item:text-primary dark:group-hover/item:text-blue-300 group-hover/item:translate-x-1 transition-all duration-200">
+                            {product}
+                          </span>
+                        </li>
+                      ))}
+                      {category.products.length > 3 && (
+                        <li className="text-xs text-slate-500 dark:text-slate-400 pl-5">
+                          +{category.products.length - 3} more products
+                        </li>
+                      )}
+                    </ul>
+                  </div>
                   
-                   <div className="flex space-x-2">
-                     <DropdownMenu>
-                       <DropdownMenuTrigger asChild>
-                         <Button 
-                           variant="professional" 
-                           size="sm" 
-                           className="flex-1"
-                         >
-                           View Products
-                           <ChevronDown className="ml-2 h-4 w-4" />
-                         </Button>
-                       </DropdownMenuTrigger>
-                       <DropdownMenuContent align="start" className="w-56 bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700">
-                         {category.products.map((product) => (
-                           <DropdownMenuItem 
-                             key={product}
-                             onClick={() => handleProductClick(product)}
-                             className="cursor-pointer hover:bg-surface-blue dark:hover:bg-slate-700 text-technical-gray dark:text-slate-300 hover:text-professional-blue dark:hover:text-blue-300"
-                           >
-                             <div className="w-2 h-2 bg-professional-blue rounded-full mr-3"></div>
-                             {product}
-                           </DropdownMenuItem>
-                         ))}
-                       </DropdownMenuContent>
-                     </DropdownMenu>
-                     
-                     <Button 
-                       variant="inquiry" 
-                       size="sm"
-                       onClick={onInquiryClick}
-                     >
-                       Enquiry
-                     </Button>
+                  {/* Action Buttons */}
+                  <div className="flex gap-3">
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <Button 
+                          variant="professional" 
+                          className="flex-1 group-hover:shadow-lg transition-all duration-300"
+                        >
+                          View All
+                          <ChevronDown className="ml-2 h-4 w-4 group-hover:translate-y-0.5 transition-transform" />
+                        </Button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent align="start" className="w-64 bg-white/95 dark:bg-slate-800/95 backdrop-blur-sm border-slate-200 dark:border-slate-700 shadow-xl">
+                        {category.products.map((product) => (
+                          <DropdownMenuItem 
+                            key={product}
+                            onClick={() => handleProductClick(product)}
+                            className="cursor-pointer hover:bg-primary/10 dark:hover:bg-primary/20 text-slate-700 dark:text-slate-300 hover:text-primary dark:hover:text-blue-300 transition-colors py-3"
+                          >
+                            <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
+                            {product}
+                          </DropdownMenuItem>
+                        ))}
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                    
+                    <Button 
+                      variant="inquiry" 
+                      onClick={onInquiryClick}
+                      className="group-hover:shadow-lg group-hover:scale-105 transition-all duration-300"
+                    >
+                      Enquiry
+                    </Button>
                   </div>
                 </CardContent>
               </Card>
@@ -636,21 +670,31 @@ const ProductShowcase: React.FC<ProductShowcaseProps> = ({ onInquiryClick, onPro
         </div>
 
         {/* Call to Action */}
-        <div className="text-center mt-16">
-          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-card p-8 max-w-4xl mx-auto">
-            <h3 className="text-2xl font-bold text-technical-gray dark:text-white mb-4">
-              Need Custom Solutions?
-            </h3>
-            <p className="text-technical-gray dark:text-slate-300 mb-6">
-              Our engineering team can design and manufacture custom equipment 
-              tailored to your specific requirements.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="professional" size="lg" onClick={onInquiryClick}>
+        <div className="text-center animate-fade-in">
+          <div className="relative bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 dark:from-slate-800 dark:via-blue-900 dark:to-slate-800 rounded-3xl shadow-2xl p-12 max-w-4xl mx-auto overflow-hidden">
+            {/* Animated Background */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.2),transparent_70%)] animate-pulse"></div>
+            
+            <div className="relative z-10">
+              <div className="inline-block mb-4">
+                <span className="px-4 py-2 bg-white/10 backdrop-blur-sm text-white rounded-full text-sm font-semibold">
+                  Custom Solutions
+                </span>
+              </div>
+              <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                Need Custom Solutions?
+              </h3>
+              <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
+                Our engineering team can design and manufacture custom equipment 
+                tailored to your specific requirements.
+              </p>
+              <Button 
+                variant="inquiry" 
+                size="lg"
+                onClick={onInquiryClick}
+                className="bg-white text-slate-900 hover:bg-slate-100 shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
+              >
                 Request Custom Quote
-              </Button>
-              <Button variant="outline" size="lg">
-                Download Catalog
               </Button>
             </div>
           </div>
