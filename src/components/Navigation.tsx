@@ -302,32 +302,47 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
                     <ChevronDown className="ml-1 h-4 w-4 transition-transform group-data-[state=open]:rotate-180" />
                   </DropdownMenuTrigger>
                   <DropdownMenuContent 
-                    className="w-[800px] p-6 bg-card border-border"
+                    className="w-[900px] p-0 bg-gradient-to-br from-card via-card to-accent/5 border-2 border-primary/20 shadow-2xl backdrop-blur-lg overflow-hidden"
                     onMouseLeave={() => {
                       // Auto-close on mouse leave
                       const trigger = document.querySelector('[data-radix-dropdown-trigger]') as HTMLElement;
                       if (trigger) trigger.click();
                     }}
                   >
-                    <div className="grid grid-cols-3 gap-6">
-                      {Object.entries(productCategories).map(([categoryName, products]) => (
-                        <div key={categoryName} className="space-y-3">
-                          <h3 className="font-semibold text-sm text-primary uppercase tracking-wide">
-                            {categoryName}
-                          </h3>
-                          <div className="space-y-2">
-                            {products.map((productName) => (
-                              <button
-                                key={productName}
-                                onClick={() => handleProductClick(productName)}
-                                className="block w-full text-left text-sm text-muted-foreground hover:text-foreground transition-colors py-1"
-                              >
-                                {productName}
-                              </button>
-                            ))}
+                    <div className="p-8">
+                      <div className="grid grid-cols-3 gap-8">
+                        {Object.entries(productCategories).map(([categoryName, products]) => (
+                          <div 
+                            key={categoryName} 
+                            className="space-y-4 group/category relative"
+                          >
+                            <div className="absolute -inset-2 bg-gradient-to-br from-primary/5 to-transparent rounded-xl opacity-0 group-hover/category:opacity-100 transition-opacity duration-300 -z-10" />
+                            <div className="flex items-center space-x-2 pb-2 border-b-2 border-primary/30">
+                              <div className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
+                              <h3 className="font-bold text-base text-primary uppercase tracking-wider">
+                                {categoryName}
+                              </h3>
+                            </div>
+                            <div className="space-y-1">
+                              {products.map((productName) => (
+                                <button
+                                  key={productName}
+                                  onClick={() => handleProductClick(productName)}
+                                  className="block w-full text-left text-sm text-muted-foreground hover:text-primary transition-all duration-200 py-2 px-3 rounded-lg hover:bg-primary/10 hover:translate-x-1 group/item relative overflow-hidden"
+                                >
+                                  <span className="absolute left-0 top-1/2 -translate-y-1/2 w-0 h-0.5 bg-primary group-hover/item:w-1 transition-all duration-200" />
+                                  <span className="relative z-10">{productName}</span>
+                                </button>
+                              ))}
+                            </div>
                           </div>
-                        </div>
-                      ))}
+                        ))}
+                      </div>
+                    </div>
+                    <div className="bg-gradient-to-r from-primary/10 via-primary/5 to-transparent px-8 py-4 border-t border-primary/20">
+                      <p className="text-xs text-muted-foreground text-center">
+                        Explore our comprehensive range of scientific equipment
+                      </p>
                     </div>
                   </DropdownMenuContent>
                 </DropdownMenu>
