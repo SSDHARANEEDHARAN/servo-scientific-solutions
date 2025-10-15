@@ -56,31 +56,28 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ onBack, onInquiry
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Image Carousel */}
+          {/* All Images Gallery */}
           <div className="bg-white dark:bg-slate-800 rounded-lg shadow-card p-6">
             <h2 className="text-xl font-semibold text-technical-gray dark:text-white mb-4">
-              Product Images
+              Product Images ({product.images.length})
             </h2>
-            <Carousel className="w-full">
-              <CarouselContent>
-                {product.images.map((image, index) => (
-                  <CarouselItem key={index}>
-                    <div className="aspect-square bg-surface-blue dark:bg-slate-700 rounded-lg flex items-center justify-center border border-slate-200 dark:border-slate-600">
-                      <img 
-                        src={image} 
-                        alt={`${product.name} - View ${index + 1}`}
-                        className="w-full h-full object-cover rounded-lg"
-                        onError={(e) => {
-                          e.currentTarget.src = '/placeholder.svg';
-                        }}
-                      />
-                    </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious className="left-2" />
-              <CarouselNext className="right-2" />
-            </Carousel>
+            <div className="grid grid-cols-2 gap-4">
+              {product.images.map((image, index) => (
+                <div 
+                  key={index}
+                  className="aspect-square bg-surface-blue dark:bg-slate-700 rounded-lg flex items-center justify-center border-2 border-slate-200 dark:border-slate-600 hover:border-primary transition-all duration-300 overflow-hidden group"
+                >
+                  <img 
+                    src={image} 
+                    alt={`${product.name} - View ${index + 1}`}
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                    onError={(e) => {
+                      e.currentTarget.src = '/placeholder.svg';
+                    }}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Product Information */}
