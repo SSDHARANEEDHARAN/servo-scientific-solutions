@@ -138,6 +138,13 @@ All colors MUST be HSL.
 @layer base {
   * {
     @apply border-border;
+    /* Disable text selection */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    /* Disable context menu */
+    -webkit-touch-callout: none;
   }
 
   body {
