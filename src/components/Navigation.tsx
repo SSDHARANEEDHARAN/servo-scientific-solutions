@@ -25,6 +25,7 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [authMode, setAuthMode] = useState<'signin' | 'signup'>('signin');
   const [user, setUser] = useState<SupabaseUser | null>(null);
+  const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
   const [authData, setAuthData] = useState({
     email: '',
     password: '',
@@ -302,39 +303,52 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
                     <ChevronDown className="ml-1 h-4 w-4 transition-transform group-data-[state=open]:rotate-180" />
                   </DropdownMenuTrigger>
                   <DropdownMenuContent 
-                    className="w-[650px] p-0 bg-gradient-to-br from-card via-card to-accent/5 border-2 border-primary/20 shadow-2xl backdrop-blur-lg overflow-hidden"
+                    className="w-[400px] p-0 bg-gradient-to-br from-card via-card to-accent/5 border-2 border-primary/20 shadow-2xl backdrop-blur-lg overflow-hidden"
                     onMouseLeave={() => {
                       // Auto-close on mouse leave
                       const trigger = document.querySelector('[data-radix-dropdown-trigger]') as HTMLElement;
                       if (trigger) trigger.click();
+                      setExpandedCategory(null);
                     }}
                   >
                     <div className="p-4">
-                      <div className="grid grid-cols-3 gap-4">
+                      <div className="space-y-2">
                         {Object.entries(productCategories).map(([categoryName, products]) => (
                           <div 
                             key={categoryName} 
-                            className="space-y-2 group/category relative"
+                            className="border-b border-primary/10 last:border-0"
                           >
-                            <div className="absolute -inset-2 bg-gradient-to-br from-primary/5 to-transparent rounded-xl opacity-0 group-hover/category:opacity-100 transition-opacity duration-300 -z-10" />
-                            <div className="flex items-center space-x-2 pb-2 border-b-2 border-primary/30">
-                              <div className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
-                              <h3 className="font-bold text-base text-primary uppercase tracking-wider">
-                                {categoryName}
-                              </h3>
-                            </div>
-                            <div className="space-y-0.5">
-                              {products.map((productName) => (
-                                <button
-                                  key={productName}
-                                  onClick={() => handleProductClick(productName)}
-                                  className="block w-full text-left text-sm text-muted-foreground hover:text-primary transition-all duration-200 py-1.5 px-2 rounded-lg hover:bg-primary/10 hover:translate-x-1 group/item relative overflow-hidden"
-                                >
-                                  <span className="absolute left-0 top-1/2 -translate-y-1/2 w-0 h-0.5 bg-primary group-hover/item:w-1 transition-all duration-200" />
-                                  <span className="relative z-10">{productName}</span>
-                                </button>
-                              ))}
-                            </div>
+                            <button
+                              onClick={() => setExpandedCategory(expandedCategory === categoryName ? null : categoryName)}
+                              className="w-full flex items-center justify-between p-3 hover:bg-primary/5 rounded-lg transition-all duration-200 group"
+                            >
+                              <div className="flex items-center space-x-2">
+                                <div className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
+                                <h3 className="font-bold text-base text-primary uppercase tracking-wider">
+                                  {categoryName}
+                                </h3>
+                              </div>
+                              <ChevronDown 
+                                className={`h-4 w-4 text-primary transition-transform duration-200 ${
+                                  expandedCategory === categoryName ? 'rotate-180' : ''
+                                }`}
+                              />
+                            </button>
+                            
+                            {expandedCategory === categoryName && (
+                              <div className="pl-6 pr-3 pb-3 space-y-1 animate-in slide-in-from-top-2 duration-200">
+                                {products.map((productName) => (
+                                  <button
+                                    key={productName}
+                                    onClick={() => handleProductClick(productName)}
+                                    className="block w-full text-left text-sm text-muted-foreground hover:text-primary transition-all duration-200 py-1.5 px-2 rounded-lg hover:bg-primary/10 hover:translate-x-1 group/item relative overflow-hidden"
+                                  >
+                                    <span className="absolute left-0 top-1/2 -translate-y-1/2 w-0 h-0.5 bg-primary group-hover/item:w-1 transition-all duration-200" />
+                                    <span className="relative z-10">{productName}</span>
+                                  </button>
+                                ))}
+                              </div>
+                            )}
                           </div>
                         ))}
                       </div>
