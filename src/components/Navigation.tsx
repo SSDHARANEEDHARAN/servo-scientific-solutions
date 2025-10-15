@@ -26,6 +26,7 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
   const [authMode, setAuthMode] = useState<'signin' | 'signup'>('signin');
   const [user, setUser] = useState<SupabaseUser | null>(null);
   const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
+  const [isProductDropdownOpen, setIsProductDropdownOpen] = useState(false);
   const [authData, setAuthData] = useState({
     email: '',
     password: '',
@@ -297,17 +298,18 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
                 </button>
             
                 {/* Products Mega Menu */}
-                <DropdownMenu>
-                  <DropdownMenuTrigger className="flex items-center text-foreground hover:text-primary transition-colors font-medium group">
+                <DropdownMenu open={isProductDropdownOpen} onOpenChange={setIsProductDropdownOpen}>
+                  <DropdownMenuTrigger 
+                    className="flex items-center text-foreground hover:text-primary transition-colors font-medium group"
+                    onMouseEnter={() => setIsProductDropdownOpen(true)}
+                  >
                     Products
-                    <ChevronDown className="ml-1 h-4 w-4 transition-transform group-data-[state=open]:rotate-180" />
+                    <ChevronDown className={`ml-1 h-4 w-4 transition-transform ${isProductDropdownOpen ? 'rotate-180' : ''}`} />
                   </DropdownMenuTrigger>
                   <DropdownMenuContent 
                     className="w-[400px] p-0 bg-gradient-to-br from-card via-card to-accent/5 border-2 border-primary/20 shadow-2xl backdrop-blur-lg overflow-hidden"
                     onMouseLeave={() => {
-                      // Auto-close on mouse leave
-                      const trigger = document.querySelector('[data-radix-dropdown-trigger]') as HTMLElement;
-                      if (trigger) trigger.click();
+                      setIsProductDropdownOpen(false);
                       setExpandedCategory(null);
                     }}
                   >
