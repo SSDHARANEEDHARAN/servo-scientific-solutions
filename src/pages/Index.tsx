@@ -12,6 +12,7 @@ import SEOHead from '@/components/SEOHead';
 import AllProducts from '@/pages/AllProducts';
 import ServicesSupport from '@/pages/ServicesSupport';
 import QualityAssurance from '@/pages/QualityAssurance';
+import Contact from '@/pages/Contact';
 import { productCategories, productDatabase } from '@/data';
 
 const Index = () => {
@@ -24,6 +25,7 @@ const Index = () => {
   const [showAllProducts, setShowAllProducts] = useState(false);
   const [showServices, setShowServices] = useState(false);
   const [showQuality, setShowQuality] = useState(false);
+  const [showContact, setShowContact] = useState(false);
 
   const handleInquiryClick = () => {
     setIsInquiryOpen(true);
@@ -60,6 +62,7 @@ const Index = () => {
     setShowAllProducts(false);
     setShowServices(false);
     setShowQuality(false);
+    setShowContact(false);
   };
 
   const handleAboutClick = () => {
@@ -69,6 +72,7 @@ const Index = () => {
     setShowAllProducts(false);
     setShowServices(false);
     setShowQuality(false);
+    setShowContact(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -79,6 +83,7 @@ const Index = () => {
     setShowProductDetail(false);
     setShowServices(false);
     setShowQuality(false);
+    setShowContact(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -89,6 +94,7 @@ const Index = () => {
     setShowProductDetail(false);
     setShowAllProducts(false);
     setShowQuality(false);
+    setShowContact(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -99,6 +105,18 @@ const Index = () => {
     setShowProductDetail(false);
     setShowAllProducts(false);
     setShowServices(false);
+    setShowContact(false);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleContactClick = () => {
+    setShowContact(true);
+    setShowAboutPage(false);
+    setShowCategoryPage(false);
+    setShowProductDetail(false);
+    setShowAllProducts(false);
+    setShowServices(false);
+    setShowQuality(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -166,6 +184,7 @@ const Index = () => {
         onInquiryClick={handleInquiryClick} 
         onProductSelect={handleProductSelect}
         onAboutClick={handleAboutClick}
+        onContactClick={handleContactClick}
       />
       
       {showAboutPage ? (
@@ -186,6 +205,11 @@ const Index = () => {
       ) : showQuality ? (
         <QualityAssurance
           onBackToHome={handleBackToHome}
+        />
+      ) : showContact ? (
+        <Contact
+          onBackToHome={handleBackToHome}
+          onInquiryClick={handleInquiryClick}
         />
       ) : showCategoryPage && selectedCategory ? (
         <ProductCategoryPage
@@ -215,6 +239,7 @@ const Index = () => {
             onAllProductsClick={handleAllProductsClick}
             onServicesClick={handleServicesClick}
             onQualityClick={handleQualityClick}
+            onContactClick={handleContactClick}
           />
         </>
       )}

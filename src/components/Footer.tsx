@@ -22,9 +22,10 @@ interface FooterProps {
   onAllProductsClick?: () => void;
   onServicesClick?: () => void;
   onQualityClick?: () => void;
+  onContactClick?: () => void;
 }
 
-const Footer: React.FC<FooterProps> = ({ onInquiryClick, onCategorySelect, onAboutClick, onAllProductsClick, onServicesClick, onQualityClick }) => {
+const Footer: React.FC<FooterProps> = ({ onInquiryClick, onCategorySelect, onAboutClick, onAllProductsClick, onServicesClick, onQualityClick, onContactClick }) => {
   return (
     <footer className="bg-gray-50 dark:bg-professional-blue-dark text-foreground">
       {/* Main Footer Content */}
@@ -61,6 +62,7 @@ const Footer: React.FC<FooterProps> = ({ onInquiryClick, onCategorySelect, onAbo
               <li><button onClick={onAllProductsClick} className="text-muted-foreground hover:text-primary transition-colors">All Products</button></li>
               <li><button onClick={onServicesClick} className="text-muted-foreground hover:text-primary transition-colors">Services & Support</button></li>
               <li><button onClick={onQualityClick} className="text-muted-foreground hover:text-primary transition-colors">Quality Assurance</button></li>
+              <li><button onClick={onContactClick} className="text-muted-foreground hover:text-primary transition-colors">Contact</button></li>
             </ul>
           </div>
 

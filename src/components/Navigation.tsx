@@ -16,9 +16,10 @@ interface NavigationProps {
   onInquiryClick: () => void;
   onProductSelect?: (product: any) => void;
   onAboutClick?: () => void;
+  onContactClick?: () => void;
 }
 
-const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect, onAboutClick }) => {
+const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect, onAboutClick, onContactClick }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isSupportOpen, setIsSupportOpen] = useState(false);
@@ -363,12 +364,12 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
                   </DropdownMenuContent>
                 </DropdownMenu>
 
-                <a 
-                  href="/contact"
+                <button 
+                  onClick={onContactClick}
                   className="text-foreground hover:text-primary transition-colors font-medium"
                 >
                   Contact
-                </a>
+                </button>
               </nav>
 
               <div className="flex items-center space-x-4">
@@ -453,12 +454,12 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
                       ))}
                     </div>
                     
-                    <a 
-                      href="/contact"
+                    <button 
+                      onClick={onContactClick}
                       className="text-foreground hover:text-primary transition-colors font-medium w-full text-left block"
                     >
                       Contact
-                    </a>
+                    </button>
                     
                     <div className="flex items-center space-x-4 pt-4 border-t border-border">
                       <Button
