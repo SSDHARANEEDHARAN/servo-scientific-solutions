@@ -164,10 +164,12 @@ const Footer: React.FC<FooterProps> = ({ onInquiryClick, onCategorySelect, onAbo
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground">
             <p>&copy; 2024 Servo Scientific Suppliers. All rights reserved.</p>
-            <div className="flex space-x-6 mt-4 md:mt-0">
+            <div className="flex flex-wrap gap-4 md:gap-6 mt-4 md:mt-0 justify-center">
               <a href="/privacy" className="hover:text-primary transition-colors">Privacy Policy</a>
               <a href="/terms" className="hover:text-primary transition-colors">Terms of Service</a>
               <a href="/cookies" className="hover:text-primary transition-colors">Cookie Policy</a>
+              <span className="text-muted-foreground">|</span>
+              <span className="font-medium">Web Designed by RT</span>
             </div>
           </div>
         </div>
