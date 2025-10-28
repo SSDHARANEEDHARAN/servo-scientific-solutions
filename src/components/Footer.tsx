@@ -169,7 +169,14 @@ const Footer: React.FC<FooterProps> = ({ onInquiryClick, onCategorySelect, onAbo
               <a href="/terms" className="hover:text-primary transition-colors">Terms of Service</a>
               <a href="/cookies" className="hover:text-primary transition-colors">Cookie Policy</a>
               <span className="text-muted-foreground">|</span>
-              <span className="font-medium">Web Designed by RT</span>
+              <a 
+                href="https://www.nextcraft.co.in" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="font-medium hover:text-primary transition-colors"
+              >
+                Web Designed by RT
+              </a>
             </div>
           </div>
         </div>
