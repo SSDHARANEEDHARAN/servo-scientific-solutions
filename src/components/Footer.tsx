@@ -18,9 +18,13 @@ import {
 interface FooterProps {
   onInquiryClick: () => void;
   onCategorySelect?: (categoryName: string) => void;
+  onAboutClick?: () => void;
+  onAllProductsClick?: () => void;
+  onServicesClick?: () => void;
+  onQualityClick?: () => void;
 }
 
-const Footer: React.FC<FooterProps> = ({ onInquiryClick, onCategorySelect }) => {
+const Footer: React.FC<FooterProps> = ({ onInquiryClick, onCategorySelect, onAboutClick, onAllProductsClick, onServicesClick, onQualityClick }) => {
   return (
     <footer className="bg-gray-50 dark:bg-professional-blue-dark text-foreground">
       {/* Main Footer Content */}
@@ -53,10 +57,10 @@ const Footer: React.FC<FooterProps> = ({ onInquiryClick, onCategorySelect }) => 
           <div>
             <h4 className="text-lg font-semibold mb-6 text-foreground">Quick Links</h4>
             <ul className="space-y-3 text-sm">
-              <li><button onClick={() => window.location.href = '/#about'} className="text-muted-foreground hover:text-primary transition-colors">About Us</button></li>
-              <li><a href="/products" className="text-muted-foreground hover:text-primary transition-colors">All Products</a></li>
-              <li><a href="/services" className="text-muted-foreground hover:text-primary transition-colors">Services & Support</a></li>
-              <li><a href="/quality" className="text-muted-foreground hover:text-primary transition-colors">Quality Assurance</a></li>
+              <li><button onClick={onAboutClick} className="text-muted-foreground hover:text-primary transition-colors">About Us</button></li>
+              <li><button onClick={onAllProductsClick} className="text-muted-foreground hover:text-primary transition-colors">All Products</button></li>
+              <li><button onClick={onServicesClick} className="text-muted-foreground hover:text-primary transition-colors">Services & Support</button></li>
+              <li><button onClick={onQualityClick} className="text-muted-foreground hover:text-primary transition-colors">Quality Assurance</button></li>
             </ul>
           </div>
 
@@ -114,28 +118,6 @@ const Footer: React.FC<FooterProps> = ({ onInquiryClick, onCategorySelect }) => 
                   <p className="text-xs text-muted-foreground">Always here to help</p>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Call to Action Section */}
-        <div className="mt-12 pt-8 border-t border-gray-600 dark:border-slate-700">
-          <div className="bg-gradient-hero rounded-2xl p-8 text-center">
-            <h3 className="text-2xl font-bold text-white mb-4">
-              Ready to Get Started?
-            </h3>
-            <p className="text-white/90 mb-6 max-w-2xl mx-auto">
-              Contact our expert team today for personalized solutions and competitive pricing on all our scientific equipment.
-            </p>
-            <div className="flex justify-center">
-              <Button 
-                variant="inquiry" 
-                size="lg"
-                onClick={onInquiryClick}
-                className="bg-white text-professional-blue hover:bg-gray-100"
-              >
-                Get Free Quote
-              </Button>
             </div>
           </div>
         </div>

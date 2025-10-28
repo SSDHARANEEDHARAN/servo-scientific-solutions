@@ -9,6 +9,9 @@ import BrandsSection from '@/components/BrandsSection';
 import InquiryForm from '@/components/InquiryForm';
 import Footer from '@/components/Footer';
 import SEOHead from '@/components/SEOHead';
+import AllProducts from '@/pages/AllProducts';
+import ServicesSupport from '@/pages/ServicesSupport';
+import QualityAssurance from '@/pages/QualityAssurance';
 import { productCategories, productDatabase } from '@/data';
 
 const Index = () => {
@@ -18,6 +21,9 @@ const Index = () => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [showCategoryPage, setShowCategoryPage] = useState(false);
   const [showAboutPage, setShowAboutPage] = useState(false);
+  const [showAllProducts, setShowAllProducts] = useState(false);
+  const [showServices, setShowServices] = useState(false);
+  const [showQuality, setShowQuality] = useState(false);
 
   const handleInquiryClick = () => {
     setIsInquiryOpen(true);
@@ -51,12 +57,48 @@ const Index = () => {
     setShowProductDetail(false);
     setSelectedProduct(null);
     setShowAboutPage(false);
+    setShowAllProducts(false);
+    setShowServices(false);
+    setShowQuality(false);
   };
 
   const handleAboutClick = () => {
     setShowAboutPage(true);
     setShowCategoryPage(false);
     setShowProductDetail(false);
+    setShowAllProducts(false);
+    setShowServices(false);
+    setShowQuality(false);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleAllProductsClick = () => {
+    setShowAllProducts(true);
+    setShowAboutPage(false);
+    setShowCategoryPage(false);
+    setShowProductDetail(false);
+    setShowServices(false);
+    setShowQuality(false);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleServicesClick = () => {
+    setShowServices(true);
+    setShowAboutPage(false);
+    setShowCategoryPage(false);
+    setShowProductDetail(false);
+    setShowAllProducts(false);
+    setShowQuality(false);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleQualityClick = () => {
+    setShowQuality(true);
+    setShowAboutPage(false);
+    setShowCategoryPage(false);
+    setShowProductDetail(false);
+    setShowAllProducts(false);
+    setShowServices(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -131,6 +173,20 @@ const Index = () => {
           onBack={handleBackToHome}
           onInquiryClick={handleInquiryClick}
         />
+      ) : showAllProducts ? (
+        <AllProducts
+          onBackToHome={handleBackToHome}
+          onInquiryClick={handleInquiryClick}
+        />
+      ) : showServices ? (
+        <ServicesSupport
+          onBackToHome={handleBackToHome}
+          onInquiryClick={handleInquiryClick}
+        />
+      ) : showQuality ? (
+        <QualityAssurance
+          onBackToHome={handleBackToHome}
+        />
       ) : showCategoryPage && selectedCategory ? (
         <ProductCategoryPage
           categoryName={selectedCategory}
@@ -155,6 +211,10 @@ const Index = () => {
           <Footer 
             onInquiryClick={handleInquiryClick} 
             onCategorySelect={handleCategorySelect}
+            onAboutClick={handleAboutClick}
+            onAllProductsClick={handleAllProductsClick}
+            onServicesClick={handleServicesClick}
+            onQualityClick={handleQualityClick}
           />
         </>
       )}
