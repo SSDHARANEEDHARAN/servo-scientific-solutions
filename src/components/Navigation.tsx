@@ -269,8 +269,15 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
           <div className="flex justify-between items-center h-16">
             {/* Logo with Popup Menu */}
             <div className="flex flex-col items-start relative">
-              <div className="text-2xl font-bold text-primary">
-                Servo Scientific Suppliers
+              <div className="flex items-center gap-3">
+                <img 
+                  src="/logo.png" 
+                  alt="Servo Scientific Suppliers Logo" 
+                  className="h-10 w-10 object-contain"
+                />
+                <div className="text-2xl font-bold text-primary">
+                  Servo Scientific Suppliers
+                </div>
               </div>
               <div className="absolute top-full left-0 mt-1 bg-card border border-border rounded-md px-3 py-1 shadow-elegant z-50">
                 <div className="flex items-center space-x-2 text-sm whitespace-nowrap">
