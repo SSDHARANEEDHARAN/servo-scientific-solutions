@@ -294,7 +294,7 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-8">
               <nav className="flex items-center space-x-6">
-                <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="text-foreground hover:text-primary transition-colors font-medium">
+                <button onClick={handleHomeClick} className="text-foreground hover:text-primary transition-colors font-medium">
                   Home
                 </button>
             
@@ -422,6 +422,12 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
                     {/* Mobile Company Menu */}
                     <div className="space-y-3 pb-4 border-b border-border">
                       <div className="font-semibold text-primary text-lg">Servo Scientific Suppliers</div>
+                      <button 
+                        onClick={handleHomeClick}
+                        className="block w-full text-left text-foreground hover:text-primary transition-colors font-medium py-2"
+                      >
+                        Home
+                      </button>
                       <button 
                         onClick={onAboutClick}
                         className="block w-full text-left text-foreground hover:text-primary transition-colors font-medium py-2"
