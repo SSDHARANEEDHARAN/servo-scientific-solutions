@@ -227,7 +227,7 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
                   alt="Servo Scientific Suppliers Logo" 
                   className="h-10 w-10 object-contain"
                 />
-                <div className="text-2xl font-bold text-primary">
+                <div className="text-2xl font-bold text-white">
                   Servo Scientific Suppliers
                 </div>
               </div>
