@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Menu, X, ChevronDown, Sun, Moon, Phone, Download, Home, HelpCircle, LogOut, User } from 'lucide-react';
+import { Menu, X, ChevronDown, Sun, Moon, Download, Home, LogOut, User } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { Dialog, DialogContent, DialogTrigger, DialogHeader, DialogTitle } from '@/components/ui/dialog';
@@ -22,7 +22,6 @@ interface NavigationProps {
 const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect, onAboutClick, onContactClick }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const [isSupportOpen, setIsSupportOpen] = useState(false);
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [authMode, setAuthMode] = useState<'signin' | 'signup'>('signin');
   const [user, setUser] = useState<SupabaseUser | null>(null);
@@ -206,59 +205,12 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
     }
   };
 
-  const handleSupportSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (!user) {
-      requireAuth(() => {});
-      return;
-    }
-
-    const formData = new FormData(e.target as HTMLFormElement);
-    
-    try {
-      const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/send-form-email`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          formType: 'contact',
-          name: formData.get('name'),
-          email: formData.get('email'),
-          message: formData.get('message')
-        }),
-      });
-
-      if (response.ok) {
-        toast({
-          title: "Support Request Submitted",
-          description: "We'll get back to you soon!",
-        });
-        setIsSupportOpen(false);
-        (e.target as HTMLFormElement).reset();
-      } else {
-        throw new Error('Failed to submit support request');
-      }
-    } catch (error) {
-      toast({
-        title: "Error submitting request",
-        description: "Please try again later.",
-        variant: "destructive",
-      });
-    }
-  };
-
   const handleHomeClick = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleLinkedInClick = () => {
     window.open('https://linkedin.com', '_blank');
-  };
-
-  const handleCallClick = () => {
-    window.location.href = 'tel:+1234567890';
   };
 
   return (
@@ -611,57 +563,6 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
               </span>
             </button>
 
-            {/* Support */}
-            <Dialog open={isSupportOpen} onOpenChange={setIsSupportOpen}>
-              <DialogTrigger asChild>
-                <button className="flex items-center space-x-3 hover:bg-primary-foreground/10 rounded p-2 transition-colors">
-                  <HelpCircle className="h-5 w-5 flex-shrink-0" />
-                  <span className="whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity text-sm font-medium">
-                    Support
-                  </span>
-                </button>
-              </DialogTrigger>
-              <DialogContent className="sm:max-w-md bg-card text-card-foreground">
-                <div className="p-6">
-                  <h3 className="text-lg font-semibold mb-4 text-foreground">Support Request</h3>
-                  <form onSubmit={handleSupportSubmit} className="space-y-4">
-                    <div>
-                      <Label htmlFor="name" className="text-foreground">Name</Label>
-                      <Input 
-                        id="name" 
-                        name="name" 
-                        required 
-                        className="bg-background text-foreground border-border"
-                      />
-                    </div>
-                    <div>
-                      <Label htmlFor="email" className="text-foreground">Email</Label>
-                      <Input 
-                        id="email" 
-                        name="email" 
-                        type="email" 
-                        required 
-                        className="bg-background text-foreground border-border"
-                      />
-                    </div>
-                    <div>
-                      <Label htmlFor="message" className="text-foreground">Message</Label>
-                      <Textarea 
-                        id="message" 
-                        name="message" 
-                        required 
-                        rows={4}
-                        className="bg-background text-foreground border-border"
-                      />
-                    </div>
-                    <Button type="submit" className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
-                      Submit Request
-                    </Button>
-                  </form>
-                </div>
-              </DialogContent>
-            </Dialog>
-
             {/* LinkedIn */}
             <button 
               onClick={handleLinkedInClick}
@@ -672,17 +573,6 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
               </svg>
               <span className="whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity text-sm font-medium">
                 LinkedIn
-              </span>
-            </button>
-
-            {/* Call Back */}
-            <button 
-              onClick={handleCallClick}
-              className="flex items-center space-x-3 hover:bg-primary-foreground/10 rounded p-2 transition-colors"
-            >
-              <Phone className="h-5 w-5 flex-shrink-0" />
-              <span className="whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity text-sm font-medium">
-                Call Back
               </span>
             </button>
           </div>
