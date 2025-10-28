@@ -231,7 +231,7 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
                   Servo Scientific Suppliers
                 </div>
               </div>
-              <div className="absolute top-full left-0 mt-1 z-50">
+              <div className="absolute top-full left-0 mt-1 bg-gray-50 dark:bg-professional-blue-dark px-3 py-1 z-50">
                 <div className="flex items-center space-x-2 text-sm whitespace-nowrap">
                   <button 
                     onClick={onAboutClick}
