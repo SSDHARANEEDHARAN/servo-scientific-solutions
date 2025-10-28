@@ -130,8 +130,8 @@ const Index = () => {
     "@type": "Organization",
     "name": "Servo Scientific Supplier",
     "description": "Leading provider of laboratory and industrial instruments including ovens, furnaces, heaters, autoclaves, and sensors",
-    "url": "https://servo-scientific-supplier.lovable.app",
-    "logo": "https://servo-scientific-supplier.lovable.app/logo.png",
+    "url": "https://servoscientific.com",
+    "logo": "https://servoscientific.com/logo.png",
     "contactPoint": {
       "@type": "ContactPoint",
       "contactType": "Sales",
@@ -177,7 +177,7 @@ const Index = () => {
       <SEOHead
         title="Servo Scientific Supplier | Scientific & Laboratory Equipment Manufacturer"
         description="Servo Scientific Supplier — leading provider of lab and industrial instruments including ovens, furnaces, heaters, autoclaves, and sensors."
-        canonical="https://servo-scientific-supplier.lovable.app/"
+        canonical="https://servoscientific.com/"
         structuredData={structuredData}
       />
       <Navigation
