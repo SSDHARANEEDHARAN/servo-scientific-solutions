@@ -11,6 +11,8 @@ import { useToast } from '@/hooks/use-toast';
 import { productCategories, productDatabase } from '@/data';
 import { supabase } from '@/integrations/supabase/client';
 import type { User as SupabaseUser } from '@supabase/supabase-js';
+import { useNavigate } from 'react-router-dom';
+import { generateProductUrl, findCategoryForProduct } from '@/lib/urlHelpers';
 
 interface NavigationProps {
   onInquiryClick: () => void;
@@ -33,6 +35,7 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
     confirmPassword: ''
   });
   const { toast } = useToast();
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Check for saved theme preference
@@ -59,8 +62,17 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
 
   const handleProductClick = (productName: string) => {
     const product = productDatabase[productName as keyof typeof productDatabase];
-    if (product && onProductSelect) {
-      onProductSelect(product);
+    if (product) {
+      // Find the category for this product
+      const category = findCategoryForProduct(productName, productCategories);
+      if (category) {
+        const url = generateProductUrl(category, productName);
+        navigate(url);
+        setIsProductDropdownOpen(false);
+      } else if (onProductSelect) {
+        // Fallback to old method if category not found
+        onProductSelect(product);
+      }
     }
   };
 

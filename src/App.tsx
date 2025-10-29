@@ -13,6 +13,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import CookiePolicy from "./pages/CookiePolicy";
 import Contact from "./pages/Contact";
+import ProductDetailRoute from "./pages/ProductDetailRoute";
 
 const queryClient = new QueryClient();
 
@@ -80,6 +81,7 @@ const App = () => {
           <Route path="/privacy" element={<PrivacyPolicy onBackToHome={() => window.location.href = '/'} />} />
           <Route path="/terms" element={<TermsOfService onBackToHome={() => window.location.href = '/'} />} />
           <Route path="/cookies" element={<CookiePolicy onBackToHome={() => window.location.href = '/'} />} />
+          <Route path="/:category/:product" element={<ProductDetailRoute />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

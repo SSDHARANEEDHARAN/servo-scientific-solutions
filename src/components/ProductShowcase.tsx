@@ -4,6 +4,9 @@ import { Card, CardContent } from '@/components/ui/card';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { ArrowRight, Thermometer, Factory, TestTube, Zap, Microscope, Activity, ChevronDown } from 'lucide-react';
 import ProductDetail from './ProductDetail';
+import { useNavigate } from 'react-router-dom';
+import { generateProductUrl, findCategoryForProduct } from '@/lib/urlHelpers';
+import { productCategories as allProductCategories } from '@/data';
 
 interface ProductShowcaseProps {
   onInquiryClick: () => void;
@@ -529,11 +532,18 @@ const productDatabase = {
 const ProductShowcase: React.FC<ProductShowcaseProps> = ({ onInquiryClick, onProductSelect }) => {
   const [selectedProduct, setSelectedProduct] = useState<(typeof productDatabase)[keyof typeof productDatabase] | null>(null);
   const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
+  const navigate = useNavigate();
 
   const handleProductClick = (productName: string) => {
     const product = productDatabase[productName as keyof typeof productDatabase];
     if (product) {
-      if (onProductSelect) {
+      // Find the category for this product
+      const category = findCategoryForProduct(productName, allProductCategories);
+      if (category) {
+        const url = generateProductUrl(category, productName);
+        navigate(url);
+      } else if (onProductSelect) {
+        // Fallback to old method if category not found
         onProductSelect(product);
       } else {
         setSelectedProduct(product);
