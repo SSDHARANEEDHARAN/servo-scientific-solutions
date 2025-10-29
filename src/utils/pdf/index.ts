@@ -1,0 +1,1 @@
+export { generateProductDatasheet } from './generateDatasheet';

@@ -3,7 +3,9 @@ import { Button } from '@/components/ui/button';
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from '@/components/ui/carousel';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
-import { CheckCircle, Package, Thermometer, ArrowLeft } from 'lucide-react';
+import { CheckCircle, Package, Thermometer, ArrowLeft, Download } from 'lucide-react';
+import { generateProductDatasheet } from '@/utils/pdf';
+import { toast } from 'sonner';
 
 interface ProductDetailPageProps {
   onBack: () => void;
@@ -21,6 +23,17 @@ interface ProductDetailPageProps {
 }
 
 const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ onBack, onInquiry, product }) => {
+  const handleDownloadDatasheet = async () => {
+    try {
+      toast.info('Generating datasheet...');
+      await generateProductDatasheet(product);
+      toast.success('Datasheet downloaded successfully!');
+    } catch (error) {
+      console.error('Error generating datasheet:', error);
+      toast.error('Failed to generate datasheet. Please try again.');
+    }
+  };
+
   return (
     <div className="min-h-screen bg-surface-blue dark:bg-slate-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -156,7 +169,9 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ onBack, onInquiry
               size="lg"
               variant="outline"
               className="border-white text-white hover:bg-white hover:text-professional-blue"
+              onClick={handleDownloadDatasheet}
             >
+              <Download className="mr-2 h-4 w-4" />
               Download Datasheet
             </Button>
           </div>

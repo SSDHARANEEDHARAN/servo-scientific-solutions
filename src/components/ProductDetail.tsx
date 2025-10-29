@@ -4,7 +4,9 @@ import { Button } from '@/components/ui/button';
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from '@/components/ui/carousel';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
-import { CheckCircle, Package, Thermometer, Timer, Zap } from 'lucide-react';
+import { CheckCircle, Package, Thermometer, Timer, Zap, Download } from 'lucide-react';
+import { generateProductDatasheet } from '@/utils/pdf';
+import { toast } from 'sonner';
 
 interface ProductDetailProps {
   isOpen: boolean;
@@ -23,6 +25,17 @@ interface ProductDetailProps {
 }
 
 const ProductDetail: React.FC<ProductDetailProps> = ({ isOpen, onClose, onInquiry, product }) => {
+  const handleDownloadDatasheet = async () => {
+    try {
+      toast.info('Generating datasheet...');
+      await generateProductDatasheet(product);
+      toast.success('Datasheet downloaded successfully!');
+    } catch (error) {
+      console.error('Error generating datasheet:', error);
+      toast.error('Failed to generate datasheet. Please try again.');
+    }
+  };
+
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700">
@@ -115,14 +128,23 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ isOpen, onClose, onInquir
           </div>
         </div>
 
-        {/* Enquiry Button */}
-        <div className="mt-8 flex justify-center">
+        {/* Action Buttons */}
+        <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
           <Button 
             onClick={onInquiry}
             size="lg"
             className="bg-professional-blue hover:bg-professional-blue-dark text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 shadow-professional hover:shadow-professional-hover"
           >
             Make Enquiry for {product.name}
+          </Button>
+          <Button 
+            onClick={handleDownloadDatasheet}
+            size="lg"
+            variant="outline"
+            className="border-professional-blue text-professional-blue hover:bg-professional-blue hover:text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300"
+          >
+            <Download className="mr-2 h-4 w-4" />
+            Download Datasheet
           </Button>
         </div>
       </DialogContent>
