@@ -229,7 +229,7 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
   return (
     <>
       {/* Main Navigation */}
-      <nav className="bg-card/95 border-b border-border sticky top-0 z-50 backdrop-blur-sm shadow-sm">
+      <nav className="bg-gray-50 dark:bg-professional-blue-dark border-b border-border sticky top-0 z-50 backdrop-blur-sm shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Logo with Popup Menu */}
@@ -244,7 +244,7 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
                   Servo Scientific Suppliers
                 </div>
               </div>
-              <div className="absolute top-full left-0 mt-1 bg-card px-3 py-1 z-50 border border-border rounded-b-md shadow-md">
+              <div className="absolute top-full left-0 mt-1 bg-gray-50 dark:bg-professional-blue-dark px-3 py-1 z-50 border border-border rounded-b-md shadow-md">
                 <div className="flex items-center space-x-2 text-sm whitespace-nowrap">
                 <button 
                   onClick={() => navigate('/about')}
