@@ -77,13 +77,11 @@ const ProductDetailRoute: React.FC = () => {
     img.startsWith('http') ? img : `${baseUrl}${img}`
   );
 
-  // Product structured data
-  const productSchema = {
+  const structuredData = {
     "@context": "https://schema.org",
     "@type": "Product",
     "name": productName,
     "sku": sku,
-    "mpn": sku,
     "category": categoryName,
     "description": productData.description,
     "image": imageUrls,
@@ -95,14 +93,15 @@ const ProductDetailRoute: React.FC = () => {
       "@type": "Offer",
       "availability": "https://schema.org/InStock",
       "priceCurrency": "INR",
+      "price": "0",
+      "priceValidUntil": new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().split('T')[0],
       "url": productUrl,
       "seller": {
         "@type": "Organization",
         "name": "Servo Scientific Suppliers",
         "url": baseUrl
       },
-      "itemCondition": "https://schema.org/NewCondition",
-      "priceValidUntil": new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().split('T')[0]
+      "itemCondition": "https://schema.org/NewCondition"
     },
     "aggregateRating": {
       "@type": "AggregateRating",
@@ -118,43 +117,12 @@ const ProductDetailRoute: React.FC = () => {
     }
   };
 
-  // Breadcrumb structured data
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": baseUrl
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": categoryName,
-        "item": `${baseUrl}/${category}`
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": productName,
-        "item": productUrl
-      }
-    ]
-  };
-
-  const structuredData = [productSchema, breadcrumbSchema];
-
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title={`${productName} - ${categoryName} | Servo Scientific`}
-        description={`${productData.description.substring(0, 155)}. Get best quality ${productName.toLowerCase()} from Servo Scientific Suppliers India.`}
-        keywords={`${productName.toLowerCase()}, ${categoryName.toLowerCase()}, ${productName.toLowerCase()} price, ${productName.toLowerCase()} manufacturer, laboratory equipment, scientific instruments`}
+        title={`${productName} | ${categoryName} | Servo Scientific`}
+        description={`${productName} - ${productData.description}. High-quality ${categoryName.toLowerCase()} from Servo Scientific Suppliers.`}
         canonical={`https://www.nextcraft.co.in/${category}/${product}`}
-        ogImage={imageUrls[0]}
-        ogType="product"
         structuredData={structuredData}
       />
       <Navigation
