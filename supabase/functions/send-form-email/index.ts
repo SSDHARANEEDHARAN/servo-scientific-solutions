@@ -111,7 +111,7 @@ const handler = async (req: Request): Promise<Response> => {
     });
 
     await client.send({
-      from: "Servo Scientific <onboarding@resend.dev>",
+      from: Deno.env.get("SENDER_EMAIL") || "Servo Scientific <noreply@yourdomain.com>",
       to: "servoscientific@yahoo.com",
       subject: emailSubject,
       content: emailContent,
