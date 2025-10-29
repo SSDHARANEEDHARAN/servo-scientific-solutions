@@ -66,13 +66,25 @@ const ProductDetailRoute: React.FC = () => {
   };
 
   // Generate structured data for SEO
+  const baseUrl = "https://www.nextcraft.co.in";
+  const productUrl = `${baseUrl}/${category}/${product}`;
+  
+  // Generate SKU from product name (consistent format)
+  const sku = `SSS-${productName.toUpperCase().replace(/[^A-Z0-9]/g, '-')}`;
+  
+  // Ensure image URLs are absolute
+  const imageUrls = productData.images.map(img => 
+    img.startsWith('http') ? img : `${baseUrl}${img}`
+  );
+
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Product",
     "name": productName,
+    "sku": sku,
     "category": categoryName,
     "description": productData.description,
-    "image": productData.images,
+    "image": imageUrls,
     "brand": {
       "@type": "Brand",
       "name": "Servo Scientific Suppliers"
@@ -81,11 +93,15 @@ const ProductDetailRoute: React.FC = () => {
       "@type": "Offer",
       "availability": "https://schema.org/InStock",
       "priceCurrency": "INR",
-      "url": `https://servoscientific.com/${category}/${product}`,
+      "price": "0",
+      "priceValidUntil": new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().split('T')[0],
+      "url": productUrl,
       "seller": {
         "@type": "Organization",
-        "name": "Servo Scientific Suppliers"
-      }
+        "name": "Servo Scientific Suppliers",
+        "url": baseUrl
+      },
+      "itemCondition": "https://schema.org/NewCondition"
     },
     "aggregateRating": {
       "@type": "AggregateRating",
@@ -93,6 +109,11 @@ const ProductDetailRoute: React.FC = () => {
       "reviewCount": "127",
       "bestRating": "5",
       "worstRating": "1"
+    },
+    "manufacturer": {
+      "@type": "Organization",
+      "name": "Servo Scientific Suppliers",
+      "url": baseUrl
     }
   };
 
@@ -101,7 +122,7 @@ const ProductDetailRoute: React.FC = () => {
       <SEOHead
         title={`${productName} | ${categoryName} | Servo Scientific`}
         description={`${productName} - ${productData.description}. High-quality ${categoryName.toLowerCase()} from Servo Scientific Suppliers.`}
-        canonical={`https://servoscientific.com/${category}/${product}`}
+        canonical={`https://www.nextcraft.co.in/${category}/${product}`}
         structuredData={structuredData}
       />
       <Navigation
