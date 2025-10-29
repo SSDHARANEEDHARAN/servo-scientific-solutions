@@ -592,7 +592,7 @@ const ProductShowcase: React.FC<ProductShowcaseProps> = ({ onInquiryClick, onPro
                       </div>
                     </div>
                     <div className="ml-4 flex-1">
-                      <h3 className="text-2xl font-bold text-slate-900 dark:text-white group-hover:text-primary dark:group-hover:text-blue-300 transition-colors duration-300">
+                      <h3 className="text-2xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
                         {category.title}
                       </h3>
                     </div>

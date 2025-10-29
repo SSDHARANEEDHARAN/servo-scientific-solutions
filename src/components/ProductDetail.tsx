@@ -27,7 +27,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ isOpen, onClose, onInquir
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700">
         <DialogHeader>
-          <DialogTitle className="text-2xl font-bold text-technical-gray dark:text-white">
+          <DialogTitle className="text-2xl font-bold text-foreground">
             {product.name}
           </DialogTitle>
           <Badge variant="secondary" className="w-fit">
@@ -38,7 +38,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ isOpen, onClose, onInquir
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-6">
           {/* All Images Grid */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-technical-gray dark:text-white">
+            <h3 className="text-lg font-semibold text-foreground">
               All Product Images ({product.images.length})
             </h3>
             <div className="grid grid-cols-2 gap-3 max-h-[500px] overflow-y-auto pr-2">
@@ -63,7 +63,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ isOpen, onClose, onInquir
           {/* Product Info */}
           <div className="space-y-6">
             <div>
-              <h3 className="text-lg font-semibold text-technical-gray dark:text-white mb-3">
+              <h3 className="text-lg font-semibold text-foreground mb-3">
                 Product Description
               </h3>
               <p className="text-technical-gray dark:text-slate-300 leading-relaxed">
@@ -74,7 +74,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ isOpen, onClose, onInquir
             <Separator className="bg-slate-200 dark:bg-slate-700" />
 
             <div>
-              <h3 className="text-lg font-semibold text-technical-gray dark:text-white mb-3 flex items-center">
+              <h3 className="text-lg font-semibold text-foreground mb-3 flex items-center">
                 <Package className="w-5 h-5 mr-2 text-professional-blue" />
                 Key Features
               </h3>
@@ -94,7 +94,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ isOpen, onClose, onInquir
 
         {/* Specifications */}
         <div className="mt-8">
-          <h3 className="text-lg font-semibold text-technical-gray dark:text-white mb-4 flex items-center">
+          <h3 className="text-lg font-semibold text-foreground mb-4 flex items-center">
             <Thermometer className="w-5 h-5 mr-2 text-professional-blue" />
             Technical Specifications
           </h3>
@@ -104,7 +104,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ isOpen, onClose, onInquir
                 <span className="font-medium text-technical-gray dark:text-slate-300">
                   {key}:
                 </span>
-                <span className="text-technical-gray dark:text-white font-semibold">
+                <span className="text-foreground font-semibold">
                   {value}
                 </span>
               </div>

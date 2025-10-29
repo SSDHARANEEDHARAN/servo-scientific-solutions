@@ -38,7 +38,7 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ onBack, onInquiry
         <div className="bg-white dark:bg-slate-800 rounded-lg shadow-card p-8 mb-8">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
             <div>
-              <h1 className="text-3xl font-bold text-technical-gray dark:text-white mb-2">
+              <h1 className="text-3xl font-bold text-foreground mb-2">
                 {product.name}
               </h1>
               <Badge variant="secondary" className="w-fit">
@@ -58,7 +58,7 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ onBack, onInquiry
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* All Images Gallery */}
           <div className="bg-white dark:bg-slate-800 rounded-lg shadow-card p-6">
-            <h2 className="text-xl font-semibold text-technical-gray dark:text-white mb-4">
+            <h2 className="text-xl font-semibold text-foreground mb-4">
               Product Images ({product.images.length})
             </h2>
             <div className="grid grid-cols-2 gap-4">
@@ -84,7 +84,7 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ onBack, onInquiry
           <div className="space-y-6">
             {/* Description */}
             <div className="bg-white dark:bg-slate-800 rounded-lg shadow-card p-6">
-              <h2 className="text-xl font-semibold text-technical-gray dark:text-white mb-4">
+              <h2 className="text-xl font-semibold text-foreground mb-4">
                 Product Description
               </h2>
               <p className="text-technical-gray dark:text-slate-300 leading-relaxed">
@@ -94,7 +94,7 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ onBack, onInquiry
 
             {/* Key Features */}
             <div className="bg-white dark:bg-slate-800 rounded-lg shadow-card p-6">
-              <h2 className="text-xl font-semibold text-technical-gray dark:text-white mb-4 flex items-center">
+              <h2 className="text-xl font-semibold text-foreground mb-4 flex items-center">
                 <Package className="w-5 h-5 mr-2 text-professional-blue" />
                 Key Features
               </h2>
@@ -114,7 +114,7 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ onBack, onInquiry
 
         {/* Technical Specifications */}
         <div className="bg-white dark:bg-slate-800 rounded-lg shadow-card p-8 mt-8">
-          <h2 className="text-2xl font-semibold text-technical-gray dark:text-white mb-6 flex items-center">
+          <h2 className="text-2xl font-semibold text-foreground mb-6 flex items-center">
             <Thermometer className="w-6 h-6 mr-3 text-professional-blue" />
             Technical Specifications
           </h2>
@@ -124,7 +124,7 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ onBack, onInquiry
                 <div className="font-medium text-technical-gray dark:text-slate-300 text-sm mb-1">
                   {key}
                 </div>
-                <div className="text-technical-gray dark:text-white font-semibold">
+                <div className="text-foreground font-semibold">
                   {value}
                 </div>
               </div>

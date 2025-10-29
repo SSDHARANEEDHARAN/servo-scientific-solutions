@@ -420,7 +420,7 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ isOpen, onClose }) => {
                 {validationErrors.comments && (
                   <p className="text-red-500 text-sm mt-1">{validationErrors.comments}</p>
                 )}
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-muted-foreground">
                   {formData.comments.length}/2000 characters
                 </p>
               </div>
