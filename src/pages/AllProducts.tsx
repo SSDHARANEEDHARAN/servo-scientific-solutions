@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -6,6 +7,8 @@ import { ArrowLeft, Search, Filter } from 'lucide-react';
 import { productDatabase, productCategories } from '@/data';
 import ProductDetail from '@/components/ProductDetail';
 import SEOHead from '@/components/SEOHead';
+import Navigation from '@/components/Navigation';
+import Footer from '@/components/Footer';
 
 interface AllProductsProps {
   onBackToHome: () => void;
@@ -13,6 +16,7 @@ interface AllProductsProps {
 }
 
 const AllProducts: React.FC<AllProductsProps> = ({ onBackToHome, onInquiryClick }) => {
+  const navigate = useNavigate();
   const [selectedProduct, setSelectedProduct] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
@@ -57,6 +61,14 @@ const AllProducts: React.FC<AllProductsProps> = ({ onBackToHome, onInquiryClick 
         keywords="scientific equipment, laboratory instruments, heating equipment, industrial furnace, environmental chamber, microbiology instruments, thermocouple"
         canonical="https://servoscientific.com/products"
       />
+      
+      <Navigation
+        onInquiryClick={onInquiryClick}
+        onProductSelect={() => {}}
+        onAboutClick={() => navigate('/about')}
+        onContactClick={() => navigate('/contact')}
+      />
+
       {/* Header */}
       <div className="bg-gradient-hero text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -170,6 +182,16 @@ const AllProducts: React.FC<AllProductsProps> = ({ onBackToHome, onInquiryClick 
           </div>
         )}
       </div>
+
+      <Footer
+        onInquiryClick={onInquiryClick}
+        onCategorySelect={() => {}}
+        onAboutClick={() => navigate('/about')}
+        onAllProductsClick={() => navigate('/products')}
+        onServicesClick={() => navigate('/services')}
+        onQualityClick={() => navigate('/quality')}
+        onContactClick={() => navigate('/contact')}
+      />
     </div>
   );
 };
