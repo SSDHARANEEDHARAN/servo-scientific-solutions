@@ -15,6 +15,7 @@ import CookiePolicy from "./pages/CookiePolicy";
 import Contact from "./pages/Contact";
 import ProductDetailRoute from "./pages/ProductDetailRoute";
 import AboutRoute from "./pages/AboutRoute";
+import ResetPassword from "./pages/ResetPassword";
 
 const queryClient = new QueryClient();
 
@@ -76,6 +77,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<AboutRoute />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/products" element={<AllProducts onBackToHome={() => window.location.href = '/'} onInquiryClick={() => {}} />} />
           <Route path="/services" element={<ServicesSupport onBackToHome={() => window.location.href = '/'} onInquiryClick={() => {}} />} />
           <Route path="/quality" element={<QualityAssurance onBackToHome={() => window.location.href = '/'} />} />
