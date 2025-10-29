@@ -6,7 +6,8 @@ interface SEOHeadProps {
   keywords?: string;
   canonical?: string;
   ogImage?: string;
-  structuredData?: object;
+  ogType?: string;
+  structuredData?: object | object[];
 }
 
 const SEOHead = ({ 
@@ -15,6 +16,7 @@ const SEOHead = ({
   keywords = "laboratory instruments supplier, scientific equipment, heating instruments, industrial furnaces, microbiology instruments, thermocouples, Servo Scientific Supplier",
   canonical,
   ogImage = "/og-image.jpg",
+  ogType = "website",
   structuredData
 }: SEOHeadProps) => {
   useEffect(() => {
@@ -25,12 +27,18 @@ const SEOHead = ({
     const metaTags = {
       description,
       keywords,
+      'robots': 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
+      'og:type': ogType,
       'og:title': title,
       'og:description': description,
-      'og:image': ogImage,
+      'og:image': ogImage.startsWith('http') ? ogImage : `https://www.nextcraft.co.in${ogImage}`,
+      'og:url': canonical || '',
+      'og:site_name': 'Servo Scientific Suppliers',
+      'og:locale': 'en_IN',
+      'twitter:card': 'summary_large_image',
       'twitter:title': title,
       'twitter:description': description,
-      'twitter:image': ogImage,
+      'twitter:image': ogImage.startsWith('http') ? ogImage : `https://www.nextcraft.co.in${ogImage}`,
     };
 
     Object.entries(metaTags).forEach(([key, value]) => {
@@ -59,15 +67,20 @@ const SEOHead = ({
 
     // Add structured data
     if (structuredData) {
-      let script = document.querySelector('script[type="application/ld+json"]');
-      if (!script) {
-        script = document.createElement('script');
+      // Remove existing structured data scripts
+      const existingScripts = document.querySelectorAll('script[type="application/ld+json"]');
+      existingScripts.forEach(s => s.remove());
+      
+      // Add new structured data (supports array of schemas)
+      const schemas = Array.isArray(structuredData) ? structuredData : [structuredData];
+      schemas.forEach(schema => {
+        const script = document.createElement('script');
         script.setAttribute('type', 'application/ld+json');
+        script.textContent = JSON.stringify(schema);
         document.head.appendChild(script);
-      }
-      script.textContent = JSON.stringify(structuredData);
+      });
     }
-  }, [title, description, keywords, canonical, ogImage, structuredData]);
+  }, [title, description, keywords, canonical, ogImage, ogType, structuredData]);
 
   return null;
 };
