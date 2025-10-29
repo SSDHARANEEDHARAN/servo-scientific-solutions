@@ -14,6 +14,7 @@ import TermsOfService from "./pages/TermsOfService";
 import CookiePolicy from "./pages/CookiePolicy";
 import Contact from "./pages/Contact";
 import ProductDetailRoute from "./pages/ProductDetailRoute";
+import AboutRoute from "./pages/AboutRoute";
 
 const queryClient = new QueryClient();
 
@@ -74,6 +75,7 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/about" element={<AboutRoute />} />
           <Route path="/products" element={<AllProducts onBackToHome={() => window.location.href = '/'} onInquiryClick={() => {}} />} />
           <Route path="/services" element={<ServicesSupport onBackToHome={() => window.location.href = '/'} onInquiryClick={() => {}} />} />
           <Route path="/quality" element={<QualityAssurance onBackToHome={() => window.location.href = '/'} />} />

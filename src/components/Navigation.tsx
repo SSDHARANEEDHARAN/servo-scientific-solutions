@@ -218,6 +218,7 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
   };
 
   const handleHomeClick = () => {
+    navigate('/');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -245,19 +246,19 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
               </div>
               <div className="absolute top-full left-0 mt-1 bg-card px-3 py-1 z-50 border border-border rounded-b-md shadow-md">
                 <div className="flex items-center space-x-2 text-sm whitespace-nowrap">
-                  <button 
-                    onClick={onAboutClick}
-                    className="text-foreground hover:text-primary transition-colors font-medium"
-                  >
-                    About
-                  </button>
-                  <span className="text-muted-foreground">|</span>
-                  <button 
-                    onClick={handleInquiryClick}
-                    className="text-foreground hover:text-primary transition-colors font-medium"
-                  >
-                    Inquiries
-                  </button>
+                <button 
+                  onClick={() => navigate('/about')}
+                  className="text-foreground hover:text-primary transition-colors font-medium"
+                >
+                  About
+                </button>
+                <span className="text-muted-foreground">|</span>
+                <button 
+                  onClick={handleInquiryClick}
+                  className="text-foreground hover:text-primary transition-colors font-medium"
+                >
+                  Inquiries
+                </button>
                 </div>
               </div>
             </div>
@@ -336,7 +337,7 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
                 </DropdownMenu>
 
                 <button 
-                  onClick={onContactClick}
+                  onClick={() => navigate('/contact')}
                   className="text-foreground hover:text-primary transition-colors font-medium"
                 >
                   Contact
@@ -400,7 +401,7 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
                         Home
                       </button>
                       <button 
-                        onClick={onAboutClick}
+                        onClick={() => navigate('/about')}
                         className="block w-full text-left text-foreground hover:text-primary transition-colors font-medium py-2"
                       >
                         About Us
@@ -432,7 +433,7 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
                     </div>
                     
                     <button 
-                      onClick={onContactClick}
+                      onClick={() => navigate('/contact')}
                       className="text-foreground hover:text-primary transition-colors font-medium w-full text-left block"
                     >
                       Contact
