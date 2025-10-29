@@ -66,42 +66,41 @@ const ProductDetailRoute: React.FC = () => {
   };
 
   // Generate structured data for SEO
+  const generateSKU = (name: string) => {
+    return `NXT-${name.toUpperCase().replace(/[^A-Z0-9]/g, '').substring(0, 10)}`;
+  };
+
   const structuredData = {
-    "@context": "https://schema.org",
+    "@context": "https://schema.org/",
     "@type": "Product",
     "name": productName,
     "category": categoryName,
-    "description": productData.description,
-    "image": productData.images,
+    "image": productData.images.map(img => `https://www.nextcraft.co.in${img}`),
+    "description": `High-quality ${productName} by Nextcraft used for industrial and laboratory applications. ${productData.description}`,
+    "sku": generateSKU(productName),
     "brand": {
       "@type": "Brand",
-      "name": "Servo Scientific Suppliers"
+      "name": "Nextcraft"
     },
     "offers": {
       "@type": "Offer",
-      "availability": "https://schema.org/InStock",
       "priceCurrency": "INR",
-      "url": `https://servoscientific.com/${category}/${product}`,
-      "seller": {
-        "@type": "Organization",
-        "name": "Servo Scientific Suppliers"
-      }
+      "availability": "https://schema.org/InStock",
+      "url": `https://www.nextcraft.co.in/${category}/${product}`
     },
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.8",
-      "reviewCount": "127",
-      "bestRating": "5",
-      "worstRating": "1"
+      "reviewCount": "125"
     }
   };
 
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title={`${productName} | ${categoryName} | Servo Scientific`}
-        description={`${productName} - ${productData.description}. High-quality ${categoryName.toLowerCase()} from Servo Scientific Suppliers.`}
-        canonical={`https://servoscientific.com/${category}/${product}`}
+        title={`${productName} | ${categoryName} | Nextcraft`}
+        description={`${productName} - ${productData.description}. High-quality ${categoryName.toLowerCase()} from Nextcraft.`}
+        canonical={`https://www.nextcraft.co.in/${category}/${product}`}
         structuredData={structuredData}
       />
       <Navigation
