@@ -15,12 +15,13 @@ import { useNavigate } from 'react-router-dom';
 import { generateProductUrl, findCategoryForProduct } from '@/lib/urlHelpers';
 
 interface NavigationProps {
+  onInquiryClick: () => void;
   onProductSelect?: (product: any) => void;
   onAboutClick?: () => void;
   onContactClick?: () => void;
 }
 
-const Navigation: React.FC<NavigationProps> = ({ onProductSelect, onAboutClick, onContactClick }) => {
+const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect, onAboutClick, onContactClick }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [showAuthModal, setShowAuthModal] = useState(false);
@@ -108,6 +109,12 @@ const Navigation: React.FC<NavigationProps> = ({ onProductSelect, onAboutClick, 
         title: "Feature Coming Soon",
         description: "Download feature will be available soon!",
       });
+    });
+  };
+
+  const handleInquiryClick = () => {
+    requireAuth(() => {
+      onInquiryClick();
     });
   };
 
@@ -244,6 +251,13 @@ const Navigation: React.FC<NavigationProps> = ({ onProductSelect, onAboutClick, 
                   className="text-foreground hover:text-primary transition-colors font-medium"
                 >
                   About
+                </button>
+                <span className="text-muted-foreground">|</span>
+                <button 
+                  onClick={handleInquiryClick}
+                  className="text-foreground hover:text-primary transition-colors font-medium"
+                >
+                  Inquiries
                 </button>
                 </div>
               </div>
@@ -391,6 +405,12 @@ const Navigation: React.FC<NavigationProps> = ({ onProductSelect, onAboutClick, 
                         className="block w-full text-left text-foreground hover:text-primary transition-colors font-medium py-2"
                       >
                         About Us
+                      </button>
+                      <button 
+                        onClick={handleInquiryClick}
+                        className="block w-full text-left text-foreground hover:text-primary transition-colors font-medium py-2"
+                      >
+                        Inquiries
                       </button>
                     </div>
                     

@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import ProductDetailPage from '@/components/ProductDetailPage';
+import InquiryForm from '@/components/InquiryForm';
 import Navigation from '@/components/Navigation';
 import SEOHead from '@/components/SEOHead';
 import { productDatabase, productCategories } from '@/data';
@@ -31,6 +32,7 @@ const findProductBySlug = (slug: string) => {
 const ProductDetailRoute: React.FC = () => {
   const { category, product } = useParams<{ category: string; product: string }>();
   const navigate = useNavigate();
+  const [isInquiryOpen, setIsInquiryOpen] = useState(false);
 
   if (!category || !product) {
     return <NotFound />;
@@ -53,6 +55,10 @@ const ProductDetailRoute: React.FC = () => {
 
   const handleBack = () => {
     navigate('/');
+  };
+
+  const handleInquiry = () => {
+    setIsInquiryOpen(true);
   };
 
   const handleProductSelect = (selectedProduct: any) => {
@@ -100,6 +106,7 @@ const ProductDetailRoute: React.FC = () => {
         structuredData={structuredData}
       />
       <Navigation
+        onInquiryClick={handleInquiry}
         onProductSelect={handleProductSelect}
         onAboutClick={() => navigate('/')}
         onContactClick={() => navigate('/contact')}
@@ -107,8 +114,9 @@ const ProductDetailRoute: React.FC = () => {
       <ProductDetailPage
         product={productData}
         onBack={handleBack}
-        onInquiry={() => {}}
+        onInquiry={handleInquiry}
       />
+      <InquiryForm isOpen={isInquiryOpen} onClose={() => setIsInquiryOpen(false)} />
     </div>
   );
 };

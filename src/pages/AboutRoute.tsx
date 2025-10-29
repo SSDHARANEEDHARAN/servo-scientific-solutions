@@ -1,14 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AboutPage from '@/components/AboutPage';
+import InquiryForm from '@/components/InquiryForm';
 import Navigation from '@/components/Navigation';
 import SEOHead from '@/components/SEOHead';
 
 const AboutRoute: React.FC = () => {
   const navigate = useNavigate();
+  const [isInquiryOpen, setIsInquiryOpen] = useState(false);
 
   const handleBack = () => {
     navigate('/');
+  };
+
+  const handleInquiry = () => {
+    setIsInquiryOpen(true);
   };
 
   const structuredData = {
@@ -33,14 +39,16 @@ const AboutRoute: React.FC = () => {
         structuredData={structuredData}
       />
       <Navigation
+        onInquiryClick={handleInquiry}
         onProductSelect={() => {}}
         onAboutClick={() => navigate('/about')}
         onContactClick={() => navigate('/contact')}
       />
       <AboutPage
         onBack={handleBack}
-        onInquiryClick={() => {}}
+        onInquiryClick={handleInquiry}
       />
+      <InquiryForm isOpen={isInquiryOpen} onClose={() => setIsInquiryOpen(false)} />
     </div>
   );
 };
