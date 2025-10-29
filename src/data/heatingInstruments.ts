@@ -3,7 +3,7 @@ export const heatingInstruments = {
   "Hot Air Oven": {
     name: "Hot Air Oven",
     category: "Heating Instruments",
-    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
+    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Temperature Range": "50°C to 300°C",
       "Chamber Size": "450 x 450 x 450 mm",
@@ -29,7 +29,7 @@ export const heatingInstruments = {
   "Tray Dryer": {
     name: "Tray Dryer",
     category: "Heating Instruments",
-    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
+    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Temperature Range": "Ambient to 200°C",
       "Tray Capacity": "24 Trays",
@@ -55,7 +55,7 @@ export const heatingInstruments = {
   "Vacuum Dryer": {
     name: "Vacuum Dryer",
     category: "Heating Instruments",
-    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
+    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Temperature Range": "Ambient to 250°C",
       "Vacuum Level": "Up to 760 mmHg",
@@ -81,7 +81,7 @@ export const heatingInstruments = {
   "Hot Plate": {
     name: "Hot Plate",
     category: "Heating Instruments",
-    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
+    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Temperature Range": "50°C to 350°C",
       "Plate Size": "200 x 200 mm",
@@ -107,7 +107,7 @@ export const heatingInstruments = {
   "Water Bath": {
     name: "Water Bath",
     category: "Heating Instruments",
-    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
+    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Temperature Range": "Ambient +5°C to 100°C",
       "Chamber Size": "300 x 200 x 150 mm",

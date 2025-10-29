@@ -3,7 +3,7 @@ export const environmentalChamber = {
   "Salt Spray Chamber": {
     name: "Salt Spray Chamber",
     category: "Environmental Chamber",
-    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
+    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Temperature Range": "35°C ± 2°C",
       "Chamber Volume": "400 Liters",
@@ -29,7 +29,7 @@ export const environmentalChamber = {
   "Humidity Chamber": {
     name: "Humidity Chamber",
     category: "Environmental Chamber",
-    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
+    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Temperature Range": "5°C to 95°C",
       "Humidity Range": "10% to 98% RH",
@@ -55,7 +55,7 @@ export const environmentalChamber = {
   "Paint Corrosion Chamber": {
     name: "Paint Corrosion Chamber",
     category: "Environmental Chamber",
-    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
+    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Temperature Range": "Ambient to 70°C",
       "Humidity Range": "85% to 98% RH",
@@ -81,7 +81,7 @@ export const environmentalChamber = {
   "Environmental Shaker": {
     name: "Environmental Shaker",
     category: "Environmental Chamber",
-    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
+    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Temperature Range": "-40°C to 180°C",
       "Vibration Force": "Up to 20 kN",
@@ -107,7 +107,7 @@ export const environmentalChamber = {
   "Cyclic Corrosion Chamber": {
     name: "Cyclic Corrosion Chamber",
     category: "Environmental Chamber",
-    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
+    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Temperature Range": "Ambient to 60°C",
       "Humidity Range": "50% to 98% RH",
@@ -133,7 +133,7 @@ export const environmentalChamber = {
   "Climate Chamber": {
     name: "Climate Chamber",
     category: "Environmental Chamber",
-    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
+    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Temperature Range": "-70°C to 180°C",
       "Humidity Range": "10% to 98% RH",
@@ -159,7 +159,7 @@ export const environmentalChamber = {
   "PP Tank": {
     name: "PP Tank",
     category: "Environmental Chamber",
-    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
+    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Capacity": "100 to 10,000 Liters",
       "Material": "Polypropylene (PP)",

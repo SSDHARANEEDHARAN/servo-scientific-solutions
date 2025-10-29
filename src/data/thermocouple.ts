@@ -3,7 +3,7 @@ export const thermocouple = {
   "RTD Sensors": {
     name: "RTD Sensors",
     category: "Thermocouple",
-    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
+    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Temperature Range": "-200°C to 850°C",
       "Element Type": "Pt100, Pt1000",
@@ -29,7 +29,7 @@ export const thermocouple = {
   "J Type": {
     name: "J Type",
     category: "Thermocouple",
-    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
+    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Temperature Range": "-210°C to 1200°C",
       "Composition": "Iron vs Constantan",
@@ -55,7 +55,7 @@ export const thermocouple = {
   "K Type": {
     name: "K Type",
     category: "Thermocouple",
-    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
+    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Temperature Range": "-270°C to 1372°C",
       "Composition": "Chromel vs Alumel",
@@ -81,7 +81,7 @@ export const thermocouple = {
   "S Type": {
     name: "S Type",
     category: "Thermocouple",
-    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
+    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Temperature Range": "-50°C to 1768°C",
       "Composition": "Platinum-10% Rhodium vs Platinum",
@@ -107,7 +107,7 @@ export const thermocouple = {
   "R Type": {
     name: "R Type",
     category: "Thermocouple",
-    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
+    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Temperature Range": "-50°C to 1768°C",
       "Composition": "Platinum-13% Rhodium vs Platinum",
@@ -133,7 +133,7 @@ export const thermocouple = {
   "B Type": {
     name: "B Type",
     category: "Thermocouple",
-    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
+    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Temperature Range": "0°C to 1820°C",
       "Composition": "Platinum-30% Rhodium vs Platinum-6% Rhodium",

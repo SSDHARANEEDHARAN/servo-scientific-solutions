@@ -3,7 +3,7 @@ export const microbiologyInstruments = {
   "Autoclave": {
     name: "Autoclave",
     category: "Microbiology Instruments",
-    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
+    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Temperature Range": "121°C to 134°C",
       "Chamber Volume": "50 to 1000 Liters",
@@ -29,7 +29,7 @@ export const microbiologyInstruments = {
   "Incubator": {
     name: "Incubator",
     category: "Microbiology Instruments",
-    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
+    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Temperature Range": "5°C above ambient to 80°C",
       "Volume": "50 to 1000 Liters",
@@ -55,7 +55,7 @@ export const microbiologyInstruments = {
   "BOD Incubator": {
     name: "BOD Incubator",
     category: "Microbiology Instruments",
-    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
+    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Temperature Range": "5°C to 60°C",
       "Volume": "150 to 1000 Liters",
@@ -81,7 +81,7 @@ export const microbiologyInstruments = {
   "Laminar Air Flow": {
     name: "Laminar Air Flow",
     category: "Microbiology Instruments",
-    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
+    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Work Area": "600x450mm to 1800x750mm",
       "Air Flow Velocity": "0.45 m/s ± 20%",
@@ -107,7 +107,7 @@ export const microbiologyInstruments = {
   "Bio Safety Cabinet": {
     name: "Bio Safety Cabinet",
     category: "Microbiology Instruments",
-    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
+    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Classification": "Class II Type A2/B2",
       "Work Area": "1200x600mm to 1800x750mm",
@@ -133,7 +133,7 @@ export const microbiologyInstruments = {
   "Fermentor": {
     name: "Fermentor",
     category: "Microbiology Instruments",
-    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
+    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Volume": "5L to 1000L",
       "Temperature Range": "4°C to 60°C",
@@ -159,7 +159,7 @@ export const microbiologyInstruments = {
   "Fume Hood": {
     name: "Fume Hood",
     category: "Microbiology Instruments",
-    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
+    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Work Area": "1200x750mm to 2400x750mm",
       "Face Velocity": "0.5 m/s ± 20%",
@@ -185,7 +185,7 @@ export const microbiologyInstruments = {
   "Deep Freezer": {
     name: "Deep Freezer",
     category: "Microbiology Instruments",
-    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
+    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Temperature Range": "-86°C to -40°C",
       "Volume": "100L to 1000L",
@@ -211,7 +211,7 @@ export const microbiologyInstruments = {
   "Pass Box": {
     name: "Pass Box",
     category: "Microbiology Instruments",
-    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
+    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Internal Size": "600x600x600mm",
       "Material": "SS 304 Construction",
@@ -237,7 +237,7 @@ export const microbiologyInstruments = {
   "Blending Machines": {
     name: "Blending Machines",
     category: "Microbiology Instruments",
-    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
+    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Capacity": "1L to 100L",
       "Speed Range": "50 to 3000 RPM",
@@ -263,7 +263,7 @@ export const microbiologyInstruments = {
   "Sterilizer": {
     name: "Sterilizer",
     category: "Microbiology Instruments",
-    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
+    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Temperature Range": "160°C to 200°C",
       "Chamber Volume": "50L to 500L",
@@ -289,7 +289,7 @@ export const microbiologyInstruments = {
   "Distillation Unit (Glass/Metal)": {
     name: "Distillation Unit (Glass/Metal)",
     category: "Microbiology Instruments",
-    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
+    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Output": "2L/hr to 100L/hr",
       "Construction": "Borosilicate Glass/SS",
@@ -315,7 +315,7 @@ export const microbiologyInstruments = {
   "Bottle Shaker": {
     name: "Bottle Shaker",
     category: "Microbiology Instruments",
-    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
+    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Capacity": "250ml to 5L Bottles",
       "Speed Range": "50 to 500 RPM",

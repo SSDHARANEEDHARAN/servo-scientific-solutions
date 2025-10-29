@@ -56,28 +56,31 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ onBack, onInquiry
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* All Images Gallery */}
+          {/* Product Images Carousel */}
           <div className="bg-white dark:bg-slate-800 rounded-lg shadow-card p-6">
             <h2 className="text-xl font-semibold text-foreground mb-4">
               Product Images ({product.images.length})
             </h2>
-            <div className="grid grid-cols-2 gap-4">
-              {product.images.map((image, index) => (
-                <div 
-                  key={index}
-                  className="aspect-square bg-surface-blue dark:bg-slate-700 rounded-lg flex items-center justify-center border-2 border-slate-200 dark:border-slate-600 hover:border-primary transition-all duration-300 overflow-hidden group"
-                >
-                  <img 
-                    src={image} 
-                    alt={`${product.name} - View ${index + 1}`}
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                    onError={(e) => {
-                      e.currentTarget.src = '/placeholder.svg';
-                    }}
-                  />
-                </div>
-              ))}
-            </div>
+            <Carousel className="w-full">
+              <CarouselContent>
+                {product.images.map((image, index) => (
+                  <CarouselItem key={index}>
+                    <div className="aspect-square bg-surface-blue dark:bg-slate-700 rounded-lg flex items-center justify-center border-2 border-slate-200 dark:border-slate-600 overflow-hidden">
+                      <img 
+                        src={image} 
+                        alt={`${product.name} - View ${index + 1}`}
+                        className="w-full h-full object-cover"
+                        onError={(e) => {
+                          e.currentTarget.src = '/placeholder.svg';
+                        }}
+                      />
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="left-4" />
+              <CarouselNext className="right-4" />
+            </Carousel>
           </div>
 
           {/* Product Information */}

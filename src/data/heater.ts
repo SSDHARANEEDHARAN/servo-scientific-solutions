@@ -3,7 +3,7 @@ export const heater = {
   "Cartridge Heater": {
     name: "Cartridge Heater",
     category: "Heater",
-    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
+    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Temperature Range": "Up to 750°C",
       "Diameter": "6.5mm to 25mm",
@@ -29,7 +29,7 @@ export const heater = {
   "Immersion Heater": {
     name: "Immersion Heater",
     category: "Heater",
-    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
+    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Temperature Range": "Up to 650°C",
       "Sheath Diameter": "8mm to 20mm",
@@ -55,7 +55,7 @@ export const heater = {
   "Dye Heater": {
     name: "Dye Heater",
     category: "Heater",
-    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
+    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Temperature Range": "Up to 400°C",
       "Power Rating": "1kW to 50kW",
@@ -81,7 +81,7 @@ export const heater = {
   "Band Heater": {
     name: "Band Heater",
     category: "Heater",
-    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
+    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Temperature Range": "Up to 500°C",
       "Internal Diameter": "25mm to 1000mm",
@@ -107,7 +107,7 @@ export const heater = {
   "Ceramic Bobbin Heater": {
     name: "Ceramic Bobbin Heater",
     category: "Heater",
-    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
+    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Temperature Range": "Up to 1000°C",
       "Diameter": "10mm to 50mm",
@@ -133,7 +133,7 @@ export const heater = {
   "Titanium Heater": {
     name: "Titanium Heater",
     category: "Heater",
-    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
+    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Temperature Range": "Up to 300°C",
       "Sheath Material": "Grade 1/2 Titanium",
@@ -159,7 +159,7 @@ export const heater = {
   "Silicone Carbide Rod Heater": {
     name: "Silicone Carbide Rod Heater",
     category: "Heater",
-    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
+    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Temperature Range": "Up to 1600°C",
       "Diameter": "10mm to 30mm",
@@ -185,7 +185,7 @@ export const heater = {
   "Quartz Heater": {
     name: "Quartz Heater",
     category: "Heater",
-    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
+    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Temperature Range": "Up to 1200°C",
       "Tube Diameter": "10mm to 25mm",

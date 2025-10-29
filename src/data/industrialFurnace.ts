@@ -3,7 +3,7 @@ export const industrialFurnace = {
   "High Temperature Furnace": {
     name: "High Temperature Furnace",
     category: "Industrial Furnace",
-    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
+    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Temperature Range": "Up to 1800°C",
       "Chamber Size": "300 x 300 x 300 mm",
@@ -29,7 +29,7 @@ export const industrialFurnace = {
   "Lab Furnace (1000/1450/1650)": {
     name: "Lab Furnace (1000/1450/1650)",
     category: "Industrial Furnace",
-    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
+    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Temperature Range": "Up to 1650°C (Model Dependent)",
       "Chamber Size": "200 x 200 x 200 mm",
@@ -55,7 +55,7 @@ export const industrialFurnace = {
   "Muffle Furnace": {
     name: "Muffle Furnace",
     category: "Industrial Furnace",
-    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
+    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Temperature Range": "Up to 1200°C",
       "Chamber Size": "200 x 120 x 75 mm",
