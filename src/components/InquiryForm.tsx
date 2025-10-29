@@ -201,31 +201,31 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-lg shadow-professional max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+    <div className="fixed inset-0 z-50 bg-background/80 backdrop-blur-sm flex items-center justify-center p-4">
+      <div className="bg-card rounded-lg shadow-professional max-w-2xl w-full max-h-[90vh] overflow-y-auto border border-border">
         {/* Header */}
-        <div className="flex justify-between items-center p-6 border-b border-technical-gray-light">
+        <div className="flex justify-between items-center p-6 border-b border-border">
           <div>
-            <h2 className="text-2xl font-bold text-professional-blue">Submit Inquiry</h2>
-            <p className="text-technical-gray">Complete the form in 3 simple steps</p>
+            <h2 className="text-2xl font-bold text-primary">Submit Inquiry</h2>
+            <p className="text-muted-foreground">Complete the form in 3 simple steps</p>
           </div>
           <button 
             onClick={onClose}
-            className="text-technical-gray hover:text-professional-blue"
+            className="text-muted-foreground hover:text-primary transition-colors"
           >
             <X className="h-6 w-6" />
           </button>
         </div>
 
         {/* Progress Steps */}
-        <div className="px-6 py-4 bg-surface-blue">
+        <div className="px-6 py-4 bg-muted/30">
           <div className="flex items-center justify-between">
             {[1, 2, 3].map((step) => (
               <div key={step} className="flex items-center">
-                <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold
+                <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold transition-colors
                   ${currentStep >= step 
-                    ? 'bg-professional-blue text-white' 
-                    : 'bg-technical-gray-light text-technical-gray'
+                    ? 'bg-primary text-primary-foreground' 
+                    : 'bg-muted text-muted-foreground'
                   }`}>
                   {currentStep > step ? <CheckCircle className="h-5 w-5" /> : step}
                 </div>
@@ -235,8 +235,8 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ isOpen, onClose }) => {
                   {step === 3 && "Complete"}
                 </div>
                 {step < 3 && (
-                  <div className={`w-12 h-0.5 ml-4 
-                    ${currentStep > step ? 'bg-professional-blue' : 'bg-technical-gray-light'}`} 
+                  <div className={`w-12 h-0.5 ml-4 transition-colors
+                    ${currentStep > step ? 'bg-primary' : 'bg-border'}`} 
                   />
                 )}
               </div>
@@ -254,7 +254,7 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ isOpen, onClose }) => {
                   value={formData.productCategory} 
                   onValueChange={(value) => handleInputChange('productCategory', value)}
                 >
-                  <SelectTrigger className={validationErrors.productCategory ? 'border-red-500' : ''}>
+                  <SelectTrigger className={validationErrors.productCategory ? 'border-destructive' : ''}>
                     <SelectValue placeholder="Select Product Category" />
                   </SelectTrigger>
                   <SelectContent>
@@ -264,7 +264,7 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ isOpen, onClose }) => {
                   </SelectContent>
                 </Select>
                 {validationErrors.productCategory && (
-                  <p className="text-red-500 text-sm mt-1">{validationErrors.productCategory}</p>
+                  <p className="text-destructive text-sm mt-1">{validationErrors.productCategory}</p>
                 )}
               </div>
 
@@ -275,7 +275,7 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ isOpen, onClose }) => {
                   onValueChange={(value) => handleInputChange('specificMachine', value)}
                   disabled={!formData.productCategory}
                 >
-                  <SelectTrigger className={validationErrors.specificMachine ? 'border-red-500' : ''}>
+                  <SelectTrigger className={validationErrors.specificMachine ? 'border-destructive' : ''}>
                     <SelectValue placeholder={
                       formData.productCategory 
                         ? "Select Specific Machine" 
@@ -289,7 +289,7 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ isOpen, onClose }) => {
                   </SelectContent>
                 </Select>
                 {validationErrors.specificMachine && (
-                  <p className="text-red-500 text-sm mt-1">{validationErrors.specificMachine}</p>
+                  <p className="text-destructive text-sm mt-1">{validationErrors.specificMachine}</p>
                 )}
               </div>
 
@@ -301,11 +301,11 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ isOpen, onClose }) => {
                     value={formData.firstName}
                     onChange={(e) => handleInputChange('firstName', e.target.value)}
                     placeholder="First Name"
-                    className={validationErrors.firstName ? 'border-red-500' : ''}
+                    className={validationErrors.firstName ? 'border-destructive' : ''}
                     maxLength={50}
                   />
                   {validationErrors.firstName && (
-                    <p className="text-red-500 text-sm mt-1">{validationErrors.firstName}</p>
+                    <p className="text-destructive text-sm mt-1">{validationErrors.firstName}</p>
                   )}
                 </div>
                 <div>
@@ -315,11 +315,11 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ isOpen, onClose }) => {
                     value={formData.lastName}
                     onChange={(e) => handleInputChange('lastName', e.target.value)}
                     placeholder="Last Name"
-                    className={validationErrors.lastName ? 'border-red-500' : ''}
+                    className={validationErrors.lastName ? 'border-destructive' : ''}
                     maxLength={50}
                   />
                   {validationErrors.lastName && (
-                    <p className="text-red-500 text-sm mt-1">{validationErrors.lastName}</p>
+                    <p className="text-destructive text-sm mt-1">{validationErrors.lastName}</p>
                   )}
                 </div>
               </div>
@@ -343,11 +343,11 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ isOpen, onClose }) => {
                   value={formData.email}
                   onChange={(e) => handleInputChange('email', e.target.value)}
                   placeholder="your.email@company.com"
-                  className={validationErrors.email ? 'border-red-500' : ''}
+                  className={validationErrors.email ? 'border-destructive' : ''}
                   maxLength={255}
                 />
                 {validationErrors.email && (
-                  <p className="text-red-500 text-sm mt-1">{validationErrors.email}</p>
+                  <p className="text-destructive text-sm mt-1">{validationErrors.email}</p>
                 )}
               </div>
             </div>
@@ -363,11 +363,11 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ isOpen, onClose }) => {
                   onChange={(e) => handleInputChange('address', e.target.value)}
                   placeholder="Full address including city, state, and postal code"
                   rows={3}
-                  className={validationErrors.address ? 'border-red-500' : ''}
+                  className={validationErrors.address ? 'border-destructive' : ''}
                   maxLength={500}
                 />
                 {validationErrors.address && (
-                  <p className="text-red-500 text-sm mt-1">{validationErrors.address}</p>
+                  <p className="text-destructive text-sm mt-1">{validationErrors.address}</p>
                 )}
               </div>
 
@@ -377,7 +377,7 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ isOpen, onClose }) => {
                   value={formData.country} 
                   onValueChange={(value) => handleInputChange('country', value)}
                 >
-                  <SelectTrigger className={validationErrors.country ? 'border-red-500' : ''}>
+                  <SelectTrigger className={validationErrors.country ? 'border-destructive' : ''}>
                     <SelectValue placeholder="Select Country" />
                   </SelectTrigger>
                   <SelectContent>
@@ -387,7 +387,7 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ isOpen, onClose }) => {
                   </SelectContent>
                 </Select>
                 {validationErrors.country && (
-                  <p className="text-red-500 text-sm mt-1">{validationErrors.country}</p>
+                  <p className="text-destructive text-sm mt-1">{validationErrors.country}</p>
                 )}
               </div>
 
@@ -414,20 +414,20 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ isOpen, onClose }) => {
                   onChange={(e) => handleInputChange('comments', e.target.value)}
                   placeholder="Please describe your requirements, specifications, quantity needed, timeline, or any questions you have about our products..."
                   rows={6}
-                  className={validationErrors.comments ? 'border-red-500' : ''}
+                  className={validationErrors.comments ? 'border-destructive' : ''}
                   maxLength={2000}
                 />
                 {validationErrors.comments && (
-                  <p className="text-red-500 text-sm mt-1">{validationErrors.comments}</p>
+                  <p className="text-destructive text-sm mt-1">{validationErrors.comments}</p>
                 )}
                 <p className="text-sm text-muted-foreground">
                   {formData.comments.length}/2000 characters
                 </p>
               </div>
 
-              <div className="bg-surface-blue p-4 rounded-lg">
-                <h4 className="font-semibold text-professional-blue mb-2">Review Your Information</h4>
-                <div className="text-sm text-technical-gray space-y-1">
+              <div className="bg-muted/30 p-4 rounded-lg border border-border">
+                <h4 className="font-semibold text-primary mb-2">Review Your Information</h4>
+                <div className="text-sm text-foreground space-y-1">
                   <p><strong>Product Category:</strong> {formData.productCategory}</p>
                   <p><strong>Specific Machine:</strong> {formData.specificMachine}</p>
                   <p><strong>Name:</strong> {formData.firstName} {formData.lastName}</p>
@@ -438,7 +438,7 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ isOpen, onClose }) => {
                 </div>
               </div>
 
-              <div className="text-sm text-technical-gray">
+              <div className="text-sm text-muted-foreground">
                 <p>Items marked with an asterisk (*) are required. All information will be kept confidential and used only for processing your inquiry.</p>
               </div>
             </div>
