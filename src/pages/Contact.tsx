@@ -5,6 +5,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
 import { ArrowLeft, Send, Mail, Phone, MapPin } from 'lucide-react';
+import SEOHead from '@/components/SEOHead';
 
 interface ContactProps {
   onBackToHome: () => void;
@@ -77,6 +78,12 @@ const Contact: React.FC<ContactProps> = ({ onBackToHome, onInquiryClick }) => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="Contact Us | Get in Touch | Servo Scientific Suppliers"
+        description="Contact Servo Scientific Suppliers for inquiries about scientific and laboratory equipment. Email: servoscientific@yahoo.com, Phone: +1 (234) 567-890. We respond within 24 hours."
+        keywords="contact servo scientific, laboratory equipment inquiry, scientific equipment quote, technical support"
+        canonical="https://servoscientific.com/contact"
+      />
       {/* Professional Hero Section */}
       <div className="relative bg-card border-b border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">

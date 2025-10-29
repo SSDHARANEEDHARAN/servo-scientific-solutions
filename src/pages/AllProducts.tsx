@@ -5,6 +5,7 @@ import { Badge } from '@/components/ui/badge';
 import { ArrowLeft, Search, Filter } from 'lucide-react';
 import { productDatabase, productCategories } from '@/data';
 import ProductDetail from '@/components/ProductDetail';
+import SEOHead from '@/components/SEOHead';
 
 interface AllProductsProps {
   onBackToHome: () => void;
@@ -50,6 +51,12 @@ const AllProducts: React.FC<AllProductsProps> = ({ onBackToHome, onInquiryClick 
 
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="All Products | Scientific & Laboratory Equipment | Servo Scientific"
+        description="Browse our complete range of high-quality scientific and laboratory equipment including heating instruments, industrial furnaces, environmental chambers, and microbiology instruments."
+        keywords="scientific equipment, laboratory instruments, heating equipment, industrial furnace, environmental chamber, microbiology instruments, thermocouple"
+        canonical="https://servoscientific.com/products"
+      />
       {/* Header */}
       <div className="bg-gradient-hero text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

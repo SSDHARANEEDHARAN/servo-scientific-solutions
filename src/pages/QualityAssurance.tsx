@@ -2,6 +2,7 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowLeft, Shield, Award, CheckCircle, Eye, FileText, Users } from 'lucide-react';
+import SEOHead from '@/components/SEOHead';
 
 interface QualityAssuranceProps {
   onBackToHome: () => void;
@@ -73,6 +74,12 @@ const QualityAssurance: React.FC<QualityAssuranceProps> = ({ onBackToHome }) => 
 
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="Quality Assurance | ISO 9001:2015 Certified | Servo Scientific"
+        description="ISO 9001:2015 certified quality management. CE marking, NIST traceability, 99.8% quality pass rate. 50+ years of excellence in scientific equipment manufacturing."
+        keywords="ISO 9001:2015, CE marking, NIST traceability, quality assurance, laboratory equipment quality, scientific instrument certification"
+        canonical="https://servoscientific.com/quality"
+      />
       {/* Header */}
       <div className="bg-gradient-hero text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

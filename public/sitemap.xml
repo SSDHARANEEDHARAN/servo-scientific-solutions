@@ -1,23 +1,240 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Main Pages -->
   <url>
-    <loc>https://www.nextcraft.co.in/</loc>
+    <loc>https://servoscientific.com/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <lastmod>2025-01-29</lastmod>
   </url>
   <url>
-    <loc>https://www.nextcraft.co.in/about</loc>
+    <loc>https://servoscientific.com/about</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <lastmod>2025-01-29</lastmod>
   </url>
   <url>
-    <loc>https://www.nextcraft.co.in/products</loc>
+    <loc>https://servoscientific.com/products</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <lastmod>2025-01-29</lastmod>
   </url>
   <url>
-    <loc>https://www.nextcraft.co.in/contact</loc>
+    <loc>https://servoscientific.com/services</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2025-01-29</lastmod>
+  </url>
+  <url>
+    <loc>https://servoscientific.com/quality</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <lastmod>2025-01-29</lastmod>
+  </url>
+  <url>
+    <loc>https://servoscientific.com/contact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <lastmod>2025-01-29</lastmod>
+  </url>
+
+  <!-- Heating Instruments -->
+  <url>
+    <loc>https://servoscientific.com/heating-instruments/hot-air-oven</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2025-01-29</lastmod>
+  </url>
+  <url>
+    <loc>https://servoscientific.com/heating-instruments/muffle-furnace</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2025-01-29</lastmod>
+  </url>
+  <url>
+    <loc>https://servoscientific.com/heating-instruments/incubator</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2025-01-29</lastmod>
+  </url>
+  <url>
+    <loc>https://servoscientific.com/heating-instruments/vacuum-oven</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2025-01-29</lastmod>
+  </url>
+  <url>
+    <loc>https://servoscientific.com/heating-instruments/laboratory-oven</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2025-01-29</lastmod>
+  </url>
+  <url>
+    <loc>https://servoscientific.com/heating-instruments/drying-oven</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2025-01-29</lastmod>
+  </url>
+  <url>
+    <loc>https://servoscientific.com/heating-instruments/bod-incubator</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2025-01-29</lastmod>
+  </url>
+
+  <!-- Industrial Furnace -->
+  <url>
+    <loc>https://servoscientific.com/industrial-furnace/box-furnace</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2025-01-29</lastmod>
+  </url>
+  <url>
+    <loc>https://servoscientific.com/industrial-furnace/tube-furnace</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2025-01-29</lastmod>
+  </url>
+  <url>
+    <loc>https://servoscientific.com/industrial-furnace/crucible-furnace</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2025-01-29</lastmod>
+  </url>
+  <url>
+    <loc>https://servoscientific.com/industrial-furnace/annealing-furnace</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2025-01-29</lastmod>
+  </url>
+  <url>
+    <loc>https://servoscientific.com/industrial-furnace/high-temperature-furnace</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2025-01-29</lastmod>
+  </url>
+
+  <!-- Environmental Chamber -->
+  <url>
+    <loc>https://servoscientific.com/environmental-chamber/humidity-chamber</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2025-01-29</lastmod>
+  </url>
+  <url>
+    <loc>https://servoscientific.com/environmental-chamber/temperature-chamber</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2025-01-29</lastmod>
+  </url>
+  <url>
+    <loc>https://servoscientific.com/environmental-chamber/stability-chamber</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2025-01-29</lastmod>
+  </url>
+  <url>
+    <loc>https://servoscientific.com/environmental-chamber/walk-in-chamber</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2025-01-29</lastmod>
+  </url>
+
+  <!-- Heater -->
+  <url>
+    <loc>https://servoscientific.com/heater/band-heater</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2025-01-29</lastmod>
+  </url>
+  <url>
+    <loc>https://servoscientific.com/heater/cartridge-heater</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2025-01-29</lastmod>
+  </url>
+  <url>
+    <loc>https://servoscientific.com/heater/immersion-heater</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2025-01-29</lastmod>
+  </url>
+  <url>
+    <loc>https://servoscientific.com/heater/tubular-heater</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2025-01-29</lastmod>
+  </url>
+
+  <!-- Microbiology Instruments -->
+  <url>
+    <loc>https://servoscientific.com/microbiology-instruments/laminar-air-flow</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2025-01-29</lastmod>
+  </url>
+  <url>
+    <loc>https://servoscientific.com/microbiology-instruments/biosafety-cabinet</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2025-01-29</lastmod>
+  </url>
+  <url>
+    <loc>https://servoscientific.com/microbiology-instruments/autoclave</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2025-01-29</lastmod>
+  </url>
+  <url>
+    <loc>https://servoscientific.com/microbiology-instruments/colony-counter</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2025-01-29</lastmod>
+  </url>
+
+  <!-- Thermocouple -->
+  <url>
+    <loc>https://servoscientific.com/thermocouple/k-type-thermocouple</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2025-01-29</lastmod>
+  </url>
+  <url>
+    <loc>https://servoscientific.com/thermocouple/j-type-thermocouple</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2025-01-29</lastmod>
+  </url>
+  <url>
+    <loc>https://servoscientific.com/thermocouple/r-type-thermocouple</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2025-01-29</lastmod>
+  </url>
+  <url>
+    <loc>https://servoscientific.com/thermocouple/s-type-thermocouple</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2025-01-29</lastmod>
+  </url>
+
+  <!-- Legal Pages -->
+  <url>
+    <loc>https://servoscientific.com/privacy</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <lastmod>2025-01-29</lastmod>
+  </url>
+  <url>
+    <loc>https://servoscientific.com/terms</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <lastmod>2025-01-29</lastmod>
+  </url>
+  <url>
+    <loc>https://servoscientific.com/cookies</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <lastmod>2025-01-29</lastmod>
   </url>
 </urlset>

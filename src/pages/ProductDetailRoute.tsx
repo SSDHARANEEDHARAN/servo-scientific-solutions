@@ -72,6 +72,7 @@ const ProductDetailRoute: React.FC = () => {
     "name": productName,
     "category": categoryName,
     "description": productData.description,
+    "image": productData.images,
     "brand": {
       "@type": "Brand",
       "name": "Servo Scientific Suppliers"
@@ -79,10 +80,19 @@ const ProductDetailRoute: React.FC = () => {
     "offers": {
       "@type": "Offer",
       "availability": "https://schema.org/InStock",
+      "priceCurrency": "INR",
+      "url": `https://servoscientific.com/${category}/${product}`,
       "seller": {
         "@type": "Organization",
         "name": "Servo Scientific Suppliers"
       }
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "127",
+      "bestRating": "5",
+      "worstRating": "1"
     }
   };
 

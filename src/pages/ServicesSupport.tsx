@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { ArrowLeft, Wrench, Phone, Clock, Award, Shield, CheckCircle } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import SEOHead from '@/components/SEOHead';
 
 interface ServicesSupportProps {
   onBackToHome: () => void;
@@ -105,6 +106,12 @@ const ServicesSupport: React.FC<ServicesSupportProps> = ({ onBackToHome, onInqui
 
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="Services & Support | Installation, Maintenance & Calibration | Servo Scientific"
+        description="24/7 technical support, installation, maintenance, repair, and NIST traceable calibration services for scientific equipment. Expert support within 2 hours."
+        keywords="equipment installation, calibration services, technical support, equipment maintenance, laboratory equipment repair, NIST calibration"
+        canonical="https://servoscientific.com/services"
+      />
       {/* Header */}
       <div className="bg-gradient-hero text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
