@@ -84,9 +84,11 @@ const ProductDetailRoute: React.FC = () => {
     },
     "offers": {
       "@type": "Offer",
+      "price": "0.00",
       "priceCurrency": "INR",
       "availability": "https://schema.org/InStock",
-      "url": `https://www.nextcraft.co.in/${category}/${product}`
+      "url": `https://www.nextcraft.co.in/${category}/${product}`,
+      "itemCondition": "https://schema.org/NewCondition"
     },
     "aggregateRating": {
       "@type": "AggregateRating",
