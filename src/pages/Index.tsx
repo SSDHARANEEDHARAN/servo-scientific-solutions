@@ -1,24 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
 import HeroSection from '@/components/HeroSection';
 import ProductShowcase from '@/components/ProductShowcase';
 import BrandsSection from '@/components/BrandsSection';
-import InquiryForm from '@/components/InquiryForm';
 import Footer from '@/components/Footer';
 import SEOHead from '@/components/SEOHead';
 
 const Index = () => {
-  const [isInquiryOpen, setIsInquiryOpen] = useState(false);
   const navigate = useNavigate();
-
-  const handleInquiryClick = () => {
-    setIsInquiryOpen(true);
-  };
-
-  const handleInquiryClose = () => {
-    setIsInquiryOpen(false);
-  };
 
   const handleAllProductsClick = () => {
     navigate('/products');
@@ -88,23 +78,22 @@ const Index = () => {
         structuredData={structuredData}
       />
       <Navigation
-        onInquiryClick={handleInquiryClick} 
         onProductSelect={() => {}}
         onAboutClick={handleAboutClick}
         onContactClick={handleContactClick}
       />
       
       <HeroSection 
-        onInquiryClick={handleInquiryClick} 
+        onInquiryClick={() => {}} 
         onAllProductsClick={handleAllProductsClick}
       />
       <ProductShowcase 
-        onInquiryClick={handleInquiryClick}
+        onInquiryClick={() => {}}
         onProductSelect={() => {}}
       />
       <BrandsSection />
       <Footer 
-        onInquiryClick={handleInquiryClick} 
+        onInquiryClick={() => {}} 
         onCategorySelect={() => {}}
         onAboutClick={handleAboutClick}
         onAllProductsClick={handleAllProductsClick}
@@ -112,8 +101,6 @@ const Index = () => {
         onQualityClick={() => navigate('/quality')}
         onContactClick={handleContactClick}
       />
-      
-      <InquiryForm isOpen={isInquiryOpen} onClose={handleInquiryClose} />
     </div>
   );
 };

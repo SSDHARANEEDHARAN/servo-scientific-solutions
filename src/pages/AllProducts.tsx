@@ -63,7 +63,6 @@ const AllProducts: React.FC<AllProductsProps> = ({ onBackToHome, onInquiryClick 
       />
       
       <Navigation
-        onInquiryClick={onInquiryClick}
         onProductSelect={() => {}}
         onAboutClick={() => navigate('/about')}
         onContactClick={() => navigate('/contact')}
@@ -184,7 +183,7 @@ const AllProducts: React.FC<AllProductsProps> = ({ onBackToHome, onInquiryClick 
       </div>
 
       <Footer
-        onInquiryClick={onInquiryClick}
+        onInquiryClick={() => {}}
         onCategorySelect={() => {}}
         onAboutClick={() => navigate('/about')}
         onAllProductsClick={() => navigate('/products')}
