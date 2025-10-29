@@ -257,7 +257,7 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
                   onClick={handleInquiryClick}
                   className="text-foreground hover:text-primary transition-colors font-medium"
                 >
-                  Inquiries
+                  Enquiries
                 </button>
                 </div>
               </div>
@@ -410,7 +410,7 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
                         onClick={handleInquiryClick}
                         className="block w-full text-left text-foreground hover:text-primary transition-colors font-medium py-2"
                       >
-                        Inquiries
+                        Enquiries
                       </button>
                     </div>
                     

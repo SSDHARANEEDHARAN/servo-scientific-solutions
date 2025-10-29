@@ -112,7 +112,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     await client.send({
       from: "Servo Scientific <onboarding@resend.dev>",
-      to: "tharaneetharanss@gmail.com", // Change this to servoscientific@yahoo.com after verifying domain
+      to: "servoscientific@yahoo.com",
       subject: emailSubject,
       content: emailContent,
       html: emailContent,
