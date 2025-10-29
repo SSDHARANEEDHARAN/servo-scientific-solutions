@@ -4,9 +4,10 @@ import { ArrowRight, Award, Users, Package, Clock } from 'lucide-react';
 
 interface HeroSectionProps {
   onInquiryClick: () => void;
+  onAllProductsClick: () => void;
 }
 
-const HeroSection: React.FC<HeroSectionProps> = ({ onInquiryClick }) => {
+const HeroSection: React.FC<HeroSectionProps> = ({ onInquiryClick, onAllProductsClick }) => {
   return (
     <section className="relative bg-gradient-hero dark:bg-gradient-to-br dark:from-slate-900 dark:to-slate-800 py-32 min-h-[90vh] flex items-center overflow-hidden">
       {/* Background Pattern */}
@@ -40,9 +41,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onInquiryClick }) => {
             <Button 
               variant="outline" 
               size="lg"
+              onClick={onAllProductsClick}
               className="text-lg px-8 py-4 bg-white/10 border-white/30 text-white hover:bg-white hover:text-professional-blue"
             >
-              View Products
+              View All Products
             </Button>
           </div>
           

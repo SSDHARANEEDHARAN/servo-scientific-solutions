@@ -226,8 +226,11 @@ const Index = () => {
         />
       ) : (
         <>
-          <HeroSection onInquiryClick={handleInquiryClick} />
-          <ProductShowcase 
+          <HeroSection 
+            onInquiryClick={handleInquiryClick} 
+            onAllProductsClick={handleAllProductsClick}
+          />
+          <ProductShowcase
             onInquiryClick={handleInquiryClick}
             onProductSelect={handleProductSelect}
           />
