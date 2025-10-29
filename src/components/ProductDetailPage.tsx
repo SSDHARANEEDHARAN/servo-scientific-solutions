@@ -24,9 +24,13 @@ interface ProductDetailPageProps {
 
 const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ onBack, onInquiry, product }) => {
   const handleDownloadDatasheet = async () => {
+    console.log('Download button clicked!');
+    console.log('Product data:', product);
     try {
       toast.info('Generating datasheet...');
+      console.log('About to call generateProductDatasheet');
       await generateProductDatasheet(product);
+      console.log('PDF generation completed');
       toast.success('Datasheet downloaded successfully!');
     } catch (error) {
       console.error('Error generating datasheet:', error);

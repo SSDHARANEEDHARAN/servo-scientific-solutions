@@ -12,11 +12,14 @@ interface Product {
 }
 
 export const generateProductDatasheet = async (product: Product): Promise<void> => {
+  console.log('generateProductDatasheet called with:', product);
   try {
+    console.log('Creating jsPDF instance');
     const pdf = new jsPDF();
     const pageWidth = pdf.internal.pageSize.getWidth();
     const pageHeight = pdf.internal.pageSize.getHeight();
     let yPosition = 20;
+    console.log('PDF instance created, starting generation');
 
     // Add company header
     pdf.setFontSize(24);
@@ -150,9 +153,11 @@ export const generateProductDatasheet = async (product: Product): Promise<void> 
     
     // Generate filename
     const filename = `${product.name.replace(/\s+/g, '_')}_Datasheet.pdf`;
+    console.log('Saving PDF with filename:', filename);
     
     // Save the PDF
     pdf.save(filename);
+    console.log('PDF saved successfully');
     
   } catch (error) {
     console.error('Error generating PDF:', error);
