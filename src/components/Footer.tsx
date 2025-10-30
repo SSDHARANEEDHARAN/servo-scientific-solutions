@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { 
   Phone, 
@@ -26,6 +27,7 @@ interface FooterProps {
 }
 
 const Footer: React.FC<FooterProps> = ({ onInquiryClick, onCategorySelect, onAboutClick, onAllProductsClick, onServicesClick, onQualityClick, onContactClick }) => {
+  const navigate = useNavigate();
   return (
     <footer className="bg-gray-50 dark:bg-professional-blue-dark text-foreground">
       {/* Main Footer Content */}
@@ -58,11 +60,11 @@ const Footer: React.FC<FooterProps> = ({ onInquiryClick, onCategorySelect, onAbo
           <div>
             <h4 className="text-lg font-semibold mb-6 text-foreground">Quick Links</h4>
             <ul className="space-y-3 text-sm">
-              <li><button onClick={onAboutClick} className="text-muted-foreground hover:text-primary transition-colors">About Us</button></li>
-              <li><button onClick={onAllProductsClick} className="text-muted-foreground hover:text-primary transition-colors">All Products</button></li>
-              <li><button onClick={onServicesClick} className="text-muted-foreground hover:text-primary transition-colors">Services & Support</button></li>
-              <li><button onClick={onQualityClick} className="text-muted-foreground hover:text-primary transition-colors">Quality Assurance</button></li>
-              <li><button onClick={onContactClick} className="text-muted-foreground hover:text-primary transition-colors">Contact</button></li>
+              <li><button onClick={() => navigate('/about')} className="text-muted-foreground hover:text-primary transition-all duration-300">About Us</button></li>
+              <li><button onClick={() => navigate('/products')} className="text-muted-foreground hover:text-primary transition-all duration-300">All Products</button></li>
+              <li><button onClick={() => navigate('/services')} className="text-muted-foreground hover:text-primary transition-all duration-300">Services & Support</button></li>
+              <li><button onClick={() => navigate('/quality')} className="text-muted-foreground hover:text-primary transition-all duration-300">Quality Assurance</button></li>
+              <li><button onClick={() => navigate('/contact')} className="text-muted-foreground hover:text-primary transition-all duration-300">Contact</button></li>
             </ul>
           </div>
 
@@ -70,12 +72,12 @@ const Footer: React.FC<FooterProps> = ({ onInquiryClick, onCategorySelect, onAbo
           <div>
             <h4 className="text-lg font-semibold mb-6 text-foreground">Product Categories</h4>
             <ul className="space-y-3 text-sm">
-              <li><button onClick={() => onCategorySelect?.("Heating Instruments")} className="text-muted-foreground hover:text-primary transition-colors text-left">Heating Instruments</button></li>
-              <li><button onClick={() => onCategorySelect?.("Industrial Furnace")} className="text-muted-foreground hover:text-primary transition-colors text-left">Industrial Furnace</button></li>
-              <li><button onClick={() => onCategorySelect?.("Environmental Chamber")} className="text-muted-foreground hover:text-primary transition-colors text-left">Environmental Chamber</button></li>
-              <li><button onClick={() => onCategorySelect?.("Heater")} className="text-muted-foreground hover:text-primary transition-colors text-left">Heaters</button></li>
-              <li><button onClick={() => onCategorySelect?.("Microbiology Instruments")} className="text-muted-foreground hover:text-primary transition-colors text-left">Microbiology Instruments</button></li>
-              <li><button onClick={() => onCategorySelect?.("Thermocouple")} className="text-muted-foreground hover:text-primary transition-colors text-left">Thermocouple</button></li>
+              <li><button onClick={() => navigate('/products')} className="text-muted-foreground hover:text-primary transition-all duration-300 text-left">Heating Instruments</button></li>
+              <li><button onClick={() => navigate('/products')} className="text-muted-foreground hover:text-primary transition-all duration-300 text-left">Industrial Furnace</button></li>
+              <li><button onClick={() => navigate('/products')} className="text-muted-foreground hover:text-primary transition-all duration-300 text-left">Environmental Chamber</button></li>
+              <li><button onClick={() => navigate('/products')} className="text-muted-foreground hover:text-primary transition-all duration-300 text-left">Heaters</button></li>
+              <li><button onClick={() => navigate('/products')} className="text-muted-foreground hover:text-primary transition-all duration-300 text-left">Microbiology Instruments</button></li>
+              <li><button onClick={() => navigate('/products')} className="text-muted-foreground hover:text-primary transition-all duration-300 text-left">Thermocouple</button></li>
             </ul>
           </div>
 
@@ -139,20 +141,20 @@ const Footer: React.FC<FooterProps> = ({ onInquiryClick, onCategorySelect, onAbo
             </div>
             
             <div className="flex space-x-4">
-              <a href="#" className="w-10 h-10 bg-muted hover:bg-primary rounded-lg flex items-center justify-center transition-colors">
-                <Facebook className="h-5 w-5 text-foreground hover:text-primary-foreground" />
+              <a href="#" className="w-10 h-10 bg-muted hover:bg-primary rounded-lg flex items-center justify-center transition-all duration-300 group">
+                <Facebook className="h-5 w-5 text-muted-foreground group-hover:text-primary-foreground transition-all duration-300" />
               </a>
-              <a href="#" className="w-10 h-10 bg-muted hover:bg-primary rounded-lg flex items-center justify-center transition-colors">
-                <Twitter className="h-5 w-5 text-foreground hover:text-primary-foreground" />
+              <a href="#" className="w-10 h-10 bg-muted hover:bg-primary rounded-lg flex items-center justify-center transition-all duration-300 group">
+                <Twitter className="h-5 w-5 text-muted-foreground group-hover:text-primary-foreground transition-all duration-300" />
               </a>
-              <a href="#" className="w-10 h-10 bg-muted hover:bg-primary rounded-lg flex items-center justify-center transition-colors">
-                <Instagram className="h-5 w-5 text-foreground hover:text-primary-foreground" />
+              <a href="#" className="w-10 h-10 bg-muted hover:bg-primary rounded-lg flex items-center justify-center transition-all duration-300 group">
+                <Instagram className="h-5 w-5 text-muted-foreground group-hover:text-primary-foreground transition-all duration-300" />
               </a>
-              <a href="#" className="w-10 h-10 bg-muted hover:bg-primary rounded-lg flex items-center justify-center transition-colors">
-                <Linkedin className="h-5 w-5 text-foreground hover:text-primary-foreground" />
+              <a href="#" className="w-10 h-10 bg-muted hover:bg-primary rounded-lg flex items-center justify-center transition-all duration-300 group">
+                <Linkedin className="h-5 w-5 text-muted-foreground group-hover:text-primary-foreground transition-all duration-300" />
               </a>
-              <a href="#" className="w-10 h-10 bg-muted hover:bg-primary rounded-lg flex items-center justify-center transition-colors">
-                <Youtube className="h-5 w-5 text-foreground hover:text-primary-foreground" />
+              <a href="#" className="w-10 h-10 bg-muted hover:bg-primary rounded-lg flex items-center justify-center transition-all duration-300 group">
+                <Youtube className="h-5 w-5 text-muted-foreground group-hover:text-primary-foreground transition-all duration-300" />
               </a>
             </div>
           </div>
@@ -165,15 +167,15 @@ const Footer: React.FC<FooterProps> = ({ onInquiryClick, onCategorySelect, onAbo
           <div className="flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground">
             <p>&copy; 2024 Servo Scientific Suppliers. All rights reserved.</p>
             <div className="flex flex-wrap gap-4 md:gap-6 mt-4 md:mt-0 justify-center">
-              <a href="/privacy" className="hover:text-primary transition-colors">Privacy Policy</a>
-              <a href="/terms" className="hover:text-primary transition-colors">Terms of Service</a>
-              <a href="/cookies" className="hover:text-primary transition-colors">Cookie Policy</a>
+              <button onClick={() => navigate('/privacy')} className="hover:text-primary transition-all duration-300">Privacy Policy</button>
+              <button onClick={() => navigate('/terms')} className="hover:text-primary transition-all duration-300">Terms of Service</button>
+              <button onClick={() => navigate('/cookies')} className="hover:text-primary transition-all duration-300">Cookie Policy</button>
               <span className="text-muted-foreground">|</span>
               <a 
                 href="https://www.nextcraft.co.in" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="font-medium hover:text-primary transition-colors"
+                className="font-medium hover:text-primary transition-all duration-300"
               >
                 Web Designed by RT
               </a>
