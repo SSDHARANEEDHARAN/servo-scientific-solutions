@@ -1,6 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Award, Users, Package, Clock } from 'lucide-react';
+import heroBg1 from '@/assets/hero-bg-1.jpg';
+import heroBg2 from '@/assets/hero-bg-2.jpg';
+import heroBg3 from '@/assets/hero-bg-3.jpg';
+import heroBg4 from '@/assets/hero-bg-4.jpg';
+import heroBg5 from '@/assets/hero-bg-5.jpg';
 
 interface HeroSectionProps {
   onInquiryClick: () => void;
@@ -8,13 +13,35 @@ interface HeroSectionProps {
 }
 
 const HeroSection: React.FC<HeroSectionProps> = ({ onInquiryClick, onAllProductsClick }) => {
+  const backgroundImages = [heroBg1, heroBg2, heroBg3, heroBg4, heroBg5];
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % backgroundImages.length);
+    }, 180000); // Change every 3 minutes (180000ms)
+
+    return () => clearInterval(interval);
+  }, [backgroundImages.length]);
 
   return (
-    <section className="relative bg-gradient-hero dark:bg-gradient-to-br dark:from-slate-900 dark:to-slate-800 py-32 min-h-[90vh] flex items-center overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-to)_1px,_transparent_1px)] [background-size:20px_20px]"></div>
-      </div>
+    <section className="relative py-32 min-h-[90vh] flex items-center overflow-hidden">
+      {/* Background Image with smooth transition */}
+      {backgroundImages.map((image, index) => (
+        <div
+          key={index}
+          className="absolute inset-0 transition-opacity duration-1000 ease-in-out"
+          style={{
+            backgroundImage: `url(${image})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            opacity: currentImageIndex === index ? 1 : 0,
+          }}
+        />
+      ))}
+      
+      {/* Dark overlay for text readability */}
+      <div className="absolute inset-0 bg-black/50" />
       
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
