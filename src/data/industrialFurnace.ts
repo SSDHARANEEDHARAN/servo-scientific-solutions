@@ -3,6 +3,9 @@ export const industrialFurnace = {
   "High Temperature Furnace": {
     name: "High Temperature Furnace",
     category: "Industrial Furnace",
+    seo_title: "High Temperature Furnace | Laboratory Furnace up to 1800°C",
+    seo_description: "High temperature furnace for extreme heat treatment applications. Industrial furnace up to 1800°C for metallurgy, ceramics, and materials research.",
+    keywords: ["high temperature furnace", "laboratory furnace", "industrial furnace", "1800 degree furnace", "heat treatment furnace", "metallurgy furnace", "ceramic furnace", "lab furnace"],
     images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Temperature Range": "Up to 1800°C",
@@ -29,6 +32,9 @@ export const industrialFurnace = {
   "Lab Furnace (1000/1450/1650)": {
     name: "Lab Furnace (1000/1450/1650)",
     category: "Industrial Furnace",
+    seo_title: "Lab Furnace 1000/1450/1650°C | Laboratory Heating Furnace",
+    seo_description: "Laboratory furnace series with multiple temperature ranges. Ideal for heat treatment, research, and industrial applications. Buy lab furnace online.",
+    keywords: ["lab furnace", "laboratory furnace", "1000 degree furnace", "1450 degree furnace", "1650 degree furnace", "industrial furnace", "heat treatment furnace", "research furnace"],
     images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Temperature Range": "Up to 1650°C (Model Dependent)",
@@ -55,6 +61,9 @@ export const industrialFurnace = {
   "Muffle Furnace": {
     name: "Muffle Furnace",
     category: "Industrial Furnace",
+    seo_title: "Muffle Furnace | Laboratory Muffle Furnace up to 1200°C",
+    seo_description: "Buy muffle furnace for ashing, annealing, and heat treatment. Industrial muffle furnace with excellent temperature uniformity for laboratory use.",
+    keywords: ["muffle furnace", "laboratory muffle furnace", "industrial muffle furnace", "ashing furnace", "annealing furnace", "lab furnace", "1200 degree furnace", "benchtop furnace"],
     images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Temperature Range": "Up to 1200°C",

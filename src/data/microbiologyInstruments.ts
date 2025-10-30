@@ -3,6 +3,9 @@ export const microbiologyInstruments = {
   "Autoclave": {
     name: "Autoclave",
     category: "Microbiology Instruments",
+    seo_title: "Autoclave | Laboratory Sterilization Equipment in India",
+    seo_description: "Steam sterilization autoclave for laboratory and medical instruments. Buy autoclave with validation capabilities for reliable sterilization.",
+    keywords: ["autoclave", "laboratory autoclave", "sterilization equipment", "steam sterilizer", "medical autoclave", "lab sterilizer", "autoclave machine", "laboratory sterilization"],
     images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Temperature Range": "121°C to 134°C",
@@ -29,6 +32,9 @@ export const microbiologyInstruments = {
   "Incubator": {
     name: "Incubator",
     category: "Microbiology Instruments",
+    seo_title: "Incubator | Laboratory Incubator for Cell Culture in India",
+    seo_description: "Laboratory incubator for cell culture and microbiology. Precise temperature control for research and industrial applications.",
+    keywords: ["incubator", "laboratory incubator", "cell culture incubator", "lab incubator", "microbiology incubator", "bacterial incubator", "incubation equipment", "laboratory incubation"],
     images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Temperature Range": "5°C above ambient to 80°C",
@@ -55,6 +61,9 @@ export const microbiologyInstruments = {
   "BOD Incubator": {
     name: "BOD Incubator",
     category: "Microbiology Instruments",
+    seo_title: "BOD Incubator | Biochemical Oxygen Demand Testing Equipment",
+    seo_description: "BOD incubator for environmental testing and water quality analysis. Precise low temperature control for BOD testing.",
+    keywords: ["bod incubator", "biochemical oxygen demand", "laboratory incubator", "environmental testing", "water quality testing", "bod testing equipment", "low temperature incubator"],
     images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Temperature Range": "5°C to 60°C",
@@ -81,6 +90,9 @@ export const microbiologyInstruments = {
   "Laminar Air Flow": {
     name: "Laminar Air Flow",
     category: "Microbiology Instruments",
+    seo_title: "Laminar Air Flow | Laboratory Clean Air Workstation India",
+    seo_description: "Laminar airflow workstation with HEPA filtration. Buy LAF for sterile working environment in laboratory applications.",
+    keywords: ["laminar air flow", "laminar flow", "clean air workstation", "hepa filter", "laboratory equipment", "sterile workstation", "cleanroom equipment", "LAF"],
     images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Work Area": "600x450mm to 1800x750mm",
@@ -107,6 +119,9 @@ export const microbiologyInstruments = {
   "Bio Safety Cabinet": {
     name: "Bio Safety Cabinet",
     category: "Microbiology Instruments",
+    seo_title: "Biosafety Cabinet | Class II Biological Safety Cabinet India",
+    seo_description: "Biological safety cabinet for safe handling of infectious materials. NSF certified biosafety cabinet with triple protection design.",
+    keywords: ["biosafety cabinet", "biological safety cabinet", "class 2 bsc", "laboratory safety", "biosafety equipment", "clean air cabinet", "containment cabinet", "bio safety cabinet"],
     images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Classification": "Class II Type A2/B2",
@@ -133,6 +148,9 @@ export const microbiologyInstruments = {
   "Fermentor": {
     name: "Fermentor",
     category: "Microbiology Instruments",
+    seo_title: "Fermentor | Laboratory Bioreactor for Biotechnology",
+    seo_description: "Laboratory fermentor for biotechnology research and microbial cultivation. PLC-based fermentor with precise process control.",
+    keywords: ["fermentor", "bioreactor", "laboratory fermentor", "biotechnology equipment", "microbial cultivation", "fermentation equipment", "lab bioreactor", "fermentation vessel"],
     images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Volume": "5L to 1000L",
@@ -159,6 +177,9 @@ export const microbiologyInstruments = {
   "Fume Hood": {
     name: "Fume Hood",
     category: "Microbiology Instruments",
+    seo_title: "Fume Hood | Laboratory Fume Extraction Hood India",
+    seo_description: "Laboratory fume hood for safe handling of toxic chemicals. Chemical resistant fume hood with effective extraction.",
+    keywords: ["fume hood", "laboratory fume hood", "fume cupboard", "chemical hood", "lab safety equipment", "fume extraction", "laboratory ventilation", "ducted fume hood"],
     images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Work Area": "1200x750mm to 2400x750mm",
@@ -185,6 +206,9 @@ export const microbiologyInstruments = {
   "Deep Freezer": {
     name: "Deep Freezer",
     category: "Microbiology Instruments",
+    seo_title: "Deep Freezer | Ultra Low Temperature Freezer -86°C India",
+    seo_description: "Ultra-low temperature freezer for biological sample storage. Buy deep freezer for vaccines and temperature-sensitive materials.",
+    keywords: ["deep freezer", "ultra low temperature freezer", "laboratory freezer", "-86 freezer", "vaccine storage", "biological storage", "lab freezer", "cold storage"],
     images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Temperature Range": "-86°C to -40°C",
@@ -211,6 +235,9 @@ export const microbiologyInstruments = {
   "Pass Box": {
     name: "Pass Box",
     category: "Microbiology Instruments",
+    seo_title: "Pass Box | Cleanroom Material Transfer Chamber India",
+    seo_description: "Pass-through chamber for transferring materials between cleanroom areas. HEPA filtered pass box with UV sterilization.",
+    keywords: ["pass box", "pass through chamber", "cleanroom equipment", "material transfer box", "laboratory pass box", "sterile transfer", "hepa pass box", "cleanroom pass box"],
     images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Internal Size": "600x600x600mm",
@@ -237,6 +264,9 @@ export const microbiologyInstruments = {
   "Blending Machines": {
     name: "Blending Machines",
     category: "Microbiology Instruments",
+    seo_title: "Blending Machines | Laboratory Mixing and Homogenization Equipment",
+    seo_description: "Laboratory blending equipment for sample preparation and homogenization. Variable speed blending machines for mixing applications.",
+    keywords: ["blending machine", "laboratory blender", "homogenizer", "mixing equipment", "lab mixer", "sample preparation", "laboratory blending", "homogenization equipment"],
     images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Capacity": "1L to 100L",
@@ -263,6 +293,9 @@ export const microbiologyInstruments = {
   "Sterilizer": {
     name: "Sterilizer",
     category: "Microbiology Instruments",
+    seo_title: "Sterilizer | Laboratory Dry Heat Sterilization Equipment",
+    seo_description: "Dry heat sterilizer for laboratory glassware. Reliable sterilization equipment with uniform temperature distribution.",
+    keywords: ["sterilizer", "dry heat sterilizer", "laboratory sterilizer", "glassware sterilizer", "sterilization equipment", "lab sterilizer", "dry heat sterilization", "hot air sterilizer"],
     images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Temperature Range": "160°C to 200°C",
@@ -289,6 +322,9 @@ export const microbiologyInstruments = {
   "Distillation Unit (Glass/Metal)": {
     name: "Distillation Unit (Glass/Metal)",
     category: "Microbiology Instruments",
+    seo_title: "Distillation Unit | Laboratory Water Purification System",
+    seo_description: "Laboratory distillation units for water purification. Glass and metal distillation equipment for high purity water production.",
+    keywords: ["distillation unit", "water distiller", "laboratory distillation", "water purification", "lab distiller", "glass distillation", "pure water system", "distillation equipment"],
     images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Output": "2L/hr to 100L/hr",
@@ -315,6 +351,9 @@ export const microbiologyInstruments = {
   "Bottle Shaker": {
     name: "Bottle Shaker",
     category: "Microbiology Instruments",
+    seo_title: "Bottle Shaker | Laboratory Shaking Incubator for Cell Culture",
+    seo_description: "Laboratory bottle shaker for cell culture and mixing. Variable speed shaker with temperature control for agitation applications.",
+    keywords: ["bottle shaker", "laboratory shaker", "shaking incubator", "orbital shaker", "cell culture shaker", "lab shaker", "agitation equipment", "bottle agitator"],
     images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Capacity": "250ml to 5L Bottles",

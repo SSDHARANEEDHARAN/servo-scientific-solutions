@@ -3,6 +3,9 @@ export const thermocouple = {
   "RTD Sensors": {
     name: "RTD Sensors",
     category: "Thermocouple",
+    seo_title: "RTD Sensors | PT100 Temperature Sensor India",
+    seo_description: "Resistance Temperature Detector sensors for precise temperature measurement. Buy RTD PT100/PT1000 sensors with excellent accuracy.",
+    keywords: ["rtd sensor", "pt100", "pt1000", "temperature sensor", "resistance temperature detector", "temperature probe", "rtd probe", "temperature measurement"],
     images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Temperature Range": "-200°C to 850°C",
@@ -29,6 +32,9 @@ export const thermocouple = {
   "J Type": {
     name: "J Type",
     category: "Thermocouple",
+    seo_title: "J Type Thermocouple | Iron Constantan Temperature Sensor",
+    seo_description: "J-Type thermocouple for general purpose temperature measurement. Cost effective temperature sensor for industrial applications.",
+    keywords: ["j type thermocouple", "thermocouple", "temperature sensor", "j thermocouple", "iron constantan", "temperature probe", "industrial thermocouple", "thermocouple probe"],
     images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Temperature Range": "-210°C to 1200°C",
@@ -55,6 +61,9 @@ export const thermocouple = {
   "K Type": {
     name: "K Type",
     category: "Thermocouple",
+    seo_title: "K Type Thermocouple | Chromel Alumel Temperature Sensor India",
+    seo_description: "K-Type thermocouple for industrial temperature measurement. Most common thermocouple type with wide temperature range.",
+    keywords: ["k type thermocouple", "thermocouple", "temperature sensor", "k thermocouple", "chromel alumel", "temperature probe", "industrial thermocouple", "thermocouple sensor"],
     images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Temperature Range": "-270°C to 1372°C",
@@ -81,6 +90,9 @@ export const thermocouple = {
   "S Type": {
     name: "S Type",
     category: "Thermocouple",
+    seo_title: "S Type Thermocouple | Platinum Rhodium Temperature Sensor",
+    seo_description: "S-Type thermocouple for high temperature laboratory measurement. Noble metal thermocouple with excellent accuracy.",
+    keywords: ["s type thermocouple", "thermocouple", "temperature sensor", "s thermocouple", "platinum rhodium", "high temperature sensor", "laboratory thermocouple", "noble metal thermocouple"],
     images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Temperature Range": "-50°C to 1768°C",
@@ -107,6 +119,9 @@ export const thermocouple = {
   "R Type": {
     name: "R Type",
     category: "Thermocouple",
+    seo_title: "R Type Thermocouple | High Temperature Platinum Sensor India",
+    seo_description: "R-Type thermocouple for precision high temperature measurement. Exceptional stability for research and industrial applications.",
+    keywords: ["r type thermocouple", "thermocouple", "temperature sensor", "r thermocouple", "platinum rhodium", "high temperature sensor", "precision thermocouple", "laboratory thermocouple"],
     images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Temperature Range": "-50°C to 1768°C",
@@ -133,6 +148,9 @@ export const thermocouple = {
   "B Type": {
     name: "B Type",
     category: "Thermocouple",
+    seo_title: "B Type Thermocouple | Ultra High Temperature Sensor 1820°C",
+    seo_description: "B-Type thermocouple for ultra-high temperature measurement. Highest temperature capability noble metal thermocouple.",
+    keywords: ["b type thermocouple", "thermocouple", "temperature sensor", "b thermocouple", "platinum rhodium", "ultra high temperature", "1820 degree sensor", "extreme temperature sensor"],
     images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Temperature Range": "0°C to 1820°C",

@@ -76,8 +76,9 @@ const ProductDetailRoute: React.FC = () => {
     "name": productName,
     "category": categoryName,
     "image": productData.images.map(img => `https://servoscientific.com${img}`),
-    "description": `High-performance ${productName} by Servo Scientific, designed for industrial and laboratory applications. ${productData.description}`,
+    "description": productData.seo_description || `High-performance ${productName} by Servo Scientific, designed for industrial and laboratory applications. ${productData.description}`,
     "sku": generateSKU(productName),
+    "keywords": productData.keywords || [],
     "brand": {
       "@type": "Brand",
       "name": "Servo Scientific"
@@ -89,7 +90,7 @@ const ProductDetailRoute: React.FC = () => {
     "offers": {
       "@type": "Offer",
       "price": "0.00",
-      "priceCurrency": "USD",
+      "priceCurrency": "INR",
       "availability": "https://schema.org/InStock",
       "url": `https://servoscientific.com/products/${category}/${product}`,
       "itemCondition": "https://schema.org/NewCondition"
@@ -133,10 +134,10 @@ const ProductDetailRoute: React.FC = () => {
     "@graph": [structuredData, breadcrumbData]
   };
 
-  // SEO-optimized title and description
-  const seoTitle = `Buy ${productName} | ${categoryName} – Servo Scientific`;
-  const seoDescription = `High-performance ${productName} by Servo Scientific, designed for industrial and laboratory applications. Explore reliable ${categoryName} at competitive prices. ${productData.description.substring(0, 100)}`;
-  const seoKeywords = `${productName}, ${categoryName}, laboratory equipment, industrial equipment, scientific instruments, ${productName.toLowerCase()}, buy ${productName.toLowerCase()}, ${categoryName.toLowerCase()}`;
+  // SEO-optimized title and description from product data
+  const seoTitle = productData.seo_title || `Buy ${productName} | ${categoryName} – Servo Scientific`;
+  const seoDescription = productData.seo_description || `High-performance ${productName} by Servo Scientific, designed for industrial and laboratory applications. Explore reliable ${categoryName} at competitive prices.`;
+  const seoKeywords = productData.keywords ? productData.keywords.join(', ') : `${productName}, ${categoryName}, laboratory equipment, industrial equipment, scientific instruments`;
 
   return (
     <div className="min-h-screen bg-background">

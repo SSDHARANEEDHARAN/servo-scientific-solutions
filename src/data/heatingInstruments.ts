@@ -3,6 +3,9 @@ export const heatingInstruments = {
   "Hot Air Oven": {
     name: "Hot Air Oven",
     category: "Heating Instruments",
+    seo_title: "Hot Air Oven | Industrial Laboratory Heating Instrument in India",
+    seo_description: "Buy Hot Air Oven online in India. Ideal for laboratory and industrial applications with reliable temperature control, drying, sterilization, and heat treatment.",
+    keywords: ["hot air oven", "lab oven", "industrial oven", "laboratory oven", "drying oven", "sterilization equipment", "heating instruments", "laboratory heating equipment", "industrial drying oven"],
     images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Temperature Range": "50°C to 300°C",
@@ -29,6 +32,9 @@ export const heatingInstruments = {
   "Tray Dryer": {
     name: "Tray Dryer",
     category: "Heating Instruments",
+    seo_title: "Tray Dryer | Industrial Drying Equipment for Pharmaceuticals",
+    seo_description: "Industrial tray dryer for efficient drying of pharmaceuticals, chemicals, and food products. High-quality heating instrument with uniform heat circulation.",
+    keywords: ["tray dryer", "industrial dryer", "pharmaceutical dryer", "laboratory dryer", "food dryer", "chemical dryer", "heating instruments", "drying equipment", "industrial drying machine"],
     images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Temperature Range": "Ambient to 200°C",
@@ -55,6 +61,9 @@ export const heatingInstruments = {
   "Vacuum Dryer": {
     name: "Vacuum Dryer",
     category: "Heating Instruments",
+    seo_title: "Vacuum Dryer | Laboratory Vacuum Drying Oven in India",
+    seo_description: "Vacuum drying oven for heat-sensitive materials. Gentle drying under controlled vacuum conditions with reduced temperature for pharmaceutical and chemical applications.",
+    keywords: ["vacuum dryer", "vacuum oven", "laboratory vacuum dryer", "vacuum drying oven", "heat sensitive drying", "pharmaceutical dryer", "heating instruments", "vacuum drying equipment"],
     images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Temperature Range": "Ambient to 250°C",
@@ -81,6 +90,9 @@ export const heatingInstruments = {
   "Hot Plate": {
     name: "Hot Plate",
     category: "Heating Instruments",
+    seo_title: "Hot Plate | Laboratory Heating Equipment with Digital Control",
+    seo_description: "Precision hot plate for laboratory heating applications. Digital temperature control with excellent uniformity for research and industrial use.",
+    keywords: ["hot plate", "laboratory hot plate", "heating plate", "lab heating equipment", "digital hot plate", "heating instruments", "laboratory heating", "precision hot plate"],
     images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Temperature Range": "50°C to 350°C",
@@ -107,6 +119,9 @@ export const heatingInstruments = {
   "Water Bath": {
     name: "Water Bath",
     category: "Heating Instruments",
+    seo_title: "Water Bath | Laboratory Temperature Control Equipment in India",
+    seo_description: "Laboratory water bath for consistent temperature heating. Digital control with precise temperature for research, clinical, and industrial applications.",
+    keywords: ["water bath", "laboratory water bath", "temperature control", "lab water bath", "heating bath", "heating instruments", "laboratory heating equipment", "digital water bath"],
     images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Temperature Range": "Ambient +5°C to 100°C",

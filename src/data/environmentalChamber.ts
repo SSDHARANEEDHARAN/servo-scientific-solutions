@@ -3,6 +3,9 @@ export const environmentalChamber = {
   "Salt Spray Chamber": {
     name: "Salt Spray Chamber",
     category: "Environmental Chamber",
+    seo_title: "Salt Spray Chamber | Corrosion Testing Equipment ASTM B117",
+    seo_description: "Salt spray test chamber for corrosion testing per ASTM B117 and ISO 9227. Buy salt spray chamber for metal and coating testing.",
+    keywords: ["salt spray chamber", "corrosion test chamber", "salt fog chamber", "salt spray test", "ASTM B117", "corrosion testing equipment", "environmental chamber", "salt spray testing"],
     images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Temperature Range": "35°C ± 2°C",
@@ -29,6 +32,9 @@ export const environmentalChamber = {
   "Humidity Chamber": {
     name: "Humidity Chamber",
     category: "Environmental Chamber",
+    seo_title: "Humidity Chamber | Temperature Humidity Test Chamber in India",
+    seo_description: "Environmental humidity chamber for controlled temperature and humidity testing. Buy humidity chamber for material testing and environmental simulation.",
+    keywords: ["humidity chamber", "temperature humidity chamber", "environmental chamber", "humidity test chamber", "climate chamber", "stability chamber", "humidity testing equipment", "controlled humidity"],
     images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Temperature Range": "5°C to 95°C",
@@ -55,6 +61,9 @@ export const environmentalChamber = {
   "Paint Corrosion Chamber": {
     name: "Paint Corrosion Chamber",
     category: "Environmental Chamber",
+    seo_title: "Paint Corrosion Chamber | UV Weathering Test Equipment",
+    seo_description: "Specialized chamber for paint and coating durability testing. Combined UV and corrosion testing for accelerated weathering simulation.",
+    keywords: ["paint corrosion chamber", "weathering test chamber", "UV test chamber", "coating test equipment", "environmental chamber", "corrosion chamber", "paint testing equipment", "accelerated weathering"],
     images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Temperature Range": "Ambient to 70°C",
@@ -81,6 +90,9 @@ export const environmentalChamber = {
   "Environmental Shaker": {
     name: "Environmental Shaker",
     category: "Environmental Chamber",
+    seo_title: "Environmental Shaker | Combined Vibration Temperature Testing",
+    seo_description: "Combined environmental and vibration testing system. Buy environmental shaker for comprehensive product reliability testing.",
+    keywords: ["environmental shaker", "vibration test chamber", "environmental testing", "vibration testing equipment", "climatic chamber", "temperature vibration test", "environmental chamber", "shaker system"],
     images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Temperature Range": "-40°C to 180°C",
@@ -107,6 +119,9 @@ export const environmentalChamber = {
   "Cyclic Corrosion Chamber": {
     name: "Cyclic Corrosion Chamber",
     category: "Environmental Chamber",
+    seo_title: "Cyclic Corrosion Chamber | ASTM G85 Corrosion Testing",
+    seo_description: "Advanced cyclic corrosion chamber per ASTM G85 and ISO 14993. Multi-step cycle testing for real-world environmental condition simulation.",
+    keywords: ["cyclic corrosion chamber", "corrosion test chamber", "ASTM G85", "environmental chamber", "corrosion testing equipment", "salt spray chamber", "weathering chamber", "cyclic testing"],
     images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Temperature Range": "Ambient to 60°C",
@@ -133,6 +148,9 @@ export const environmentalChamber = {
   "Climate Chamber": {
     name: "Climate Chamber",
     category: "Environmental Chamber",
+    seo_title: "Climate Chamber | Environmental Test Chamber -70°C to 180°C",
+    seo_description: "Precision climate chamber with extreme temperature and humidity control. Buy climate chamber for comprehensive environmental testing.",
+    keywords: ["climate chamber", "environmental chamber", "temperature chamber", "humidity chamber", "stability chamber", "environmental test chamber", "climate testing equipment", "temperature humidity chamber"],
     images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Temperature Range": "-70°C to 180°C",
@@ -159,6 +177,9 @@ export const environmentalChamber = {
   "PP Tank": {
     name: "PP Tank",
     category: "Environmental Chamber",
+    seo_title: "PP Tank | Polypropylene Chemical Storage Tank India",
+    seo_description: "Polypropylene tanks for chemical storage with excellent chemical resistance. Buy PP tank for corrosion testing and industrial applications.",
+    keywords: ["pp tank", "polypropylene tank", "chemical storage tank", "plastic tank", "corrosion resistant tank", "chemical tank", "PP storage tank", "industrial tank"],
     images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     specifications: {
       "Capacity": "100 to 10,000 Liters",
