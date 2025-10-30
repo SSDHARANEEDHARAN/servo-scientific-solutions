@@ -226,14 +226,14 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ onBack, onInquiry
               onClick={onInquiry}
               size="lg"
               variant="secondary"
-              className="bg-white text-professional-blue hover:bg-slate-100"
+              className="bg-white text-muted-foreground dark:text-foreground hover:text-primary dark:hover:text-primary hover:bg-slate-100 transition-all duration-300"
             >
               Request Quote
             </Button>
             <Button 
               size="lg"
               variant="outline"
-              className="border-white/30 dark:border-white/30 text-muted-foreground dark:text-foreground hover:text-primary dark:hover:text-primary hover:bg-white/10 dark:hover:bg-white/10 transition-all duration-300"
+              className="border-white text-muted-foreground dark:text-foreground hover:text-primary dark:hover:text-primary hover:bg-white transition-all duration-300"
               onClick={handleDownloadDatasheet}
             >
               <Download className="mr-2 h-4 w-4" />
