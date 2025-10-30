@@ -1,6 +1,8 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Award, Users, Package, Clock } from 'lucide-react';
+import { ArrowRight, Award, Users, Package, Clock, Download } from 'lucide-react';
+import { generateProductCatalog } from '@/utils/pdf';
+import { toast } from 'sonner';
 
 interface HeroSectionProps {
   onInquiryClick: () => void;
@@ -8,6 +10,17 @@ interface HeroSectionProps {
 }
 
 const HeroSection: React.FC<HeroSectionProps> = ({ onInquiryClick, onAllProductsClick }) => {
+  const handleDownloadCatalog = async () => {
+    try {
+      toast.info('Generating catalog... Please wait.');
+      await generateProductCatalog();
+      toast.success('Catalog downloaded successfully!');
+    } catch (error) {
+      console.error('Error downloading catalog:', error);
+      toast.error('Failed to download catalog. Please try again.');
+    }
+  };
+
   return (
     <section className="relative bg-gradient-hero dark:bg-gradient-to-br dark:from-slate-900 dark:to-slate-800 py-32 min-h-[90vh] flex items-center overflow-hidden">
       {/* Background Pattern */}
@@ -38,6 +51,16 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onInquiryClick, onAllProducts
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
             
+            <Button 
+              variant="outline" 
+              size="lg"
+              onClick={handleDownloadCatalog}
+              className="text-lg px-8 py-4 bg-white/10 border-white/30 text-white hover:bg-white hover:text-professional-blue"
+            >
+              <Download className="mr-2 h-5 w-5" />
+              Download Catalog
+            </Button>
+
             <Button 
               variant="outline" 
               size="lg"
