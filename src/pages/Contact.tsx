@@ -6,14 +6,20 @@ import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
 import { ArrowLeft, Send, Mail, Phone, MapPin } from 'lucide-react';
 import SEOHead from '@/components/SEOHead';
+import Navigation from '@/components/Navigation';
+import Footer from '@/components/Footer';
+import InquiryForm from '@/components/InquiryForm';
+import { useNavigate } from 'react-router-dom';
 
 interface ContactProps {
-  onBackToHome: () => void;
-  onInquiryClick: () => void;
+  onBackToHome?: () => void;
+  onInquiryClick?: () => void;
 }
 
-const Contact: React.FC<ContactProps> = ({ onBackToHome, onInquiryClick }) => {
+const Contact: React.FC<ContactProps> = () => {
   const { toast } = useToast();
+  const navigate = useNavigate();
+  const [isInquiryOpen, setIsInquiryOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -77,40 +83,48 @@ const Contact: React.FC<ContactProps> = ({ onBackToHome, onInquiryClick }) => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <>
       <SEOHead
         title="Contact Us | Get in Touch | Servo Scientific Suppliers"
         description="Contact Servo Scientific Suppliers for inquiries about scientific and laboratory equipment. Email: servoscientific@yahoo.com, Phone: +1 (234) 567-890. We respond within 24 hours."
         keywords="contact servo scientific, laboratory equipment inquiry, scientific equipment quote, technical support"
         canonical="https://servoscientific.com/contact"
       />
-      {/* Professional Hero Section */}
-      <div className="relative bg-card border-b border-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <Button 
-            variant="ghost" 
-            onClick={onBackToHome}
-            className="mb-8"
-          >
-            <ArrowLeft className="h-5 w-5 mr-2" />
-            Back to Home
-          </Button>
+      
+      <Navigation 
+        onInquiryClick={() => setIsInquiryOpen(true)}
+        onAboutClick={() => navigate('/about')}
+        onContactClick={() => navigate('/contact')}
+      />
+
+      <div className="min-h-screen bg-background">
+        {/* Professional Hero Section */}
+        <div className="relative bg-card border-b border-border">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <Button 
+              variant="ghost" 
+              onClick={() => navigate('/')}
+              className="mb-8"
+            >
+              <ArrowLeft className="h-5 w-5 mr-2" />
+              Back to Home
+            </Button>
           
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 mb-6 px-3 py-1 bg-primary/10 rounded text-primary text-sm font-medium">
-              Get in Touch
+            <div className="max-w-3xl">
+              <div className="inline-flex items-center gap-2 mb-6 px-3 py-1 bg-primary/10 rounded text-primary text-sm font-medium">
+                Get in Touch
+              </div>
+              <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-4 leading-tight">
+                Contact Us
+              </h1>
+              <p className="text-xl text-muted-foreground leading-relaxed">
+                Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+              </p>
             </div>
-            <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-4 leading-tight">
-              Contact Us
-            </h1>
-            <p className="text-xl text-muted-foreground leading-relaxed">
-              Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
-            </p>
           </div>
         </div>
-      </div>
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid lg:grid-cols-2 gap-8">
           {/* Contact Form */}
           <div className="bg-card border border-border rounded-lg p-8 shadow-soft">
@@ -259,7 +273,21 @@ const Contact: React.FC<ContactProps> = ({ onBackToHome, onInquiryClick }) => {
           </div>
         </div>
       </div>
-    </div>
+      
+      <Footer 
+        onInquiryClick={() => setIsInquiryOpen(true)}
+        onAboutClick={() => navigate('/about')}
+        onAllProductsClick={() => navigate('/products')}
+        onServicesClick={() => navigate('/services')}
+        onQualityClick={() => navigate('/quality')}
+        onContactClick={() => navigate('/contact')}
+      />
+      
+      <InquiryForm 
+        isOpen={isInquiryOpen}
+        onClose={() => setIsInquiryOpen(false)}
+      />
+    </>
   );
 };
 
