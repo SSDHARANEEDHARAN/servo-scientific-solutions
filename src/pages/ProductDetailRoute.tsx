@@ -67,7 +67,7 @@ const ProductDetailRoute: React.FC = () => {
 
   // Generate structured data for SEO
   const generateSKU = (name: string) => {
-    return `NXT-${name.toUpperCase().replace(/[^A-Z0-9]/g, '').substring(0, 10)}`;
+    return `SSI-${name.toUpperCase().replace(/[^A-Z0-9]/g, '').substring(0, 10)}`;
   };
 
   const structuredData = {
@@ -75,19 +75,23 @@ const ProductDetailRoute: React.FC = () => {
     "@type": "Product",
     "name": productName,
     "category": categoryName,
-    "image": productData.images.map(img => `https://www.nextcraft.co.in${img}`),
-    "description": `High-quality ${productName} by Nextcraft used for industrial and laboratory applications. ${productData.description}`,
+    "image": productData.images.map(img => `https://servoscientific.com${img}`),
+    "description": `High-performance ${productName} by Servo Scientific, designed for industrial and laboratory applications. ${productData.description}`,
     "sku": generateSKU(productName),
     "brand": {
       "@type": "Brand",
-      "name": "Nextcraft"
+      "name": "Servo Scientific"
+    },
+    "manufacturer": {
+      "@type": "Organization",
+      "name": "Servo Scientific"
     },
     "offers": {
       "@type": "Offer",
       "price": "0.00",
-      "priceCurrency": "INR",
+      "priceCurrency": "USD",
       "availability": "https://schema.org/InStock",
-      "url": `https://www.nextcraft.co.in/${category}/${product}`,
+      "url": `https://servoscientific.com/products/${category}/${product}`,
       "itemCondition": "https://schema.org/NewCondition"
     },
     "aggregateRating": {
@@ -97,13 +101,51 @@ const ProductDetailRoute: React.FC = () => {
     }
   };
 
+  // Breadcrumb structured data for SEO
+  const breadcrumbData = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://servoscientific.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": categoryName,
+        "item": `https://servoscientific.com/products/${category}`
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": productName,
+        "item": `https://servoscientific.com/products/${category}/${product}`
+      }
+    ]
+  };
+
+  // Combine structured data
+  const combinedStructuredData = {
+    "@context": "https://schema.org",
+    "@graph": [structuredData, breadcrumbData]
+  };
+
+  // SEO-optimized title and description
+  const seoTitle = `Buy ${productName} | ${categoryName} – Servo Scientific`;
+  const seoDescription = `High-performance ${productName} by Servo Scientific, designed for industrial and laboratory applications. Explore reliable ${categoryName} at competitive prices. ${productData.description.substring(0, 100)}`;
+  const seoKeywords = `${productName}, ${categoryName}, laboratory equipment, industrial equipment, scientific instruments, ${productName.toLowerCase()}, buy ${productName.toLowerCase()}, ${categoryName.toLowerCase()}`;
+
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title={`${productName} | ${categoryName} | Nextcraft`}
-        description={`${productName} - ${productData.description}. High-quality ${categoryName.toLowerCase()} from Nextcraft.`}
-        canonical={`https://www.nextcraft.co.in/${category}/${product}`}
-        structuredData={structuredData}
+        title={seoTitle}
+        description={seoDescription}
+        keywords={seoKeywords}
+        canonical={`https://servoscientific.com/products/${category}/${product}`}
+        structuredData={combinedStructuredData}
       />
       <Navigation
         onInquiryClick={handleInquiry}

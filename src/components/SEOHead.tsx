@@ -21,16 +21,24 @@ const SEOHead = ({
     // Update title
     document.title = title;
 
-    // Update meta tags
+    // Update meta tags with enhanced SEO
     const metaTags = {
       description,
       keywords,
+      'author': 'Servo Scientific',
+      'robots': 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1',
+      'og:type': 'website',
+      'og:site_name': 'Servo Scientific',
       'og:title': title,
       'og:description': description,
       'og:image': ogImage,
+      'og:url': canonical || window.location.href,
+      'og:locale': 'en_US',
+      'twitter:card': 'summary_large_image',
       'twitter:title': title,
       'twitter:description': description,
       'twitter:image': ogImage,
+      'twitter:site': '@servoscientific',
     };
 
     Object.entries(metaTags).forEach(([key, value]) => {

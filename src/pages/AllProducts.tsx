@@ -123,8 +123,10 @@ const AllProducts: React.FC<AllProductsProps> = ({ onBackToHome, onInquiryClick 
               <div className="relative">
                 <img
                   src={product.images[0]}
-                  alt={product.name}
+                  alt={`${product.name} by Servo Scientific – High-quality ${product.category} equipment`}
+                  title={`${product.name} - Professional ${product.category}`}
                   className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                  loading="lazy"
                 />
                 <Badge className="absolute top-2 right-2 bg-primary text-primary-foreground">
                   {product.category}

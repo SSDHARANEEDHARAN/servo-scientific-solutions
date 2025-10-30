@@ -3,9 +3,12 @@ import { Button } from '@/components/ui/button';
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from '@/components/ui/carousel';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
-import { CheckCircle, Package, Thermometer, ArrowLeft, Download } from 'lucide-react';
+import { CheckCircle, Package, Thermometer, ArrowLeft, Download, ArrowRight } from 'lucide-react';
 import { generateProductDatasheet } from '@/utils/pdf';
 import { toast } from 'sonner';
+import { productCategories, productDatabase } from '@/data';
+import { useNavigate } from 'react-router-dom';
+import { generateProductUrl, findCategoryForProduct } from '@/lib/urlHelpers';
 
 interface ProductDetailPageProps {
   onBack: () => void;
@@ -23,6 +26,8 @@ interface ProductDetailPageProps {
 }
 
 const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ onBack, onInquiry, product }) => {
+  const navigate = useNavigate();
+
   const handleDownloadDatasheet = async () => {
     console.log('Download button clicked!');
     console.log('Product data:', product);
@@ -35,6 +40,23 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ onBack, onInquiry
     } catch (error) {
       console.error('Error generating datasheet:', error);
       toast.error('Failed to generate datasheet. Please try again.');
+    }
+  };
+
+  // Get related products from the same category for internal linking
+  const relatedProducts = Object.entries(productDatabase)
+    .filter(([name, prod]) => 
+      prod.category === product.category && 
+      prod.name !== product.name
+    )
+    .slice(0, 3);
+
+  const handleRelatedProductClick = (productName: string) => {
+    const category = findCategoryForProduct(productName, productCategories);
+    if (category) {
+      const url = generateProductUrl(category, productName);
+      navigate(url);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
@@ -85,8 +107,10 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ onBack, onInquiry
                     <div className="aspect-square bg-surface-blue dark:bg-slate-700 rounded-lg flex items-center justify-center border-2 border-slate-200 dark:border-slate-600 overflow-hidden">
                       <img 
                         src={image} 
-                        alt={`${product.name} - View ${index + 1}`}
+                        alt={`${product.name} by Servo Scientific – High-quality ${product.category} equipment - View ${index + 1}`}
+                        title={`${product.name} - Professional ${product.category}`}
                         className="w-full h-full object-cover"
+                        loading={index === 0 ? "eager" : "lazy"}
                         onError={(e) => {
                           e.currentTarget.src = '/placeholder.svg';
                         }}
@@ -151,6 +175,43 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ onBack, onInquiry
             ))}
           </div>
         </div>
+
+        {/* Related Products - Internal Linking for SEO */}
+        {relatedProducts.length > 0 && (
+          <div className="bg-white dark:bg-slate-800 rounded-lg shadow-card p-8 mt-8">
+            <h2 className="text-2xl font-semibold text-foreground mb-6">
+              Related {product.category}
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {relatedProducts.map(([name, relatedProduct]) => (
+                <div 
+                  key={name}
+                  className="bg-surface-blue dark:bg-slate-700 rounded-lg p-4 border border-slate-200 dark:border-slate-600 hover:shadow-professional transition-all duration-300 cursor-pointer group"
+                  onClick={() => handleRelatedProductClick(name)}
+                >
+                  <img 
+                    src={relatedProduct.images[0]} 
+                    alt={`${relatedProduct.name} by Servo Scientific – ${product.category} equipment`}
+                    className="w-full h-40 object-cover rounded mb-3"
+                    loading="lazy"
+                  />
+                  <h3 className="font-semibold text-foreground mb-2 group-hover:text-professional-blue transition-colors">
+                    {relatedProduct.name}
+                  </h3>
+                  <p className="text-sm text-technical-gray dark:text-slate-300 line-clamp-2 mb-3">
+                    {relatedProduct.description}
+                  </p>
+                  <Button 
+                    variant="link" 
+                    className="p-0 h-auto text-professional-blue"
+                  >
+                    View Details <ArrowRight className="ml-1 h-4 w-4" />
+                  </Button>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Call to Action */}
         <div className="bg-gradient-hero rounded-lg p-8 mt-8 text-center">

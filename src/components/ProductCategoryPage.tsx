@@ -130,8 +130,10 @@ const ProductCategoryPage: React.FC<ProductCategoryPageProps> = ({
                   <div className="aspect-square bg-gradient-card p-8 flex items-center justify-center">
                     <img
                       src={product.image || "/placeholder.svg"}
-                      alt={product.name}
+                      alt={`${product.name} by Servo Scientific – High-quality ${categoryName} equipment`}
+                      title={`${product.name} - Professional ${categoryName}`}
                       className="max-w-full max-h-full object-contain"
+                      loading="lazy"
                     />
                   </div>
                   <CardContent className="p-6">
