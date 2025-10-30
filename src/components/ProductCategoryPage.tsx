@@ -253,7 +253,7 @@ const ProductCategoryPage: React.FC<ProductCategoryPageProps> = ({
               <div className="space-y-4">
                 <Button
                   onClick={onInquiryClick}
-                  className="w-full bg-primary text-muted-foreground dark:text-primary-foreground hover:text-primary dark:hover:text-primary hover:bg-primary/90 transition-all duration-300"
+                  className="w-full bg-primary text-muted-foreground dark:text-foreground hover:text-primary dark:hover:text-primary hover:bg-primary/90 transition-all duration-300"
                   size="lg"
                 >
                   <MessageCircle className="h-5 w-5 mr-2" />
