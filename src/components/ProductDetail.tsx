@@ -145,7 +145,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ isOpen, onClose, onInquir
             onClick={handleDownloadDatasheet}
             size="lg"
             variant="outline"
-            className="border-professional-blue text-professional-blue hover:bg-professional-blue hover:text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300"
+            className="border-border text-muted-foreground dark:text-foreground hover:text-primary dark:hover:text-primary hover:bg-accent dark:hover:bg-accent px-8 py-3 rounded-lg font-semibold transition-all duration-300"
           >
             <Download className="mr-2 h-4 w-4" />
             Download Datasheet

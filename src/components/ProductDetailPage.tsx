@@ -233,7 +233,7 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ onBack, onInquiry
             <Button 
               size="lg"
               variant="outline"
-              className="border-white text-white hover:bg-white hover:text-professional-blue"
+              className="border-white/30 dark:border-white/30 text-muted-foreground dark:text-foreground hover:text-primary dark:hover:text-primary hover:bg-white/10 dark:hover:bg-white/10 transition-all duration-300"
               onClick={handleDownloadDatasheet}
             >
               <Download className="mr-2 h-4 w-4" />
