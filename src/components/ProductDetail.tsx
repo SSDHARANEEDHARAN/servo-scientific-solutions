@@ -137,15 +137,14 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ isOpen, onClose, onInquir
           <Button 
             onClick={onInquiry}
             size="lg"
-            className="bg-white dark:bg-black text-muted-foreground dark:text-foreground hover:text-primary dark:hover:text-primary px-8 py-3 rounded-lg font-semibold transition-all duration-300 shadow-professional hover:shadow-professional-hover"
+            className="bg-professional-blue text-white hover:text-blue-400 px-8 py-3 rounded-lg font-semibold transition-all duration-300 shadow-professional hover:shadow-professional-hover"
           >
             Make Enquiry for {product.name}
           </Button>
           <Button 
             onClick={handleDownloadDatasheet}
             size="lg"
-            variant="outline"
-            className="border-professional-blue text-muted-foreground dark:text-foreground hover:text-primary dark:hover:text-primary hover:bg-professional-blue px-8 py-3 rounded-lg font-semibold transition-all duration-300"
+            className="bg-professional-blue text-white hover:text-blue-400 px-8 py-3 rounded-lg font-semibold transition-all duration-300"
           >
             <Download className="mr-2 h-4 w-4" />
             Download Datasheet

@@ -253,7 +253,7 @@ const ProductCategoryPage: React.FC<ProductCategoryPageProps> = ({
               <div className="space-y-4">
                 <Button
                   onClick={onInquiryClick}
-                  className="w-full bg-white dark:bg-black text-muted-foreground dark:text-foreground hover:text-primary dark:hover:text-primary transition-all duration-300"
+                  className="w-full bg-professional-blue text-white hover:text-blue-400 transition-all duration-300"
                   size="lg"
                 >
                   <MessageCircle className="h-5 w-5 mr-2" />
@@ -261,9 +261,8 @@ const ProductCategoryPage: React.FC<ProductCategoryPageProps> = ({
                 </Button>
                 
                 <Button
-                  variant="outline"
                   onClick={handleDownloadBrochure}
-                  className="w-full text-muted-foreground dark:text-foreground hover:text-primary dark:hover:text-primary transition-all duration-300"
+                  className="w-full bg-professional-blue text-white hover:text-blue-400 transition-all duration-300"
                   size="lg"
                 >
                   <Download className="h-5 w-5 mr-2" />
