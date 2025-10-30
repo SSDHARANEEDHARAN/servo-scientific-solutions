@@ -125,148 +125,149 @@ const Contact: React.FC<ContactProps> = () => {
         </div>
       
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid lg:grid-cols-2 gap-8">
-          {/* Contact Form */}
-          <div className="bg-card border border-border rounded-lg p-8 shadow-soft">
-            <h2 className="text-2xl font-bold text-foreground mb-6">Send us a Message</h2>
-            
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <div>
-                <Label htmlFor="name" className="text-foreground mb-2 block font-medium">Name *</Label>
-                <Input
-                  id="name"
-                  value={formData.name}
-                  onChange={(e) => handleInputChange('name', e.target.value)}
-                  placeholder="Your full name"
-                  required
-                  className="h-11"
-                />
-              </div>
-
-              <div>
-                <Label htmlFor="email" className="text-foreground mb-2 block font-medium">Email *</Label>
-                <Input
-                  id="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={(e) => handleInputChange('email', e.target.value)}
-                  placeholder="your.email@company.com"
-                  required
-                  className="h-11"
-                />
-              </div>
-
-              <div>
-                <Label htmlFor="phone" className="text-foreground mb-2 block font-medium">Phone</Label>
-                <Input
-                  id="phone"
-                  value={formData.phone}
-                  onChange={(e) => handleInputChange('phone', e.target.value)}
-                  placeholder="+1 (555) 123-4567"
-                  className="h-11"
-                />
-              </div>
-
-              <div>
-                <Label htmlFor="subject" className="text-foreground mb-2 block font-medium">Subject *</Label>
-                <Input
-                  id="subject"
-                  value={formData.subject}
-                  onChange={(e) => handleInputChange('subject', e.target.value)}
-                  placeholder="How can we help?"
-                  required
-                  className="h-11"
-                />
-              </div>
-
-              <div>
-                <Label htmlFor="message" className="text-foreground mb-2 block font-medium">Message *</Label>
-                <Textarea
-                  id="message"
-                  value={formData.message}
-                  onChange={(e) => handleInputChange('message', e.target.value)}
-                  placeholder="Tell us more about your inquiry..."
-                  rows={5}
-                  required
-                  className="resize-none"
-                />
-              </div>
-
-              <Button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full h-11"
-              >
-                {isSubmitting ? (
-                  'Sending...'
-                ) : (
-                  <>
-                    <Send className="h-4 w-4 mr-2" />
-                    Send Message
-                  </>
-                )}
-              </Button>
-            </form>
-          </div>
-
-          {/* Contact Information */}
-          <div className="space-y-6">
+          <div className="grid lg:grid-cols-2 gap-8">
+            {/* Contact Form */}
             <div className="bg-card border border-border rounded-lg p-8 shadow-soft">
-              <h2 className="text-2xl font-bold text-foreground mb-6">Contact Information</h2>
+              <h2 className="text-2xl font-bold text-foreground mb-6">Send us a Message</h2>
               
-              <div className="space-y-5">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Mail className="h-5 w-5 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-foreground mb-1">Email</h3>
-                    <p className="text-muted-foreground text-sm">servoscientific@yahoo.com</p>
-                  </div>
+              <form onSubmit={handleSubmit} className="space-y-5">
+                <div>
+                  <Label htmlFor="name" className="text-foreground mb-2 block font-medium">Name *</Label>
+                  <Input
+                    id="name"
+                    value={formData.name}
+                    onChange={(e) => handleInputChange('name', e.target.value)}
+                    placeholder="Your full name"
+                    required
+                    className="h-11"
+                  />
                 </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Phone className="h-5 w-5 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-foreground mb-1">Phone</h3>
-                    <p className="text-muted-foreground text-sm">+1 (234) 567-890</p>
-                  </div>
+                <div>
+                  <Label htmlFor="email" className="text-foreground mb-2 block font-medium">Email *</Label>
+                  <Input
+                    id="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={(e) => handleInputChange('email', e.target.value)}
+                    placeholder="your.email@company.com"
+                    required
+                    className="h-11"
+                  />
                 </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <MapPin className="h-5 w-5 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-foreground mb-1">Address</h3>
-                    <p className="text-muted-foreground text-sm leading-relaxed">
-                      Servo Scientific Suppliers<br />
-                      123 Industrial Drive<br />
-                      Science City, SC 12345
-                    </p>
-                  </div>
+                <div>
+                  <Label htmlFor="phone" className="text-foreground mb-2 block font-medium">Phone</Label>
+                  <Input
+                    id="phone"
+                    value={formData.phone}
+                    onChange={(e) => handleInputChange('phone', e.target.value)}
+                    placeholder="+1 (555) 123-4567"
+                    className="h-11"
+                  />
                 </div>
-              </div>
+
+                <div>
+                  <Label htmlFor="subject" className="text-foreground mb-2 block font-medium">Subject *</Label>
+                  <Input
+                    id="subject"
+                    value={formData.subject}
+                    onChange={(e) => handleInputChange('subject', e.target.value)}
+                    placeholder="How can we help?"
+                    required
+                    className="h-11"
+                  />
+                </div>
+
+                <div>
+                  <Label htmlFor="message" className="text-foreground mb-2 block font-medium">Message *</Label>
+                  <Textarea
+                    id="message"
+                    value={formData.message}
+                    onChange={(e) => handleInputChange('message', e.target.value)}
+                    placeholder="Tell us more about your inquiry..."
+                    rows={5}
+                    required
+                    className="resize-none"
+                  />
+                </div>
+
+                <Button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full h-11"
+                >
+                  {isSubmitting ? (
+                    'Sending...'
+                  ) : (
+                    <>
+                      <Send className="h-4 w-4 mr-2" />
+                      Send Message
+                    </>
+                  )}
+                </Button>
+              </form>
             </div>
 
-            <div className="bg-muted/30 border border-border rounded-lg p-8">
-              <h3 className="text-xl font-bold text-foreground mb-4">
-                Business Hours
-              </h3>
-              <div className="space-y-3">
-                <div className="flex justify-between items-center py-2 border-b border-border">
-                  <span className="font-medium text-foreground">Monday - Friday</span>
-                  <span className="text-muted-foreground">9:00 AM - 6:00 PM</span>
+            {/* Contact Information */}
+            <div className="space-y-6">
+              <div className="bg-card border border-border rounded-lg p-8 shadow-soft">
+                <h2 className="text-2xl font-bold text-foreground mb-6">Contact Information</h2>
+                
+                <div className="space-y-5">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Mail className="h-5 w-5 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-foreground mb-1">Email</h3>
+                      <p className="text-muted-foreground text-sm">servoscientific@yahoo.com</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Phone className="h-5 w-5 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-foreground mb-1">Phone</h3>
+                      <p className="text-muted-foreground text-sm">+1 (234) 567-890</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <MapPin className="h-5 w-5 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-foreground mb-1">Address</h3>
+                      <p className="text-muted-foreground text-sm leading-relaxed">
+                        Servo Scientific Suppliers<br />
+                        123 Industrial Drive<br />
+                        Science City, SC 12345
+                      </p>
+                    </div>
+                  </div>
                 </div>
-                <div className="flex justify-between items-center py-2 border-b border-border">
-                  <span className="font-medium text-foreground">Saturday</span>
-                  <span className="text-muted-foreground">10:00 AM - 4:00 PM</span>
-                </div>
-                <div className="flex justify-between items-center py-2">
-                  <span className="font-medium text-foreground">Sunday</span>
-                  <span className="text-muted-foreground">Closed</span>
+              </div>
+
+              <div className="bg-muted/30 border border-border rounded-lg p-8">
+                <h3 className="text-xl font-bold text-foreground mb-4">
+                  Business Hours
+                </h3>
+                <div className="space-y-3">
+                  <div className="flex justify-between items-center py-2 border-b border-border">
+                    <span className="font-medium text-foreground">Monday - Friday</span>
+                    <span className="text-muted-foreground">9:00 AM - 6:00 PM</span>
+                  </div>
+                  <div className="flex justify-between items-center py-2 border-b border-border">
+                    <span className="font-medium text-foreground">Saturday</span>
+                    <span className="text-muted-foreground">10:00 AM - 4:00 PM</span>
+                  </div>
+                  <div className="flex justify-between items-center py-2">
+                    <span className="font-medium text-foreground">Sunday</span>
+                    <span className="text-muted-foreground">Closed</span>
+                  </div>
                 </div>
               </div>
             </div>
