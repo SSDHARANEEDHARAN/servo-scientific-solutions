@@ -49,7 +49,7 @@ const ProductCategoryPage: React.FC = () => {
             <Button
               variant="outline"
               onClick={() => navigate('/')}
-              className="mb-6 border-white text-white hover:bg-white hover:text-primary dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-primary-dark transition-all duration-300"
+              className="mb-6 border-white/30 dark:border-white/30 text-muted-foreground dark:text-foreground hover:text-primary dark:hover:text-primary hover:bg-white/10 dark:hover:bg-white/10 transition-all duration-300"
             >
               <ArrowLeft className="h-4 w-4 mr-2" />
               Back to Home
