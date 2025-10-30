@@ -87,7 +87,7 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ onBack, onInquiry
             <Button 
               onClick={onInquiry}
               size="lg"
-              className="bg-professional-blue hover:bg-professional-blue-dark text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 shadow-professional hover:shadow-professional-hover mt-4 md:mt-0"
+              className="bg-professional-blue hover:bg-professional-blue-dark text-muted-foreground dark:text-foreground hover:text-primary dark:hover:text-primary px-8 py-3 rounded-lg font-semibold transition-all duration-300 shadow-professional hover:shadow-professional-hover mt-4 md:mt-0"
             >
               Make Enquiry
             </Button>
