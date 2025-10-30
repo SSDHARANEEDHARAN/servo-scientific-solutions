@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Menu, X, ChevronDown, Sun, Moon, Download, Home, LogOut, User, CheckCircle } from 'lucide-react';
+import { Menu, X, ChevronDown, Sun, Moon, Download, Home, LogOut, User, CheckCircle, Mail, Phone } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { Dialog, DialogContent, DialogTrigger, DialogHeader, DialogTitle } from '@/components/ui/dialog';
@@ -269,21 +269,22 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
     <>
       {/* Main Navigation */}
       <nav className="bg-gray-50 dark:bg-professional-blue-dark border-b border-border sticky top-0 z-50 backdrop-blur-sm shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Logo with Popup Menu */}
             <div className="flex flex-col items-start relative">
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2 sm:gap-3">
                 <img 
                   src="/logo.png" 
                   alt="Servo Scientific Suppliers Logo" 
-                  className="h-10 w-10 object-contain"
+                  className="h-8 w-8 sm:h-10 sm:w-10 object-contain flex-shrink-0"
                 />
-                <div className="text-2xl font-bold text-primary">
+                <div className="text-sm sm:text-xl lg:text-2xl font-bold text-primary truncate max-w-[180px] sm:max-w-none">
                   Servo Scientific Suppliers
                 </div>
               </div>
-              <div className="absolute top-full left-0 mt-1 bg-gray-50 dark:bg-professional-blue-dark px-3 py-1 z-50 border border-border rounded-b-md shadow-md">
+              {/* Desktop Only Quick Links */}
+              <div className="hidden lg:block absolute top-full left-0 mt-1 bg-gray-50 dark:bg-professional-blue-dark px-3 py-1 z-50 border border-border rounded-b-md shadow-md">
                 <div className="flex items-center space-x-2 text-sm whitespace-nowrap">
                 <button 
                   onClick={() => navigate('/about')}
@@ -421,86 +422,127 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
             </div>
 
             {/* Mobile menu button */}
-            <div className="lg:hidden">
+            <div className="lg:hidden flex items-center gap-2">
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={toggleDarkMode}
+                className="h-9 w-9 text-foreground hover:text-primary hover:bg-accent"
+              >
+                {isDarkMode ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+              </Button>
               <Sheet>
                 <SheetTrigger asChild>
-                  <Button variant="ghost" size="icon" className="text-foreground">
+                  <Button variant="ghost" size="icon" className="text-foreground h-10 w-10">
                     <Menu className="h-6 w-6" />
                   </Button>
                 </SheetTrigger>
-                <SheetContent side="right" className="bg-card text-card-foreground">
-                  <div className="flex flex-col space-y-6 mt-6">
+                <SheetContent side="right" className="bg-card text-card-foreground overflow-y-auto w-[85vw] sm:w-[400px]">
+                  <div className="flex flex-col space-y-6 mt-6 pb-8">
                     {/* Mobile Company Menu */}
                     <div className="space-y-3 pb-4 border-b border-border">
-                      <div className="font-semibold text-primary text-lg">Servo Scientific Suppliers</div>
+                      <div className="font-semibold text-primary text-lg">Menu</div>
                       <button 
-                        onClick={handleHomeClick}
-                        className="block w-full text-left text-foreground hover:text-primary transition-colors font-medium py-2"
+                        onClick={() => {
+                          handleHomeClick();
+                          setIsMenuOpen(false);
+                        }}
+                        className="flex items-center w-full text-left text-foreground hover:text-primary transition-colors font-medium py-3 px-2 rounded-lg hover:bg-accent min-h-[44px]"
                       >
+                        <Home className="h-5 w-5 mr-3" />
                         Home
                       </button>
                       <button 
-                        onClick={() => navigate('/about')}
-                        className="block w-full text-left text-foreground hover:text-primary transition-colors font-medium py-2"
+                        onClick={() => {
+                          navigate('/about');
+                          setIsMenuOpen(false);
+                        }}
+                        className="flex items-center w-full text-left text-foreground hover:text-primary transition-colors font-medium py-3 px-2 rounded-lg hover:bg-accent min-h-[44px]"
                       >
+                        <User className="h-5 w-5 mr-3" />
                         About Us
                       </button>
                       <button 
-                        onClick={handleInquiryClick}
-                        className="block w-full text-left text-foreground hover:text-primary transition-colors font-medium py-2"
+                        onClick={() => {
+                          handleInquiryClick();
+                          setIsMenuOpen(false);
+                        }}
+                        className="flex items-center w-full text-left text-foreground hover:text-primary transition-colors font-medium py-3 px-2 rounded-lg hover:bg-accent min-h-[44px]"
                       >
+                        <Mail className="h-5 w-5 mr-3" />
                         Enquiries
                       </button>
                     </div>
                     
                     <div className="space-y-3">
-                      <div className="font-semibold text-primary">Products</div>
+                      <div className="font-semibold text-primary text-base">Products</div>
                       {Object.entries(productCategories).map(([categoryName, products]) => (
-                        <div key={categoryName} className="ml-4 space-y-2">
-                          <div className="font-medium text-foreground text-sm">{categoryName}</div>
-                          {products.map((productName) => (
-                            <button
-                              key={productName}
-                              onClick={() => handleProductClick(productName)}
-                              className="block text-sm text-muted-foreground hover:text-foreground transition-colors ml-4"
-                            >
-                              {productName}
-                            </button>
-                          ))}
+                        <div key={categoryName} className="space-y-2">
+                          <button
+                            onClick={() => setExpandedCategory(expandedCategory === categoryName ? null : categoryName)}
+                            className="flex items-center justify-between w-full text-left font-medium text-foreground text-sm py-2 px-2 rounded-lg hover:bg-accent min-h-[44px]"
+                          >
+                            {categoryName}
+                            <ChevronDown className={`h-4 w-4 transition-transform ${expandedCategory === categoryName ? 'rotate-180' : ''}`} />
+                          </button>
+                          {expandedCategory === categoryName && (
+                            <div className="ml-4 space-y-1">
+                              {products.map((productName) => (
+                                <button
+                                  key={productName}
+                                  onClick={() => {
+                                    handleProductClick(productName);
+                                    setIsMenuOpen(false);
+                                  }}
+                                  className="block w-full text-left text-sm text-muted-foreground hover:text-foreground transition-colors py-2 px-2 rounded hover:bg-accent/50 min-h-[40px]"
+                                >
+                                  {productName}
+                                </button>
+                              ))}
+                            </div>
+                          )}
                         </div>
                       ))}
                     </div>
                     
                     <button 
-                      onClick={() => navigate('/contact')}
-                      className="text-foreground hover:text-primary transition-colors font-medium w-full text-left block"
+                      onClick={() => {
+                        navigate('/contact');
+                        setIsMenuOpen(false);
+                      }}
+                      className="flex items-center text-foreground hover:text-primary transition-colors font-medium w-full text-left py-3 px-2 rounded-lg hover:bg-accent min-h-[44px]"
                     >
+                      <Phone className="h-5 w-5 mr-3" />
                       Contact
                     </button>
                     
-                    <div className="flex items-center space-x-4 pt-4 border-t border-border">
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        onClick={toggleDarkMode}
-                        className="text-foreground hover:text-primary hover:bg-accent"
-                      >
-                        {isDarkMode ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-                      </Button>
-                      
+                    <div className="flex flex-col gap-3 pt-4 border-t border-border">
                       {user ? (
-                        <Button 
-                          variant="professional" 
-                          onClick={handleSignOut}
-                          className="text-primary-foreground bg-primary hover:bg-primary/90"
-                        >
-                          Sign Out
-                        </Button>
+                        <>
+                          <div className="flex items-center gap-2 text-sm text-muted-foreground px-2">
+                            <User className="h-4 w-4" />
+                            <span className="truncate">{user.email}</span>
+                          </div>
+                          <Button 
+                            variant="outline" 
+                            onClick={() => {
+                              handleSignOut();
+                              setIsMenuOpen(false);
+                            }}
+                            className="w-full min-h-[44px] justify-start"
+                          >
+                            <LogOut className="h-4 w-4 mr-2" />
+                            Sign Out
+                          </Button>
+                        </>
                       ) : (
                         <Button 
-                          variant="professional" 
-                          onClick={() => setShowAuthModal(true)}
-                          className="text-primary-foreground bg-primary hover:bg-primary/90"
+                          variant="default" 
+                          onClick={() => {
+                            setShowAuthModal(true);
+                            setIsMenuOpen(false);
+                          }}
+                          className="w-full min-h-[44px] bg-primary text-primary-foreground hover:bg-primary/90"
                         >
                           Sign In
                         </Button>
@@ -703,8 +745,8 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
         </DialogContent>
       </Dialog>
 
-      {/* Quick Access Panel */}
-      <div className="fixed left-0 top-1/2 -translate-y-1/2 z-40 group">
+      {/* Quick Access Panel - Hidden on mobile */}
+      <div className="hidden lg:block fixed left-0 top-1/2 -translate-y-1/2 z-40 group">
         <div className="bg-primary text-primary-foreground p-3 rounded-r-lg shadow-professional transition-all duration-300 group-hover:w-56 w-14 overflow-hidden">
           <div className="flex flex-col space-y-6">
             {/* Home */}
