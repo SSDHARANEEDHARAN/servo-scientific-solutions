@@ -72,12 +72,12 @@ const Footer: React.FC<FooterProps> = ({ onInquiryClick, onCategorySelect, onAbo
           <div>
             <h4 className="text-lg font-semibold mb-6 text-foreground">Product Categories</h4>
             <ul className="space-y-3 text-sm">
-              <li><button onClick={() => navigate('/products')} className="text-muted-foreground hover:text-primary transition-all duration-300 text-left">Heating Instruments</button></li>
-              <li><button onClick={() => navigate('/products')} className="text-muted-foreground hover:text-primary transition-all duration-300 text-left">Industrial Furnace</button></li>
-              <li><button onClick={() => navigate('/products')} className="text-muted-foreground hover:text-primary transition-all duration-300 text-left">Environmental Chamber</button></li>
-              <li><button onClick={() => navigate('/products')} className="text-muted-foreground hover:text-primary transition-all duration-300 text-left">Heaters</button></li>
-              <li><button onClick={() => navigate('/products')} className="text-muted-foreground hover:text-primary transition-all duration-300 text-left">Microbiology Instruments</button></li>
-              <li><button onClick={() => navigate('/products')} className="text-muted-foreground hover:text-primary transition-all duration-300 text-left">Thermocouple</button></li>
+              <li><button onClick={() => navigate('/products?category=Heating%20Instruments')} className="text-muted-foreground hover:text-primary transition-all duration-300 text-left">Heating Instruments</button></li>
+              <li><button onClick={() => navigate('/products?category=Industrial%20Furnace')} className="text-muted-foreground hover:text-primary transition-all duration-300 text-left">Industrial Furnace</button></li>
+              <li><button onClick={() => navigate('/products?category=Environmental%20Chamber')} className="text-muted-foreground hover:text-primary transition-all duration-300 text-left">Environmental Chamber</button></li>
+              <li><button onClick={() => navigate('/products?category=Heater')} className="text-muted-foreground hover:text-primary transition-all duration-300 text-left">Heaters</button></li>
+              <li><button onClick={() => navigate('/products?category=Microbiology%20Instruments')} className="text-muted-foreground hover:text-primary transition-all duration-300 text-left">Microbiology Instruments</button></li>
+              <li><button onClick={() => navigate('/products?category=Thermocouple')} className="text-muted-foreground hover:text-primary transition-all duration-300 text-left">Thermocouple</button></li>
             </ul>
           </div>
 

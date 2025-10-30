@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -9,6 +9,7 @@ import ProductDetail from '@/components/ProductDetail';
 import SEOHead from '@/components/SEOHead';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import InquiryForm from '@/components/InquiryForm';
 
 interface AllProductsProps {
   onBackToHome: () => void;
@@ -17,9 +18,23 @@ interface AllProductsProps {
 
 const AllProducts: React.FC<AllProductsProps> = ({ onBackToHome, onInquiryClick }) => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const [selectedProduct, setSelectedProduct] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
+  const [isInquiryOpen, setIsInquiryOpen] = useState(false);
+
+  // Set initial category from URL params
+  useEffect(() => {
+    const categoryParam = searchParams.get('category');
+    if (categoryParam) {
+      setSelectedCategory(categoryParam);
+    }
+  }, [searchParams]);
+
+  const handleInquiryClick = () => {
+    setIsInquiryOpen(true);
+  };
 
   const categories = ['All', ...Object.keys(productCategories)];
   
@@ -45,7 +60,7 @@ const AllProducts: React.FC<AllProductsProps> = ({ onBackToHome, onInquiryClick 
           <ProductDetail
             isOpen={true}
             onClose={() => setSelectedProduct(null)}
-            onInquiry={onInquiryClick}
+            onInquiry={handleInquiryClick}
             product={product}
           />
         </div>
@@ -63,7 +78,7 @@ const AllProducts: React.FC<AllProductsProps> = ({ onBackToHome, onInquiryClick 
       />
       
       <Navigation
-        onInquiryClick={onInquiryClick}
+        onInquiryClick={handleInquiryClick}
         onProductSelect={() => {}}
         onAboutClick={() => navigate('/about')}
         onContactClick={() => navigate('/contact')}
@@ -167,7 +182,7 @@ const AllProducts: React.FC<AllProductsProps> = ({ onBackToHome, onInquiryClick 
                   <Button
                     variant="default"
                     size="sm"
-                    onClick={onInquiryClick}
+                    onClick={handleInquiryClick}
                     className="flex-1"
                   >
                     Get Quote
@@ -186,13 +201,18 @@ const AllProducts: React.FC<AllProductsProps> = ({ onBackToHome, onInquiryClick 
       </div>
 
       <Footer
-        onInquiryClick={onInquiryClick}
+        onInquiryClick={handleInquiryClick}
         onCategorySelect={() => {}}
         onAboutClick={() => navigate('/about')}
         onAllProductsClick={() => navigate('/products')}
         onServicesClick={() => navigate('/services')}
         onQualityClick={() => navigate('/quality')}
         onContactClick={() => navigate('/contact')}
+      />
+      
+      <InquiryForm
+        isOpen={isInquiryOpen}
+        onClose={() => setIsInquiryOpen(false)}
       />
     </div>
   );
