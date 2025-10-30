@@ -87,7 +87,7 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ onBack, onInquiry
             <Button 
               onClick={onInquiry}
               size="lg"
-              className="bg-white dark:bg-black text-muted-foreground dark:text-foreground hover:text-primary dark:hover:text-primary px-8 py-3 rounded-lg font-semibold transition-all duration-300 shadow-professional hover:shadow-professional-hover mt-4 md:mt-0"
+              className="bg-professional-blue hover:bg-professional-blue-dark text-muted-foreground dark:text-foreground hover:text-primary dark:hover:text-primary px-8 py-3 rounded-lg font-semibold transition-all duration-300 shadow-professional hover:shadow-professional-hover mt-4 md:mt-0"
             >
               Make Enquiry
             </Button>
@@ -226,7 +226,7 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ onBack, onInquiry
               onClick={onInquiry}
               size="lg"
               variant="secondary"
-              className="bg-white dark:bg-black text-muted-foreground dark:text-foreground hover:text-primary dark:hover:text-primary transition-all duration-300"
+              className="bg-white text-muted-foreground dark:text-foreground hover:text-primary dark:hover:text-primary hover:bg-slate-100 transition-all duration-300"
             >
               Request Quote
             </Button>
