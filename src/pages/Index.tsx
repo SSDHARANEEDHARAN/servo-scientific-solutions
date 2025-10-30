@@ -21,7 +21,7 @@ const Index = () => {
   };
 
   const handleAllProductsClick = () => {
-    navigate('/products');
+    navigate('/all-products');
   };
 
   const handleAboutClick = () => {
@@ -107,7 +107,7 @@ const Index = () => {
         onInquiryClick={handleInquiryClick} 
         onCategorySelect={() => {}}
         onAboutClick={handleAboutClick}
-        onAllProductsClick={handleAllProductsClick}
+        onAllProductsClick={() => navigate('/all-products')}
         onServicesClick={() => navigate('/services')}
         onQualityClick={() => navigate('/quality')}
         onContactClick={handleContactClick}

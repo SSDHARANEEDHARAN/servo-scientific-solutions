@@ -8,6 +8,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import AllProducts from "./pages/AllProducts";
+import ProductCategoryPage from "./pages/ProductCategoryPage";
 import ServicesSupport from "./pages/ServicesSupport";
 import QualityAssurance from "./pages/QualityAssurance";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
@@ -80,7 +81,8 @@ const App = () => {
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<AboutRoute />} />
           <Route path="/reset-password" element={<ResetPassword />} />
-          <Route path="/products" element={<AllProducts onBackToHome={() => window.location.href = '/'} onInquiryClick={() => {}} />} />
+          <Route path="/products" element={<ProductCategoryPage />} />
+          <Route path="/all-products" element={<AllProducts onBackToHome={() => window.location.href = '/'} onInquiryClick={() => {}} />} />
           <Route path="/services" element={<ServicesSupport onBackToHome={() => window.location.href = '/'} onInquiryClick={() => {}} />} />
           <Route path="/quality" element={<QualityAssurance onBackToHome={() => window.location.href = '/'} />} />
           <Route path="/contact" element={<Contact onBackToHome={() => window.location.href = '/'} onInquiryClick={() => {}} />} />

@@ -61,7 +61,7 @@ const Footer: React.FC<FooterProps> = ({ onInquiryClick, onCategorySelect, onAbo
             <h4 className="text-lg font-semibold mb-6 text-foreground">Quick Links</h4>
             <ul className="space-y-3 text-sm">
               <li><button onClick={() => navigate('/about')} className="text-muted-foreground hover:text-primary transition-all duration-300">About Us</button></li>
-              <li><button onClick={() => navigate('/products')} className="text-muted-foreground hover:text-primary transition-all duration-300">All Products</button></li>
+              <li><button onClick={() => navigate('/all-products')} className="text-muted-foreground hover:text-primary transition-all duration-300">All Products</button></li>
               <li><button onClick={() => navigate('/services')} className="text-muted-foreground hover:text-primary transition-all duration-300">Services & Support</button></li>
               <li><button onClick={() => navigate('/quality')} className="text-muted-foreground hover:text-primary transition-all duration-300">Quality Assurance</button></li>
               <li><button onClick={() => navigate('/contact')} className="text-muted-foreground hover:text-primary transition-all duration-300">Contact</button></li>
