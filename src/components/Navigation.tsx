@@ -13,6 +13,7 @@ import { supabase } from '@/integrations/supabase/client';
 import type { User as SupabaseUser } from '@supabase/supabase-js';
 import { useNavigate } from 'react-router-dom';
 import { generateProductUrl, findCategoryForProduct } from '@/lib/urlHelpers';
+import { generateProductCatalog } from '@/utils/pdf';
 
 interface NavigationProps {
   onInquiryClick: () => void;
@@ -104,12 +105,26 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
     action();
   };
 
-  const handleDownloadClick = () => {
-    requireAuth(() => {
-      toast({
-        title: "Feature Coming Soon",
-        description: "Download feature will be available soon!",
-      });
+  const handleDownloadClick = async () => {
+    requireAuth(async () => {
+      try {
+        toast({
+          title: "Generating catalog...",
+          description: "Please wait while we prepare your catalog.",
+        });
+        await generateProductCatalog();
+        toast({
+          title: "Catalog downloaded!",
+          description: "Your product catalog has been downloaded successfully.",
+        });
+      } catch (error) {
+        console.error('Error downloading catalog:', error);
+        toast({
+          title: "Download failed",
+          description: "Failed to download catalog. Please try again.",
+          variant: "destructive",
+        });
+      }
     });
   };
 
