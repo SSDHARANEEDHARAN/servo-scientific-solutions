@@ -4,6 +4,7 @@ import Navigation from '@/components/Navigation';
 import HeroSection from '@/components/HeroSection';
 import ProductShowcase from '@/components/ProductShowcase';
 import BrandsSection from '@/components/BrandsSection';
+import TrustedPartners from '@/components/TrustedPartners';
 import InquiryForm from '@/components/InquiryForm';
 import Footer from '@/components/Footer';
 import SEOHead from '@/components/SEOHead';
@@ -103,7 +104,8 @@ const Index = () => {
         onProductSelect={() => {}}
       />
       <BrandsSection />
-      <Footer 
+      <TrustedPartners />
+      <Footer
         onInquiryClick={handleInquiryClick} 
         onCategorySelect={() => {}}
         onAboutClick={handleAboutClick}
