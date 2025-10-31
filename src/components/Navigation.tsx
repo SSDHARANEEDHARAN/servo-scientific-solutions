@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Menu, X, ChevronDown, Sun, Moon, Download, Home, LogOut, User, CheckCircle, Mail, Phone } from 'lucide-react';
+import { Menu, X, ChevronDown, Download, Home, LogOut, User, CheckCircle, Mail, Phone } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { Dialog, DialogContent, DialogTrigger, DialogHeader, DialogTitle } from '@/components/ui/dialog';
@@ -40,14 +40,10 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Check for saved theme preference
-    const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
-    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-      setIsDarkMode(true);
-      document.documentElement.classList.add('dark');
-    }
+    // Set dark mode permanently
+    setIsDarkMode(true);
+    document.documentElement.classList.add('dark');
+    localStorage.setItem('theme', 'dark');
 
     // Get initial session
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -78,18 +74,6 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
     }
   };
 
-  const toggleDarkMode = () => {
-    const newDarkMode = !isDarkMode;
-    setIsDarkMode(newDarkMode);
-    
-    if (newDarkMode) {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    }
-  };
 
   const requireAuth = (action: () => void) => {
     if (!user) {
@@ -385,15 +369,6 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
               </nav>
 
               <div className="flex items-center space-x-4">
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  onClick={toggleDarkMode}
-                  className="h-9 w-9 text-foreground hover:text-primary hover:bg-accent"
-                >
-                  {isDarkMode ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-                </Button>
-                
                 {user ? (
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
@@ -423,14 +398,6 @@ const Navigation: React.FC<NavigationProps> = ({ onInquiryClick, onProductSelect
 
             {/* Mobile menu button */}
             <div className="lg:hidden flex items-center gap-2">
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={toggleDarkMode}
-                className="h-9 w-9 text-foreground hover:text-primary hover:bg-accent"
-              >
-                {isDarkMode ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-              </Button>
               <Sheet>
                 <SheetTrigger asChild>
                   <Button variant="ghost" size="icon" className="text-foreground h-10 w-10">
