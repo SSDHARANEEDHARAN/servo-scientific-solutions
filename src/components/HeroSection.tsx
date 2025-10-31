@@ -47,7 +47,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onInquiryClick, onAllProducts
         <div className="text-center">
           <h1 className="text-4xl md:text-6xl font-bold text-white dark:text-white mb-6 animate-fade-in">
             Welcome to 
-            <span className="block text-professional-blue-light dark:text-blue-300">Servo Scientific</span>
+            <span className="block text-professional-blue-light dark:text-blue-300">Servo Scientific Suppliers</span>
           </h1>
           
           <p className="text-xl md:text-2xl text-white/90 dark:text-slate-300 mb-8 max-w-3xl mx-auto animate-fade-in">

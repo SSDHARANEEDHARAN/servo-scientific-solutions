@@ -35,7 +35,7 @@ const Index = () => {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "Servo Scientific Supplier",
+    "name": "Servo Scientific Suppliers",
     "description": "Leading provider of laboratory and industrial instruments including ovens, furnaces, heaters, autoclaves, and sensors",
     "url": "https://servoscientific.com",
     "logo": "https://servoscientific.com/logo.png",
@@ -82,8 +82,8 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title="Servo Scientific Supplier | Scientific & Laboratory Equipment Manufacturer"
-        description="Servo Scientific Supplier — leading provider of lab and industrial instruments including ovens, furnaces, heaters, autoclaves, and sensors."
+        title="Servo Scientific Suppliers | Scientific & Laboratory Equipment Manufacturer"
+        description="Servo Scientific Suppliers — leading provider of lab and industrial instruments including ovens, furnaces, heaters, autoclaves, and sensors."
         canonical="https://servoscientific.com/"
         structuredData={structuredData}
       />

@@ -71,7 +71,7 @@ const AllProducts: React.FC<AllProductsProps> = ({ onBackToHome, onInquiryClick 
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title="All Products | Scientific & Laboratory Equipment | Servo Scientific"
+        title="All Products | Scientific & Laboratory Equipment | Servo Scientific Suppliers"
         description="Browse our complete range of high-quality scientific and laboratory equipment including heating instruments, industrial furnaces, environmental chambers, and microbiology instruments."
         keywords="scientific equipment, laboratory instruments, heating equipment, industrial furnace, environmental chamber, microbiology instruments, thermocouple"
         canonical="https://servoscientific.com/products"
@@ -138,7 +138,7 @@ const AllProducts: React.FC<AllProductsProps> = ({ onBackToHome, onInquiryClick 
               <div className="relative">
                 <img
                   src={product.images[0]}
-                  alt={`${product.name} by Servo Scientific – High-quality ${product.category} equipment`}
+                  alt={`${product.name} by Servo Scientific Suppliers – High-quality ${product.category} equipment`}
                   title={`${product.name} - Professional ${product.category}`}
                   className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                   loading="lazy"

@@ -30,7 +30,7 @@ const ProductCategoryPage: React.FC = () => {
   return (
     <>
       <SEOHead
-        title={`${categoryParam} | Scientific & Laboratory Equipment | Servo Scientific`}
+        title={`${categoryParam} | Scientific & Laboratory Equipment | Servo Scientific Suppliers`}
         description={`Browse our range of ${categoryParam} including high-quality scientific and laboratory equipment designed for precision and reliability.`}
         keywords={`${categoryParam}, scientific equipment, laboratory instruments`}
         canonical={`https://servoscientific.com/products?category=${encodeURIComponent(categoryParam)}`}
@@ -79,7 +79,7 @@ const ProductCategoryPage: React.FC = () => {
                       {product.images && product.images.length > 0 ? (
                         <img
                           src={product.images[0]}
-                          alt={`${product.name} by Servo Scientific - ${categoryParam}`}
+                          alt={`${product.name} by Servo Scientific Suppliers - ${categoryParam}`}
                           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                           loading="lazy"
                         />

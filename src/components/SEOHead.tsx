@@ -12,7 +12,7 @@ interface SEOHeadProps {
 const SEOHead = ({ 
   title, 
   description, 
-  keywords = "laboratory instruments supplier, scientific equipment, heating instruments, industrial furnaces, microbiology instruments, thermocouples, Servo Scientific Supplier",
+  keywords = "laboratory instruments supplier, scientific equipment, heating instruments, industrial furnaces, microbiology instruments, thermocouples, Servo Scientific Suppliers",
   canonical,
   ogImage = "/og-image.jpg",
   structuredData
@@ -25,10 +25,10 @@ const SEOHead = ({
     const metaTags = {
       description,
       keywords,
-      'author': 'Servo Scientific',
+      'author': 'Servo Scientific Suppliers',
       'robots': 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1',
       'og:type': 'website',
-      'og:site_name': 'Servo Scientific',
+      'og:site_name': 'Servo Scientific Suppliers',
       'og:title': title,
       'og:description': description,
       'og:image': ogImage,

@@ -107,7 +107,7 @@ const ServicesSupport: React.FC<ServicesSupportProps> = ({ onBackToHome, onInqui
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title="Services & Support | Installation, Maintenance & Calibration | Servo Scientific"
+        title="Services & Support | Installation, Maintenance & Calibration | Servo Scientific Suppliers"
         description="24/7 technical support, installation, maintenance, repair, and NIST traceable calibration services for scientific equipment. Expert support within 2 hours."
         keywords="equipment installation, calibration services, technical support, equipment maintenance, laboratory equipment repair, NIST calibration"
         canonical="https://servoscientific.com/services"

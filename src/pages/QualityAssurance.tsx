@@ -75,7 +75,7 @@ const QualityAssurance: React.FC<QualityAssuranceProps> = ({ onBackToHome }) => 
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title="Quality Assurance | ISO 9001:2015 Certified | Servo Scientific"
+        title="Quality Assurance | ISO 9001:2015 Certified | Servo Scientific Suppliers"
         description="ISO 9001:2015 certified quality management. CE marking, NIST traceability, 99.8% quality pass rate. 50+ years of excellence in scientific equipment manufacturing."
         keywords="ISO 9001:2015, CE marking, NIST traceability, quality assurance, laboratory equipment quality, scientific instrument certification"
         canonical="https://servoscientific.com/quality"

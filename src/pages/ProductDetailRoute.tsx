@@ -76,16 +76,16 @@ const ProductDetailRoute: React.FC = () => {
     "name": productName,
     "category": categoryName,
     "image": productData.images.map(img => `https://servoscientific.com${img}`),
-    "description": productData.seo_description || `High-performance ${productName} by Servo Scientific, designed for industrial and laboratory applications. ${productData.description}`,
+    "description": productData.seo_description || `High-performance ${productName} by Servo Scientific Suppliers, designed for industrial and laboratory applications. ${productData.description}`,
     "sku": generateSKU(productName),
     "keywords": productData.keywords || [],
     "brand": {
       "@type": "Brand",
-      "name": "Servo Scientific"
+      "name": "Servo Scientific Suppliers"
     },
     "manufacturer": {
       "@type": "Organization",
-      "name": "Servo Scientific"
+      "name": "Servo Scientific Suppliers"
     },
     "offers": {
       "@type": "Offer",
@@ -135,8 +135,8 @@ const ProductDetailRoute: React.FC = () => {
   };
 
   // SEO-optimized title and description from product data
-  const seoTitle = productData.seo_title || `Buy ${productName} | ${categoryName} – Servo Scientific`;
-  const seoDescription = productData.seo_description || `High-performance ${productName} by Servo Scientific, designed for industrial and laboratory applications. Explore reliable ${categoryName} at competitive prices.`;
+  const seoTitle = productData.seo_title || `Buy ${productName} | ${categoryName} – Servo Scientific Suppliers`;
+  const seoDescription = productData.seo_description || `High-performance ${productName} by Servo Scientific Suppliers, designed for industrial and laboratory applications. Explore reliable ${categoryName} at competitive prices.`;
   const seoKeywords = productData.keywords ? productData.keywords.join(', ') : `${productName}, ${categoryName}, laboratory equipment, industrial equipment, scientific instruments`;
 
   return (

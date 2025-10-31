@@ -13,7 +13,7 @@ export const generateProductCatalog = async (): Promise<void> => {
     // Cover page
     pdf.setFontSize(32);
     pdf.setTextColor(0, 51, 102);
-    pdf.text('Servo Scientific', pageWidth / 2, yPosition + 30, { align: 'center' });
+    pdf.text('Servo Scientific Suppliers', pageWidth / 2, yPosition + 30, { align: 'center' });
     
     yPosition += 45;
     pdf.setFontSize(18);
@@ -125,7 +125,7 @@ export const generateProductCatalog = async (): Promise<void> => {
       pdf.setFontSize(8);
       pdf.setTextColor(150, 150, 150);
       pdf.text(
-        `Servo Scientific | www.servoscientific.com | Page ${i} of ${totalPages}`,
+        `Servo Scientific Suppliers | www.servoscientific.com | Page ${i} of ${totalPages}`,
         pageWidth / 2,
         pageHeight - 10,
         { align: 'center' }
