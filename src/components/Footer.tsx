@@ -6,11 +6,7 @@ import {
   Mail, 
   MapPin, 
   Globe, 
-  Facebook, 
-  Twitter, 
-  Instagram, 
   Linkedin,
-  Youtube,
   Clock,
   Award,
   Shield
@@ -131,30 +127,14 @@ const Footer: React.FC<FooterProps> = ({ onInquiryClick, onCategorySelect, onAbo
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center space-x-6 mb-6 md:mb-0">
               <div className="flex items-center space-x-2">
-                <Shield className="h-5 w-5 text-primary" />
-                <span className="text-sm text-muted-foreground">CE Certified</span>
-              </div>
-              <div className="flex items-center space-x-2">
                 <Award className="h-5 w-5 text-primary" />
-                <span className="text-sm text-muted-foreground">ISO 9001:2015</span>
+                <span className="text-sm text-muted-foreground">MSME Certificate</span>
               </div>
             </div>
             
             <div className="flex space-x-4">
               <a href="#" className="w-10 h-10 bg-muted hover:bg-primary rounded-lg flex items-center justify-center transition-all duration-300 group">
-                <Facebook className="h-5 w-5 text-muted-foreground group-hover:text-primary-foreground transition-all duration-300" />
-              </a>
-              <a href="#" className="w-10 h-10 bg-muted hover:bg-primary rounded-lg flex items-center justify-center transition-all duration-300 group">
-                <Twitter className="h-5 w-5 text-muted-foreground group-hover:text-primary-foreground transition-all duration-300" />
-              </a>
-              <a href="#" className="w-10 h-10 bg-muted hover:bg-primary rounded-lg flex items-center justify-center transition-all duration-300 group">
-                <Instagram className="h-5 w-5 text-muted-foreground group-hover:text-primary-foreground transition-all duration-300" />
-              </a>
-              <a href="#" className="w-10 h-10 bg-muted hover:bg-primary rounded-lg flex items-center justify-center transition-all duration-300 group">
                 <Linkedin className="h-5 w-5 text-muted-foreground group-hover:text-primary-foreground transition-all duration-300" />
-              </a>
-              <a href="#" className="w-10 h-10 bg-muted hover:bg-primary rounded-lg flex items-center justify-center transition-all duration-300 group">
-                <Youtube className="h-5 w-5 text-muted-foreground group-hover:text-primary-foreground transition-all duration-300" />
               </a>
             </div>
           </div>
@@ -165,7 +145,7 @@ const Footer: React.FC<FooterProps> = ({ onInquiryClick, onCategorySelect, onAbo
       <div className="border-t border-gray-600">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground">
-            <p>&copy; 2024 Servo Scientific Suppliers. All rights reserved.</p>
+            <p>&copy; 2025 Servo Scientific Suppliers. All rights reserved.</p>
             <div className="flex flex-wrap gap-4 md:gap-6 mt-4 md:mt-0 justify-center">
               <button onClick={() => navigate('/privacy')} className="hover:text-primary transition-all duration-300">Privacy Policy</button>
               <button onClick={() => navigate('/terms')} className="hover:text-primary transition-all duration-300">Terms of Service</button>
