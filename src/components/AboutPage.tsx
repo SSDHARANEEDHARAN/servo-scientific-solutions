@@ -234,8 +234,8 @@ const AboutPage: React.FC<AboutPageProps> = ({ onBack, onInquiryClick }) => {
                     <Shield className="h-6 w-6 text-primary" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-foreground mb-2">ISO 9001:2015 Certified</h3>
-                    <p className="text-muted-foreground text-sm leading-relaxed">Internationally recognized quality management standards</p>
+                    <h3 className="text-xl font-semibold text-foreground mb-2">MSME Certified</h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed">Recognized excellence in manufacturing and quality standards</p>
                   </div>
                 </div>
               </CardContent>

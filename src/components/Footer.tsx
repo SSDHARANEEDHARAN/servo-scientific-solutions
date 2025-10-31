@@ -46,8 +46,8 @@ const Footer: React.FC<FooterProps> = ({ onInquiryClick, onCategorySelect, onAbo
                 <Award className="h-5 w-5 text-primary-foreground" />
               </div>
               <div>
-                <p className="text-sm font-medium text-foreground">ISO Certified</p>
-                <p className="text-xs text-muted-foreground">Quality Management System</p>
+                <p className="text-sm font-medium text-foreground">MSME Certified</p>
+                <p className="text-xs text-muted-foreground">Quality Excellence Standards</p>
               </div>
             </div>
           </div>

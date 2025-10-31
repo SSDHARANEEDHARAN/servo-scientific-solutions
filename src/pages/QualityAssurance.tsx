@@ -12,7 +12,7 @@ const QualityAssurance: React.FC<QualityAssuranceProps> = ({ onBackToHome }) => 
   const qualityStandards = [
     {
       icon: <Shield className="h-8 w-8 text-primary" />,
-      title: "ISO 9001:2015",
+      title: "MSME Certified",
       description: "Certified Quality Management System ensuring consistent product quality and customer satisfaction.",
       details: ["Quality policy implementation", "Continuous improvement processes", "Customer-focused approach", "Regular audits and reviews"]
     },
@@ -75,9 +75,9 @@ const QualityAssurance: React.FC<QualityAssuranceProps> = ({ onBackToHome }) => 
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title="Quality Assurance | ISO 9001:2015 Certified | Servo Scientific Suppliers"
-        description="ISO 9001:2015 certified quality management. CE marking, NIST traceability, 99.8% quality pass rate. 50+ years of excellence in scientific equipment manufacturing."
-        keywords="ISO 9001:2015, CE marking, NIST traceability, quality assurance, laboratory equipment quality, scientific instrument certification"
+        title="Quality Assurance | MSME Certified | Servo Scientific Suppliers"
+        description="MSME certified quality management. CE marking, NIST traceability, 99.8% quality pass rate. 50+ years of excellence in scientific equipment manufacturing."
+        keywords="MSME certified, CE marking, NIST traceability, quality assurance, laboratory equipment quality, scientific instrument certification"
         canonical="https://servoscientific.com/quality"
       />
       {/* Header */}
